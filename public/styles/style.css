@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 /**************/
 /* CSS REMEDY */
 /**************/
@@ -38,49 +40,36 @@
 	KOPTEKSTEN 
 ////////////////////////// */
 
-@font-face {
-	font-family: 'Regular';
-	src: url('../assets/fonts/SF-Pro-Text-Light.otf');
-}
 
-@font-face {
-	font-family: 'Display';
-	src: url('../assets/fonts/SF-Pro-Display-Regular.otf');
-}
-
-@font-face {
-	font-family: 'Rounded';
-	src: url('../assets/fonts/SF-Compact-Rounded-Bold.otf');
-}
 
 p {
-	font-family: 'Display';
+	font-family: 'Outfit';
 	font-size: 20px;
 }
 
 h1 {
-	font-family: 'Rounded';
+	font-family: 'Outfit';
 	font-size: 19px;
 }
 
 h2 {
-	font-family: 'Rounded';
+	font-family: 'Outfit';
 	font-size: 100px;
 	color: var(--h2-kleur)
 }
 
 h3 {
-	font-family: 'Rounded';
+	font-family: 'Outfit';
 	font-size: 30px;
 }
 
 h4 {
-	font-family: 'Rounded';
+	font-family: 'Outfit';
 	font-size: 22px;
 }
 
 li {
-	font-family: 'Regular';
+	font-family: 'Outfit';
 	font-size: 12px;
 }
 
@@ -206,6 +195,7 @@ body {
 	max-width: 1100px;
 	margin: auto;
 	/* background-color: red; */
+	background-color: rgb(255, 235, 255);
 }
 
 
@@ -219,7 +209,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	box-shadow: 1px 1px 10px black;
+	box-shadow: 1px 1px 7px rgb(181, 63, 63);
 	background-image: url("/public/images/placeholder_cover.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -228,7 +218,6 @@ body {
 
 .grid1 article div:nth-of-type(1) p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
-	font-family: 'Regular';
 	font-size: 35px;
 	padding-bottom: 5px;
 	padding-left: 10px;
@@ -243,12 +232,10 @@ body {
 }
 
 #grid1 article div:nth-of-type(2) h3 {
-	font-family: 'Regular';
 	font-size: 20px;
 }
 
 #grid1 article div:nth-of-type(2) p {
-	font-family: 'Regular';
 	font-size: 15px;
 }
 
@@ -281,7 +268,7 @@ body {
 
 .list1 article div:nth-of-type(1) {
 	border-radius: 10px;
-	background-image: url("/public/images/placeholder_cover.jpg");
+	background-image: url("../images/placeholder_cover.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	height: 100px;
@@ -293,7 +280,6 @@ body {
 
 .list1 article div:nth-of-type(1) p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
-	font-family: 'Regular';
 	font-size: 35px;
 	padding-bottom: 5px;
 	padding-left: 10px;
@@ -308,9 +294,25 @@ body {
 }
 
 
+/* //////////////////////////
+	Inloggen
+////////////////////////// */
+#loginForm{
+	display: flex;
+	align-items: center;
+}
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-
-
+button:hover {
+    background-color: #0056b3;
+}
 
 
 
