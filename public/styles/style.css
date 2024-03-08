@@ -195,7 +195,7 @@ body {
 	max-width: 1100px;
 	margin: auto;
 	/* background-color: red; */
-	background-color: rgb(255, 235, 255);
+	background-color: var(--achtergrond-licht);
 }
 
 
