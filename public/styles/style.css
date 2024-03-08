@@ -49,13 +49,12 @@ p {
 
 h1 {
 	font-family: 'Outfit';
-	font-size: 19px;
+	font-size: 40px;
 }
 
 h2 {
 	font-family: 'Outfit';
 	font-size: 100px;
-	color: var(--h2-kleur)
 }
 
 h3 {
@@ -149,10 +148,10 @@ img {
 
 
 
-
-
 section {
 	padding: 3em;
+	max-width: 1100px;
+	margin: auto;
 }
 
 section > div {
@@ -184,8 +183,16 @@ body {
 	MAIN
 ////////////////////////// */
 
+main {
+	background-color: var(--achtergrond-licht);
+}
+
+
+#grid1 {
+}
+
+
 .grid1 {
-	/* background-color: red; */
 	display: grid;
 	gap: 1em;
 	grid-template-columns: repeat(auto-fill, 100px);
@@ -194,8 +201,6 @@ body {
 	justify-content:space-around;
 	max-width: 1100px;
 	margin: auto;
-	/* background-color: red; */
-	background-color: var(--achtergrond-licht);
 }
 
 
@@ -262,8 +267,8 @@ body {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	display: flex;
-	background-color: green;
-	box-shadow: 1px 1px 10px black;
+	background-color: var(--box-licht);
+	box-shadow: 1px 1px 10px var(--box-licht);
 }
 
 .list1 article div:nth-of-type(1) {
