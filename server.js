@@ -41,5 +41,5 @@ app.get('/inloggen', async (req,res) => {
 })
 
 app.get('/registreer', async (req, res) => {
-  res.render('registreer')
+  res.render('registreer1')
 })
