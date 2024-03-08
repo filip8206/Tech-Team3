@@ -32,6 +32,10 @@ app.listen(process.env.PORT, () => {
 
 // Routes
 
+app.get('/', async (req,res) => {
+  res.render('index')
+})
+
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
 })
