@@ -346,6 +346,20 @@ main {
 }
 
 
+#slide button  {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#slide button:hover {
+    background-color: #3d9bff;
+}
+
+
 /* //////////////////////////
 	Inloggen
 ////////////////////////// */
