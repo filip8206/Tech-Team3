@@ -29,3 +29,9 @@ console.log('Server gestart');
 app.listen(process.env.PORT, () => {
     console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
 })
+
+// Routes
+
+app.get('/registreer', async (req, res) => {
+  res.render('registreer')
+})
