@@ -14,7 +14,7 @@ const element = document.querySelector("#grid1");
 
   document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('slide');
-    const toggleButton = document.getElementById('grid_toggle');
+    const toggleButton = document.getElementById('toggle_grid');
     const toggleIcon = document.getElementById('toggleIcon');
  
     toggleButton.addEventListener('click', function () {
@@ -31,6 +31,19 @@ const element = document.querySelector("#grid1");
         toggleIcon.src = iconPath;
     }
  });
+
+
+
+const toggle_sorteer = document.querySelector("#toggle_sorteer");
+// const grid_icon = document.querySelector("#grid_icon");
+
+
+  toggle_sorteer.addEventListener('click', function () {
+    toggle_sorteer.classList.toggle("toggle_icon_arrow_draai");
+    element.classList.toggle("toggle_icon_arrow_draai");
+
+});
+
  
 
 
