@@ -349,11 +349,20 @@ main {
 /* //////////////////////////
 	Inloggen
 ////////////////////////// */
+
+#titleInloggen{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
 #loginForm{
 	display: flex;
+	justify-content: center;
 	align-items: center;
 }
-button {
+
+#loginButton {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -362,8 +371,8 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+#loginButton:hover {
+    background-color: #3d9bff;
 }
 
 
