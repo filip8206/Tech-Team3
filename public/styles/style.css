@@ -311,7 +311,10 @@ body {
 /* //////////////////////////
 	Inloggen
 ////////////////////////// */
-
+#loginForm{
+	display: flex;
+	align-items: center;
+}
 button {
     padding: 10px 20px;
     background-color: #007bff;
