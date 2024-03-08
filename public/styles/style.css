@@ -220,7 +220,7 @@ body {
 	flex-direction: column;
 	justify-content: flex-end;
 	box-shadow: 1px 1px 10px black;
-	background-image: url("/public/images/placeholder_cover.jpg");
+	background-image: url("../images/placeholder_cover.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	height: 100px;
@@ -281,7 +281,7 @@ body {
 
 .list1 article div:nth-of-type(1) {
 	border-radius: 10px;
-	background-image: url("/public/images/placeholder_cover.jpg");
+	background-image: url("../images/placeholder_cover.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	height: 100px;
