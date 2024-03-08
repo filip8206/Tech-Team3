@@ -36,6 +36,10 @@ app.get('/', async (req,res) => {
   res.render('index')
 })
 
+app.get('/inloggen', async (req,res) => {
+  res.render('inloggen')
+})
+
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
 })
