@@ -17,18 +17,9 @@
 	VARIABELEN 
 ////////////////////////// */
 :root {
-	--achtergrond: white;
-	--achtergrond-tint: rgba(255, 255, 255, 0.946);
-	--h-zwart: black;
-	--h3-kleur: blue;
-	--h3-kleur-donker: magenta;
+--tekst-licht: white;
+--tekst-donker: black;
 
-	--h3-kleur-port: #57C4F2;
-	--h3-kleur-donker-port: #ffffff;
-
-	--grid-kleur: #eff3f7;
-	--grid-shadow: #d6e4f1;
-	--grid-p: #0071e3;
 }
 
 
