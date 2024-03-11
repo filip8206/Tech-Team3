@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../../Site/BVB2"
+		},
+		{
+			"path": "../../../../../CMD/Jaar 2/Blok 1/Frontend Devolpment/Apple Binc van Buren"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Tech-Team3"
+	}
+}

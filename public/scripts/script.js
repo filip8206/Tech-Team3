@@ -44,6 +44,21 @@ const toggle_sorteer = document.querySelector("#toggle_sorteer");
 
 });
 
+
+
+
+$ = function(id) {
+  return document.getElementById(id);
+}
+
+var show = function(id) {
+	$(id).style.display ='block';
+  console.log("click ja");
+}
+var hide = function(id) {
+	$(id).style.display ='none';
+}
+
  
 
 

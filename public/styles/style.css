@@ -249,6 +249,54 @@ main {
 	font-size: 15px;
 }
 
+/* POPUP */
+
+.popup {
+	display: none;
+	position: fixed;
+	padding: 1em;
+	width: 100vw;
+	padding-bottom: 5em;
+	bottom: 0%;
+	margin-top: -100px;
+	background: #FFF;
+	z-index: 20;
+	border-radius: 10px;
+	justify-self: center;
+  }
+  
+  #popup1 {
+	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
+  }
+
+  .popup div:nth-of-type(1) {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+  
+  
+  /* From here on, just aesthetics */
+  
+  
+  
+  .popup a,
+  .popup a:visited {
+	color: var(--accent1);
+	text-decoration: none;
+	font-weight: bold;
+	cursor: pointer;
+  }
+  
+  p {
+	  margin: 1em 0;
+  }
+  
+  p+p+p {
+	  font-size: 60%;
+  }
+
 
 
 
@@ -357,7 +405,7 @@ main {
     color: #fff;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
+
 }
 
 #slide button:hover {
