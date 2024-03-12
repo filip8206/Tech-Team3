@@ -12,7 +12,10 @@
 <body>
     <section>
         <h2 id="titleInloggen">Inloggen</h2>
-        <form id="loginForm">
+        <% if(incorrect){ %>
+        <p class="foutmelding"><%= incorrect %></p>
+        <% } %>
+        <form id="loginForm" action="/login" method="post">
             <div class="form-group">
                 <label for="username">E-mail:</label>
                 <input type="text" id="username" name="username" required>
