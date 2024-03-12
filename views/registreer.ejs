@@ -11,6 +11,8 @@
 <body>
         <section class="secInloggen">
             <h2 id="titleInloggen">Registreren</h2>
+            <p id="textInloggen">Maak een account aan</p>
+
             <form id="loginForm">
                 <div class="form-group">
                     <label for="name">Volledige naam</label>
@@ -21,6 +23,10 @@
                     <input type="email" name="email" id="email" required>
                 </div>
                 <div class="form-group">
+                <label for="datum">Leeftijd</label>
+                <input type="date" id="datum" name="datum">
+                </div>
+                <div class="form-group">
                     <label for="password">Wachtwoord</label>
                     <input type="password" name="password" id="password" required>
                 </div>
@@ -29,6 +35,7 @@
                     <input type="password" name="repeatPassword" id="repeatPassword" required>
                 </div>
                 <button id="loginButton" type="submit">Maak account aan</button>
+                <a id="registreerButton" href="inloggen">Al een account? Log hier in</a>
             </form>
         </section>
 </body>

@@ -396,7 +396,8 @@ label {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="name"] {
+input[type="name"],
+input[type="datum"] {
     flex: 2;
     padding: 8px;
     border-radius: 5px;
@@ -413,7 +414,9 @@ input[type="name"] {
     cursor: pointer;
 	width: 300px;
 	margin-top: 30px;
-	margin-bottom: 15px;;
+	margin-bottom: 15px;
+	font-family: 'Outfit';
+	font-size: 15px;
 }
 
 #registreerButton{
@@ -421,11 +424,14 @@ input[type="name"] {
     width: 300px; 
 	background-color: #fff;
     color: #000;
-    padding: 10px 20px;	
+    padding: 10px;	
     border-radius: 5px;
     cursor: pointer;
 	border: 2px solid #000;
+	text-align: center;
 	text-decoration: none;
+	font-family: 'Outfit';
+	font-size: 15px;
 }
 
 #loginButton:hover {
