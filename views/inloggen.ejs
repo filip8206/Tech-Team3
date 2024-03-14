@@ -11,8 +11,11 @@
 
 <body>
     <section>
-        <h2>Inloggen</h2>
-        <form id="loginForm">
+        <h2 id="titleInloggen">Inloggen</h2>
+        <% if(incorrect){ %>
+        <p class="foutmelding"><%= incorrect %></p>
+        <% } %>
+        <form id="loginForm" action="/login" method="post">
             <div class="form-group">
                 <label for="username">E-mail:</label>
                 <input type="text" id="username" name="username" required>
@@ -21,7 +24,7 @@
                 <label for="password">Wachtwoord:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Inloggen</button>
+            <button id="loginButton" type="submit">Inloggen</button>
         </form>
         <div id="message"></div>
     </section>
