@@ -59,7 +59,6 @@ app.post('/login', async (req,res) => {
   } else {
     // username and/or password incorrect
     incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
-    console.log(incorrect)
     res.redirect('/inloggen')
   }
   console.log(user)
