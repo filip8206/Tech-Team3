@@ -4,37 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link href="./styles/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <main>
-        <h1>Formulier</h1>
-        <form method="post" action="/registreer">
-            <label for="email">E-mail adres</label>
-            <input type="email" name="email" id="email">
-
-            <label for="password">Wachtwoord</label>
-            <input type="password" name="password" id="password">
-
-            <label for="name">Naam</label>
-            <input type="text" name="name" id="name">
-
-            <input type="checkbox" name="pop" value="pop" />
-            <label for="pop">Pop</label>
-            <input type="checkbox" name="rock" value="rock" />
-            <label for="rock">Rock</label>
-            <input type="checkbox" name="klassiek" value="klassiek" />
-            <label for="klassiek">Klassiek</label>
-            <input type="checkbox" name="rnb" value="rnb" />
-            <label for="rnb">R&B</label>
-            <input type="checkbox" name="electronic" value="electronic" />
-            <label for="electronic">Electronic</label>
-            <input type="checkbox" name="hiphop" value="hiphop" />
-            <label for="hiphop">HipHop</label>
-            <input type="checkbox" name="house" value="house" />
-            <label for="house">House</label>
-
-            <input type="submit" value="create">
-        </form>
-    </main>
+        <section class="secInloggen">
+            <h2 id="titleInloggen">Registreren</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="name">Volledige naam</label>
+                    <input type="name" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Wachtwoord</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="repeatPassword">Herhaal wachtwoord</label>
+                    <input type="password" name="repeatPassword" id="repeatPassword" required>
+                </div>
+                <button id="loginButton" type="submit">Maak account aan</button>
+            </form>
+        </section>
 </body>
 </html>
