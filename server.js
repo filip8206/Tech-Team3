@@ -33,6 +33,13 @@ app.set('view engine', 'ejs')
 
 console.log('Server gestart');
 
+app.listen(process.env.PORT, () => {
+    console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
+})
+
+//foutmeldingen
+let incorrect
+
 // Routes
 
 app.get('/', async (req, res) => {
@@ -40,8 +47,7 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/inloggen', async (req,res) => {
-  let incorrect
-  res.render('inloggen', incorrect)
+  res.render('inloggen', {incorrect})
 })
 
 app.post('/login', async (req,res) => {
@@ -59,7 +65,7 @@ app.post('/login', async (req,res) => {
   } else {
     // username and/or password incorrect
     incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
-    res.render('/inloggen', {incorrect})
+    res.redirect('/inloggen')
   }
   console.log(user)
 }) 
