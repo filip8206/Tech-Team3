@@ -16,8 +16,9 @@
             <h1>Ontdek nieuwe muziek</h1>
 
             <div id="carrousel" class="playlist">
-				<a id="slide"><button id="grid_toggle"><img id="toggleIcon" src="./images/iconen/list.svg" alt="Grid View"></button></a>
-				<a id="slide"><button>Test</button></a>
+				<a id="slide"><button id="toggle_grid"><img id="toggleIcon" src="./images/iconen/list.svg" alt="Grid View"></button></a>
+                <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow" src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
+				<a id="slide" onclick="show('popup1')"><button>Alle filters</button></a>
                 <a id="slide"><button>Test</button></a>
                 <a id="slide"><button>Test</button></a>
                 <a id="slide"><button>Test</button></a>
@@ -119,6 +120,23 @@
             </article>
 
         </section>
+
+        <div class="popup" id="popup1">
+            <div>
+        <h3>Filters</h3>
+          <a onclick="hide('popup1')">Opslaan</a>
+        </div>
+        <div>
+            <p>Filter 1</p>
+            <p>Filter 2</p>
+            <p>Filter 3</p>
+            <p>Filter 1</p>
+            <p>Filter 2</p>
+            <p>Filter 3</p>
+        </div>
+
+        </div>
+
     </main>
 
     <script defer src="./scripts/script.js"></script>
