@@ -417,36 +417,99 @@ main {
 	Inloggen
 ////////////////////////// */
 
-#titleInloggen{
-	display: flex;
-	justify-content: center;
+#titleInloggen {
 	text-align: center;
 	margin-bottom: 15px;
 }
 
-#loginForm{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+#textInloggen {
+	text-align: center;
+	margin-bottom: 50px;
 }
 
-.form-group{
-	margin: 10px;
+#textWwVergeten {
+	text-align: right;
+	text-decoration: underline;
+	margin-bottom: 15px;
+	font-size: 15px;
+}
+
+.secInloggen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginForm {
+    width: 300px;
+	text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Verander naar kolomrichting */
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+	font-family: 'Outfit';
+	font-size: 20px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="name"] {
+    flex: 2;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 #loginButton {
-    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
+	width: 300px;
+	margin-top: 30px;
+	margin-bottom: 15px;;
+}
+
+#registreerButton{
+	display: inline-block;
+    width: 300px; 
+	background-color: #fff;
+    color: #000;
+    padding: 10px 20px;	
+    border-radius: 5px;
+    cursor: pointer;
+	border: 2px solid #000;
+	text-decoration: none;
 }
 
 #loginButton:hover {
-    background-color: #3d9bff;
+    background-color: #0056b3;
+}
+
+#registreerButton:hover {
+	background-color: #ccc;	
+}
+
+#message {
+    margin-top: 10px;
+    color: #ff0000;
 }
 
 
+/* //////////////////////////
+	Registreren
+////////////////////////// */
 
