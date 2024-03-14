@@ -11,7 +11,7 @@
 <body>
         <section class="secInloggen">
             <h2 id="titleInloggen">Registreren</h2>
-            <form id="loginForm">
+            <form id="loginForm" method="POST" action="/registreer">
                 <div class="form-group">
                     <label for="name">Volledige naam</label>
                     <input type="name" name="name" id="name" required>
@@ -28,7 +28,7 @@
                     <label for="repeatPassword">Herhaal wachtwoord</label>
                     <input type="password" name="repeatPassword" id="repeatPassword" required>
                 </div>
-                <button id="loginButton" type="submit">Maak account aan</button>
+                <button id="loginButton" type="submit" value="create">Maak account aan</button>
             </form>
         </section>
 </body>
