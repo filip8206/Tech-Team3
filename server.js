@@ -4,7 +4,8 @@ const express = require('express')
 const { MongoClient, ServerApiVersion } = require('mongodb')
 const app = express()
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_NAME}`
-import { bezoekerSchema } from "./schema.js"
+// const validator = require('express-validator')
+// import { inlogSchema } from "./schema.js"
 
 const client = new MongoClient(uri, {
     serverApi: {
@@ -30,6 +31,9 @@ app.listen(process.env.PORT, () => {
     console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
 })
 
+//foutmeldingen
+let incorrect
+
 // Routes
 
 app.get('/', async (req,res) => {
@@ -37,11 +41,10 @@ app.get('/', async (req,res) => {
 })
 
 app.get('/inloggen', async (req,res) => {
-  let incorrect
-  res.render('inloggen', incorrect)
+  res.render('inloggen', {incorrect})
 })
 
-app.post('/login', bezoekerSchema, async (req,res) => {
+app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
   const coll = db.collection("users")
 
@@ -56,7 +59,8 @@ app.post('/login', bezoekerSchema, async (req,res) => {
   } else {
     // username and/or password incorrect
     incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
-    res.render('/inloggen', {incorrect})
+    console.log(incorrect)
+    res.redirect('/inloggen')
   }
   console.log(user)
 })
