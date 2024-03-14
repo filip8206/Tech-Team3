@@ -44,7 +44,7 @@ app.get('/inloggen', async (req,res) => {
   res.render('inloggen', incorrect)
 })
 
-app.post('/login', bezoekerSchema, async (req,res) => {
+app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
   const coll = db.collection("users")
 
@@ -62,7 +62,7 @@ app.post('/login', bezoekerSchema, async (req,res) => {
     res.render('/inloggen', {incorrect})
   }
   console.log(user)
-})
+}) 
 
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
