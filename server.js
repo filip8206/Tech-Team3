@@ -42,11 +42,11 @@ app.get('/', async (req, res) => {
   res.render('index')
 })
 
-app.get('/inloggen', async (req,res) => {
-  res.render('inloggen', {incorrect})
+app.get('/inloggen', async (req, res) => {
+  res.render('inloggen', { incorrect })
 })
 
-app.post('/login', async (req,res) => {
+app.post('/login', async (req, res) => {
   const db = client.db("DatabaseTechTest")
   const coll = db.collection("users")
 
@@ -56,7 +56,7 @@ app.post('/login', async (req,res) => {
   })
 
   // login checken
-  if (user !== null){
+  if (user !== null) {
     res.render('/')
   } else {
     // username and/or password incorrect
@@ -64,14 +64,14 @@ app.post('/login', async (req,res) => {
     res.redirect('/inloggen')
   }
   console.log(user)
-}) 
+})
 
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
 })
 
 app.post('/registreer', async (req, res) => {
-  const db = client.db('DatabaseTechTest')
+  const db = client.db('muve')
   const coll = db.collection('users')
 
   const user = await coll.findOne({
@@ -86,24 +86,32 @@ app.post('/registreer', async (req, res) => {
 
     const formEmail = xss(req.body.email)
     const formPassword = xss(req.body.password)
+    const formPasswordConfirm = xss(req.body.repeatPassword)
     const formName = xss(req.body.name)
 
-    const hashedPassword = bcrypt.hashSync(formPassword, saltRounds);
-
-    if (formName == null || formEmail == null || formPassword == null) {
-      const foutmelding = ''
-      res.render('registreer', { foutmelding })
+    if (formPassword != formPasswordConfirm) {
+      res.redirect('/registreer')
+      //hier moet ook nog een foutmelding komen
+      console.log('wachtwoorden komen niet overeen')
     } else {
 
-      console.log(req.body)
+      const hashedPassword = bcrypt.hashSync(formPassword, saltRounds);
 
-      coll.insertOne({
-        email: formEmail,
-        password: hashedPassword,
-        name: formName
-      })
+      if (formName == null || formEmail == null || formPassword == null) {
+        const foutmelding = 'Leeg'
+        res.render('registreer', { foutmelding })
+      } else {
 
-      res.redirect('/klaar')
+        console.log(req.body + 'geregistreerd')
+
+        coll.insertOne({
+          email: formEmail,
+          password: hashedPassword,
+          name: formName
+        })
+
+        res.redirect('/klaar')
+      }
     }
   }
 })
