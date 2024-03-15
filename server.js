@@ -21,7 +21,9 @@ const bcrypt = require('bcrypt')
 const xss = require('xss')
 const saltRounds = 10
 
-client.connect();
+  const bcrypt = require('bcrypt')
+  const xss = require('xss')
+  const saltRounds = 10
 
 // Middleware
 app.use(express.static('public'))
@@ -46,24 +48,21 @@ app.get('/inloggen', async (req, res) => {
   res.render('inloggen', { incorrect })
 })
 
-app.post('/login', async (req, res) => {
-  const db = client.db("DatabaseTechTest")
+
+app.post('/login', async (req,res) => {
+  const db = client.db("muve")
   const coll = db.collection("users")
+  const {email, password} = req.body
 
-  const user = await coll.findOne({
-    username: req.body.username,
-    password: req.body.password
+  const user = await coll.findOne({ email: email })
+  bcrypt.compare(password, user.password).then(function(result) {
+    if(result === true){
+      res.redirect('/')
+    } else {
+      incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
+      res.redirect('/inloggen')
+    }
   })
-
-  // login checken
-  if (user !== null) {
-    res.render('/')
-  } else {
-    // username and/or password incorrect
-    incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
-    res.redirect('/inloggen')
-  }
-  console.log(user)
 })
 
 app.get('/registreer', async (req, res) => {
