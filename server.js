@@ -21,10 +21,6 @@ const bcrypt = require('bcrypt')
 const xss = require('xss')
 const saltRounds = 10
 
-  const bcrypt = require('bcrypt')
-  const xss = require('xss')
-  const saltRounds = 10
-
 // Middleware
 app.use(express.static('public'))
 
