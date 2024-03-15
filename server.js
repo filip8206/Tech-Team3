@@ -43,3 +43,7 @@ app.get('/inloggen', async (req,res) => {
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
 })
+
+app.get('/genreSelect', async (req, res) => {
+  res.render('genreSelect')
+})
