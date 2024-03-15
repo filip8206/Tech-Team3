@@ -33,10 +33,6 @@ app.set('view engine', 'ejs')
 
 console.log('Server gestart');
 
-app.listen(process.env.PORT, () => {
-    console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
-})
-
 //foutmeldingen
 let incorrect
 
