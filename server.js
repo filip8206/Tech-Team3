@@ -4,7 +4,7 @@ const express = require('express')
 const { MongoClient, ServerApiVersion } = require('mongodb')
 const app = express()
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_NAME}`
-import { bezoekerSchema } from "./schema.js"
+//import { bezoekerSchema } from "./schema.js"
 
 const client = new MongoClient(uri, {
     serverApi: {
@@ -41,7 +41,7 @@ app.get('/inloggen', async (req,res) => {
   res.render('inloggen', incorrect)
 })
 
-app.post('/login', bezoekerSchema, async (req,res) => {
+app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
   const coll = db.collection("users")
 

@@ -99,15 +99,31 @@ window.onload = function(){
 
 
 
-function updateCheckboxCount() {
-  var checkboxes = document.querySelectorAll('input[name="genre"]');
+// function updateCheckboxCount() {
+//   var checkboxes = document.querySelectorAll('input[name="genre"]');
+//   var checkedCount = 0;
+//   checkboxes.forEach(function(checkbox) {
+//       if (checkbox.checked) {
+//           checkedCount++;
+//       }
+//   });
+//   document.getElementById('checkboxCount').textContent = checkedCount + ' geselecteerd';
+// }
+
+
+
+
+function updateCheckboxCount(checkbox) {
+  var section = checkbox.closest('.filterSection');
+  var checkboxes = section.querySelectorAll('input[type="checkbox"]');
   var checkedCount = 0;
   checkboxes.forEach(function(checkbox) {
       if (checkbox.checked) {
           checkedCount++;
       }
   });
-  document.getElementById('checkboxCount').textContent = checkedCount + ' geselecteerd';
+  var totalCount = checkboxes.length;
+  section.previousElementSibling.querySelector('.checkboxCount').textContent = checkedCount + '/' + totalCount;
 }
 
 
