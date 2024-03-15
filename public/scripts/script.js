@@ -64,18 +64,26 @@ var hide = function(id) {
 
 // RANGE SLIDER
 
+function highlight1() {
+  filterbutton_highlight.classList.remove('filterbutton');
+  filterbutton_highlight.classList.add('highlight1');
+}
+
 function getVals(){
-  // Get slider values
   let parent = this.parentNode;
   let slides = parent.getElementsByTagName("input");
-    let slide1 = parseFloat( slides[0].value );
-    let slide2 = parseFloat( slides[1].value );
-  // Neither slider will clip the other, so make sure we determine which is larger
+  let slide1 = parseFloat( slides[0].value );
+  let slide2 = parseFloat( slides[1].value );
+  
   if( slide1 > slide2 ){ let tmp = slide2; slide2 = slide1; slide1 = tmp; }
   
   let displayElement = document.getElementsByClassName("rangeValues")[0];
   displayElement.textContent = slide1 + " - " + slide2 + " BPM";
+
+  slides[0].addEventListener('input', highlight1);
+  slides[1].addEventListener('input', highlight1);
 }
+
 
 
 
@@ -110,7 +118,7 @@ window.onload = function(){
 //   document.getElementById('checkboxCount').textContent = checkedCount + ' geselecteerd';
 // }
 
-
+const filterbutton_highlight = document.querySelector(".filterbutton");
 
 
 function updateCheckboxCount(checkbox) {
@@ -124,7 +132,17 @@ function updateCheckboxCount(checkbox) {
   });
   var totalCount = checkboxes.length;
   section.previousElementSibling.querySelector('.checkboxCount').textContent = checkedCount + '/' + totalCount;
+
+              // Add highlight class if at least one checkbox is checked
+              if (checkedCount > 0) {
+                filterbutton_highlight.classList.remove('filterbutton');
+                filterbutton_highlight.classList.add('highlight1');
+            } else {
+              filterbutton_highlight.classList.remove('highlight1');
+              filterbutton_highlight.classList.add('filterbutton');
+            }
 }
+
 
 
 

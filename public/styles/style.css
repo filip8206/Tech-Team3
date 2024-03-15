@@ -263,10 +263,16 @@ main {
 	z-index: 20;
 	border-radius: 10px;
 	justify-self: center;
+	background-color: var(--achtergrond-licht);
   }
 
   .popup section {
 	padding: 0px;
+	margin-bottom: 2em;
+  }
+
+  .popup section:nth-of-type(3) {
+	margin-bottom: 3em;
   }
   
   #popup1 {
@@ -281,10 +287,18 @@ main {
 	margin-bottom: 1em;
   }
 
+  .popup > div:nth-of-type(1) a {
+	font-size: 18px;
+  }
+
   .popup-flex  {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+  }
+
+  .popup-flex p {
+	font-size: 16px;
   }
 
   .noscroll {
@@ -305,7 +319,7 @@ main {
   }
   
   p {
-	  margin: 1em 0;
+	  /* margin: 1em 0; */
   }
   
   p+p+p {
@@ -316,8 +330,16 @@ main {
 /* POPUP FILTERS */
   /* This is to be able to center the content in the middle of the page; */
   
-  
-  
+  .filters {
+	margin-top: 1em;
+	display: flex;
+	justify-content:space-between;
+  }
+
+  .filters div:nth-of-type(1) {
+	display: flex;
+	gap: 0.5em;
+  }  
   .slide {
 	float: left; 
 	padding-left: 1em;
@@ -353,6 +375,49 @@ main {
 border-color: var(--accent1);
   }
 
+  button {
+	white-space: nowrap
+  }
+
+
+
+
+  /* Populair */
+
+  .select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px;
+    font-size: 13px;
+    border: 2px solid var(--tekst-donker);
+	border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.select-wrapper:hover {
+	border-color: var(--accent1);
+}
+
+.select-wrapper select:focus {
+    outline: none;
+}
+
+.select-wrapper::after {
+    content: '\25BC'; /* pijl omlaag symbool */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
 
 
 
@@ -361,6 +426,7 @@ border-color: var(--accent1);
   
 .range-slider {
   width: 300px;
+  margin-top: 1em;
   text-align: center;
   position: relative;
   .rangeValues {
@@ -370,7 +436,8 @@ border-color: var(--accent1);
 
 input[type=range] {
   -webkit-appearance: none;
-  border: 1px solid white;
+  border: 1px solid var(--tekst-donker);
+  border-radius: 5px;
   width: 90vw;
   position: absolute;
   left: 0;
@@ -379,7 +446,7 @@ input[type=range] {
 input[type=range]::-webkit-slider-runnable-track {
   width: 300px;
   height: 5px;
-  background: #ddd;
+  background: transparent;
   border: none;
   border-radius: 3px;
 
@@ -403,13 +470,13 @@ input[type=range]:focus {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #ccc;
+	background: transparent;
 }
 
 input[type=range]::-moz-range-track {
   width: 300px;
   height: 5px;
-  background: #ddd;
+  background: transparent;
   border: none;
   border-radius: 3px;
 }
@@ -545,11 +612,12 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 #carrousel a:first-of-type {
-	/* margin-left: 0.25em; */
+	margin-left: 0.25em;
 }
 
-#carrousel a:last-of-type {
-	/* margin-right: 15%; */
+#carrousel a {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
 }
 
 #slide {
@@ -572,16 +640,22 @@ input[type=range]:focus::-ms-fill-upper {
 
 #slide button  {
     padding: 10px 20px;
-    background-color: var(--accent1);
-    color: #fff;
+    background-color: transparent;
+    color: var(--tekst-donker);
     border: none;
     border-radius: 10px;
+	border: 2px solid var(--tekst-donker);
 
 }
 
 #slide button:hover {
-    background-color: #3d9bff;
+	border-color: var(--accent1);
+	font-weight: bold;
 }
+
+.highlight1 {
+	border-color: var(--accent1) !important;
+  }
 
 
 /* //////////////////////////

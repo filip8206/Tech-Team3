@@ -15,17 +15,25 @@
         <section>
             <h1>Ontdek nieuwe muziek</h1>
 
-            <div id="carrousel" class="playlist">
-                <a id="slide"><button id="toggle_grid"><img id="toggleIcon" src="./images/iconen/list.svg"
-                            alt="Grid View"></button></a>
-                <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
-                            src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
-                <a id="slide" onclick="show('popup1')"><button>Alle filters</button></a>
-                <a id="slide"><button>Test</button></a>
-                <a id="slide"><button>Test</button></a>
-                <a id="slide"><button>Test</button></a>
-                <a id="slide"><button>Test</button></a>
-                <a id="slide"><button>Test</button></a>
+            <div class="filters">
+                <div>
+                    <a id="slide" onclick="show('popup1')"><button class="filterbutton">Filters</button></a>
+                    <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
+                                src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
+
+                </div>
+                <div>
+                    <a id="slide"><button id="toggle_grid"><img id="toggleIcon" src="./images/iconen/list.svg"
+                                alt="Grid View"></button></a>
+                </div>
+                <!-- <div class="select-wrapper">
+                    <select>
+                        <option value="item1">Populariteit</option>
+                        <option value="item2">Titel</option>
+                        <option value="item3">Artiest</option>
+                        <option value="item4">BPM</option>
+                    </select>
+                </div> -->
             </div>
         </section>
         <section id="grid1" class="grid1">
@@ -130,6 +138,34 @@
             </div>
 
             <form id="filterForm">
+
+                <section>
+                    <div class="popup-flex">
+                        <h4>Sorteren</h4>
+                    </div>
+                    <div class="filterSection" id="carrousel">
+
+                        <label class="slide">
+                            <input type="radio" name="sorteer" value="1" checked
+                                onchange="updateCheckboxCount(this)"><span>Populariteit</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="radio" name="sorteer" value="2"
+                                onchange="updateCheckboxCount(this)"><span>Titel</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="radio" name="sorteer" value="3"
+                                onchange="updateCheckboxCount(this)"><span>Artiest</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="radio" name="sorteer" value="4"
+                                onchange="updateCheckboxCount(this)"><span>BPM</span>
+                        </label>
+                    </div>
+                </section>
 
                 <section>
                     <div class="popup-flex">
