@@ -19,7 +19,7 @@
 
             <div id="filters">
                 <div>
-                    <a id="slide" onclick="show('popup1')"><button class="filterbutton">Filters</button></a>
+                    <a id="slide" onclick="toggleFilters()"><button class="filterbutton">Filters</button></a>
                     <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
                                 src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
 
@@ -67,7 +67,7 @@
         <div class="popup" id="popup1">
             <div>
                 <h3>Filter</h3>
-                <a onclick="hide('popup1')">Opslaan</a>
+                <a onclick="toggleFilters()">Opslaan</a>
             </div>
 
             <form id="filterForm">

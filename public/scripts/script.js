@@ -3,14 +3,7 @@ console.log("hi");
 
 
 const element = document.querySelector("#grid1");
-// const grid_icon = document.querySelector("#grid_icon");
 
-// function naarGrid() {
-//     console.log("dit werkt?");
-//     element.classList.toggle("grid1");
-//     element.classList.toggle("list1");
-//     grid_icon.src = "./images/iconen/grid.svg";
-//   }
 
   document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('slide');
@@ -46,20 +39,10 @@ const toggle_sorteer = document.querySelector("#toggle_sorteer");
 
 var body = document.body;
 
+const filters_popup = document.getElementById('popup1');
 
-
-$ = function(id) {
-  return document.getElementById(id);
-}
-
-var show = function(id) {
-	$(id).style.display ='block';
-  console.log("click ja");
-  body.classList.add("noscroll");
-}
-var hide = function(id) {
-	$(id).style.display ='none';
-  body.classList.remove("noscroll");
+function toggleFilters() {
+  filters_popup.classList.toggle('show-popup');
 }
 
 // RANGE SLIDER
@@ -150,8 +133,7 @@ let menu = document.querySelector('.menu');
 // NAVBAR
 
 function toggleMenu() {
-  menu.classList.toggle('show');
-  filters_remove.classList.toggle('filters-remove');
+  menu.classList.toggle('show-menu');
 }
 
 

@@ -351,7 +351,7 @@ main {
 /* POPUP */
 
 .popup {
-	display: none;
+	/* display: none; */
 	position: fixed;
 	padding: 1em;
 	width: 100vw;
@@ -362,8 +362,15 @@ main {
 	border-radius: 10px;
 	justify-self: center;
 	background-color: var(--achtergrond-licht);
-	transition: bottom 0.4s ease-in-out;
+    transition: bottom 0.25s, box-shadow 0.25s;
 	bottom: 0px;
+	bottom: -100%; /* Initially hidden */
+  }
+
+  .popup.show-popup {
+	bottom: 0%;
+	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
   }
 
   .popup section {
@@ -375,10 +382,10 @@ main {
 	margin-bottom: 3em;
   }
   
-  #popup1 {
+  /* #popup1 {
 	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
 	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
-  }
+  } */
 
   .popup > div:nth-of-type(1) {
 	display: flex;
@@ -758,17 +765,18 @@ header {
 	display: flex;
 	justify-content: flex-end;
 	height: 3.5em;
+	z-index: 1000;
 }
 
-.container {
+.container_menu {
 	cursor: pointer;
 }
 
 .hamburger-menu {
-    z-index: 1000;
 	position: fixed;
 	top: 20px;
 	right: 20px;
+	z-index: 1001;
 }
 
 .bar {
@@ -786,13 +794,14 @@ header {
     height: 100%;
     background-color: var(--tekst-licht);
     width: 75%;
-    transition: right 0.4s ease-in-out;
+    transition: right 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 	z-index: 900;
-	box-shadow: 5px 5px 7px rgb(181, 63, 63);
 }
 
-.menu.show {
+.menu.show-menu {
     right: 0;
+	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
 }
 
 .menu ul {
