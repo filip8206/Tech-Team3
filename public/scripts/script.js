@@ -143,6 +143,16 @@ function updateCheckboxCount(checkbox) {
             }
 }
 
+let filters_remove = document.querySelector("#filters");
+let menu = document.querySelector('.menu');
+
+
+// NAVBAR
+
+function toggleMenu() {
+  menu.classList.toggle('show');
+  filters_remove.classList.toggle('filters-remove');
+}
 
 
 

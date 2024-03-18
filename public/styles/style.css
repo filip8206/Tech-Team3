@@ -185,6 +185,7 @@ body {
 
 main {
 	background-color: var(--achtergrond-licht);
+	padding-top: 3em;
 }
 
 
@@ -257,13 +258,14 @@ main {
 	padding: 1em;
 	width: 100vw;
 	padding-bottom: 5em;
-	bottom: 0%;
 	margin-top: -100px;
 	background: #FFF;
 	z-index: 20;
 	border-radius: 10px;
 	justify-self: center;
 	background-color: var(--achtergrond-licht);
+	transition: bottom 0.4s ease-in-out;
+	bottom: 0px;
   }
 
   .popup section {
@@ -330,16 +332,23 @@ main {
 /* POPUP FILTERS */
   /* This is to be able to center the content in the middle of the page; */
   
-  .filters {
+  #filters {
 	margin-top: 1em;
 	display: flex;
 	justify-content:space-between;
+	transition: opacity 0.25s ease-in-out;
   }
 
-  .filters div:nth-of-type(1) {
+  #filters div:nth-of-type(1) {
 	display: flex;
 	gap: 0.5em;
   }  
+
+.filters-remove {
+	opacity: 0;
+	transition: opacity 0.25s ease-in-out;
+}
+
   .slide {
 	float: left; 
 	padding-left: 1em;
@@ -693,5 +702,70 @@ input[type=range]:focus::-ms-fill-upper {
     background-color: #3d9bff;
 }
 
+/* HEADER */
 
+header {
+	background-color: white;
+	position: fixed;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	height: 3.5em;
+}
+
+.container {
+	cursor: pointer;
+}
+
+.hamburger-menu {
+    z-index: 1000;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: transform 0.4s ease-in-out;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: -75%; /* Initially hidden */
+    height: 100%;
+    background-color: var(--tekst-licht);
+    width: 75%;
+    transition: right 0.4s ease-in-out;
+	z-index: 900;
+	box-shadow: 5px 5px 7px rgb(181, 63, 63);
+}
+
+.menu.show {
+    right: 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 1em;
+	margin-top: 3em;
+}
+
+.menu li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.menu li:last-child {
+    border-bottom: none;
+}
+
+.menu li a {
+    color: var(--accent1);
+    text-decoration: none;
+	font-size: 30px;
+}
 
