@@ -210,7 +210,7 @@ main {
 }
 
 
-.grid1 article div:first-of-type {
+.grid1 a div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
@@ -219,7 +219,7 @@ main {
     overflow: hidden;
 }
 
-.grid1 article img {
+.grid1 a img {
 	position: absolute;
     top: 0;
     left: 0;
@@ -228,7 +228,7 @@ main {
     object-fit: cover; /* De afbeelding schalen om de container te vullen */
 }
 
-.grid1 article div:first-of-type div:first-of-type {
+.grid1 a div:first-of-type div:first-of-type {
 	position: absolute;
     top: 0;
     left: 0;
@@ -243,7 +243,7 @@ main {
 	height: 100px;
 }
 
-.grid1 article div:first-of-type div:nth-of-type(1) p {
+.grid1 a div:first-of-type div:nth-of-type(1) p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
@@ -253,16 +253,16 @@ main {
 	color: white;
 }
 
-.grid1 article div:nth-of-type(2) {
+.grid1 a div:nth-of-type(2) {
 	margin-top: 0.5em;
 	margin-left: 0.6em;
 }
 
-#grid1 article div:nth-of-type(2) h3 {
+#grid1 a div:nth-of-type(2) h3 {
 	font-size: 20px;
 }
 
-#grid1 article div:nth-of-type(2) p {
+#grid1 a div:nth-of-type(2) p {
 	font-size: 15px;
 }
 
@@ -281,14 +281,14 @@ main {
 	margin: auto;
 }
 
-.list1 article {
+.list1 a {
 	background-color: var(--tekst-licht);
 	display: flex;
 	border-radius: 10px;
 }
 
 
-.list1 article div:first-of-type {
+.list1 a div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
@@ -297,7 +297,7 @@ main {
     overflow: hidden;
 }
 
-.list1 article img {
+.list1 a img {
 	position: absolute;
     top: 0;
     left: 0;
@@ -307,7 +307,7 @@ main {
 
 }
 
-.list1 article div:first-of-type div:first-of-type {
+.list1 a div:first-of-type div:first-of-type {
 	position: absolute;
     top: 0;
     left: 0;
@@ -322,7 +322,7 @@ main {
 	height: 100px;
 }
 
-.list1 article div:first-of-type div:nth-of-type(1) p {
+.list1 a div:first-of-type div:nth-of-type(1) p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
@@ -332,7 +332,7 @@ main {
 	color: white;
 }
 
-.list1 article div:nth-of-type(2) {
+.list1 a div:nth-of-type(2) {
 	margin-top: 0.5em;
 	margin-left: 0.6em;
 }

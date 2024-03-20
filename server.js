@@ -46,6 +46,10 @@ app.get('/inloggen', async (req,res) => {
   res.render('inloggen', incorrect)
 })
 
+app.get('/detail', async (req,res) => {
+  res.render('detail')
+})
+
 app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
   const coll = db.collection("users")
