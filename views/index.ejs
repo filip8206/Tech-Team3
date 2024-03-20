@@ -34,33 +34,20 @@
       
         <section id="grid1" class="grid1">
 
-            
-            <article>
-                <div>
-                    <img src="./images/placeholder_cover.jpg" alt="Achtergrondafbeelding">
+            <% for(var i=0; i<songs.length; i++) {%>
+                <article>
                     <div>
-                        <p>30%</p>
+                        <img src="./images/covers/<%= songs[i].album %>.png" alt="Achtergrondafbeelding">
+                        <div>
+                            <p>30%</p>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h3>Titel</h3>
-                    <p>Artiest</p>
-                </div>
-            </article>
-
-            <article>
-                <div>
-                    <img src="./images/placeholder_cover.jpg" alt="Achtergrondafbeelding">
                     <div>
-                        <p>30%</p>
+                        <h3><%= songs[i].title %></h3>
+                        <p><%= songs[i].artist %></p>
                     </div>
-                </div>
-                <div>
-                    <h3>Titel</h3>
-                    <p>Artiest</p>
-                </div>
-            </article>
-           
+                </article>
+             <% } %>
 
         </section>
 

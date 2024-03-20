@@ -33,7 +33,12 @@ app.listen(process.env.PORT, () => {
 // Routes
 
 app.get('/', async (req,res) => {
-  res.render('index')
+  const db = client.db("muve")
+  const coll = db.collection("songs")
+
+  const songs = await coll.find().toArray()
+  res.render('index', {songs})
+  console.log(songs)
 })
 
 app.get('/inloggen', async (req,res) => {
