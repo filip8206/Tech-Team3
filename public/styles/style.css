@@ -392,11 +392,12 @@ header > div:first-of-type {
 	background: #FFF;
 	z-index: 20;
 	border-radius: 10px;
-	justify-self: center;
 	background-color: var(--achtergrond-licht);
     transition: bottom 0.25s, box-shadow 0.25s;
 	bottom: 0px;
 	bottom: -100%; 
+	max-width: 800px;
+
   }
 
   .popup.show-popup {
@@ -523,7 +524,7 @@ border-color: var(--accent1);
 
   
 .range-slider {
-  width: 300px;
+  width: 100%;
   margin-top: 1em;
   text-align: center;
   position: relative;
@@ -536,7 +537,7 @@ input[type=range] {
   -webkit-appearance: none;
   border: 1px solid var(--tekst-donker);
   border-radius: 5px;
-  width: 90vw;
+  width: 100%;
   position: absolute;
   left: 0;
 }
@@ -954,6 +955,10 @@ a:visited {
 		display: none;
 	}
 
+	.popup {
+		left: calc(50% - (800px / 2));
+
+}
 }
 
 @media screen and (max-width: 800px) {
