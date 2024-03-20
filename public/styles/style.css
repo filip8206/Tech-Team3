@@ -12,12 +12,47 @@
 	scroll-behavior: smooth;
 }
 
+/* //////////////////////////
+	HELE DOCUMENT
+////////////////////////// */
+
+main {
+	background-color: var(--achtergrond-licht);
+	padding-top: 3.5em;
+}
+
+section {
+	padding: 1em;
+	max-width: 1250px;
+	margin: auto;
+}
+
+section > div {
+	margin: unset;
+}
+
+section > h2 {
+	margin-bottom: 0.25em;
+}
+
+body {
+	transition: padding 1s;
+}
+
+img {
+	scale: 100%;
+	align-self: center;
+	display: block;
+	height: auto;
+}
+
 
 
 
 /* //////////////////////////
 	VARIABELEN 
 ////////////////////////// */
+
 :root {
 --tekst-licht: white;
 --tekst-donker: black;
@@ -41,7 +76,6 @@
 ////////////////////////// */
 
 
-
 p {
 	font-family: 'Outfit';
 	font-size: 20px;
@@ -54,7 +88,7 @@ h1 {
 
 h2 {
 	font-family: 'Outfit';
-	font-size: 100px;
+	font-size: 40px;
 }
 
 h3 {
@@ -72,110 +106,122 @@ li {
 	font-size: 12px;
 }
 
-/* //////////////////////////
-	NAVIGATIE 
-////////////////////////// */
-
-
-/* nav {
-	display: flex;
-	justify-content: flex-start;
-	list-style: none;
-	margin: auto;
-	max-width: 1200px;
-} */
-
-/* nav div:nth-of-type(1) {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	margin-left: 1em;
-} */
-
-
-/* nav div:nth-of-type(2) {
-	margin-left: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 2em;
-} */
-
-/* nav div:nth-of-type(2) a {
-	color: white;
-	font-size: 18px;
-} */
-
-/* nav h1 {
-	font-size: 32px;
-	color: white;
-} */
-
-/* nav img {
-	filter: brightness(0) invert(1);
-	max-width: 4em;
-
-} */
-
-img {
-	scale: 100%;
-	align-self: center;
-	display: block;
-	height: auto;
-}
-
-@media screen and (max-width: 800px) {
-
-	header {
-		padding: 1em 1.5em;
-	}
-
-	nav h1 {
-		font-size: 20px;
-		margin-left: -0.5em;
-	}
-
-	nav div:nth-of-type(2) {
-		display: none;
-	}
-
-}
-
-
-
-
-section {
-	padding: 1em;
-	max-width: 1100px;
-	margin: auto;
-}
-
-section > div {
-	margin: unset;
-}
-
-body {
-	transition: padding 1s;
-}
-
-
-
-
-
-
-
 
 
 /* //////////////////////////
-	MAIN
+	HEADER EN NAVIGATIE 
 ////////////////////////// */
 
-main {
-	background-color: var(--achtergrond-licht);
-	padding-top: 3.5em;
+/* HEADER */
+
+header {
+	background-color: white;
+	position: fixed;
+	z-index: 1000;
+	width: 100vw;
 }
 
+header > div:first-of-type {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75em 2em;
+	max-width: 1250px;
+	margin: auto;
+}
+
+
+/* HAMBURGER MENU */
+
+.container_menu {
+	cursor: pointer;
+}
+
+.hamburger-menu {
+	position: fixed;
+	top: 12.5px;
+	right: 12.5px;
+	z-index: 1001;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: transform 0.4s ease-in-out;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: -75%; /* Initially hidden */
+    height: 100%;
+    background-color: var(--tekst-licht);
+    width: 75%;
+    transition: right 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+	z-index: 900;
+}
+
+.menu.show-menu {
+    right: 0;
+	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 1em;
+	margin-top: 3em;
+}
+
+.menu li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.menu li:last-child {
+    border-bottom: none;
+}
+
+.menu li a {
+    color: var(--accent1);
+    text-decoration: none;
+	font-size: 30px;
+}
+
+
+/* NORMAAL MENU */
+
+.normaal_menu ul {
+    list-style-type: none;
+	display: flex;
+}
+
+.normaal_menu li {
+	margin-left: 2em;
+}
+
+.normaal_menu li:last-child {
+    border-bottom: none;
+}
+
+.normaal_menu li a {
+    color: var(--accent1);
+    text-decoration: none;
+	font-size: 20px;
+}
+
+
+
+
+
+
+/* //////////////////////////
+	INDEX
+////////////////////////// */
+
+/* GRID VIEW */
 
 #grid1 {
 }
@@ -188,13 +234,17 @@ main {
 
 .grid1 {
 	display: grid;
-	gap: 1em;
+	gap: 2.25em;
 	grid-template-columns: repeat(auto-fill, 100px);
 	grid-auto-flow: dense;
 	margin-top: 2em;
 	justify-content:space-around;
-	max-width: 1100px;
+	max-width: 1250px;
 	margin: auto;
+}
+
+.grid1 a {
+	width: 100px;
 }
 
 
@@ -202,8 +252,8 @@ main {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 100px;
-    height: 100px; /* Pas dit aan op basis van de gewenste hoogte van de container */
+    width: 125px;
+    height: 125px; 
     overflow: hidden;
 }
 
@@ -213,7 +263,7 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* De afbeelding schalen om de container te vullen */
+    object-fit: cover; 
 }
 
 .grid1 a div:first-of-type div:first-of-type {
@@ -228,7 +278,7 @@ main {
 	box-shadow: 1px 1px 7px rgb(181, 63, 63);
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 100px;
+	height: 125px;
 }
 
 .grid1 a div:first-of-type div:nth-of-type(1) p {
@@ -256,7 +306,7 @@ main {
 
 
 
-/* LIST */
+/* LIST VIEW */
 
 .list1 {
 	display: grid;
@@ -265,7 +315,7 @@ main {
 	grid-auto-flow: dense;
 	margin-top: 2em;
 	justify-content:space-around;
-	max-width: 1100px;
+	max-width: 1250px;
 	margin: auto;
 }
 
@@ -325,21 +375,15 @@ main {
 	margin-left: 0.6em;
 }
 
-
-
-
-
-
-
 .icon_grid {
 	background-image: url("../images/iconen/grid.svg");
 }
 
 
-/* POPUP */
+
+/* FILTER MENU */
 
 .popup {
-	/* display: none; */
 	position: fixed;
 	padding: 1em;
 	width: 100vw;
@@ -352,7 +396,7 @@ main {
 	background-color: var(--achtergrond-licht);
     transition: bottom 0.25s, box-shadow 0.25s;
 	bottom: 0px;
-	bottom: -100%; /* Initially hidden */
+	bottom: -100%; 
   }
 
   .popup.show-popup {
@@ -369,11 +413,6 @@ main {
   .popup section:nth-of-type(3) {
 	margin-bottom: 3em;
   }
-  
-  /* #popup1 {
-	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
-	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
-  } */
 
   .popup > div:nth-of-type(1) {
 	display: flex;
@@ -401,10 +440,6 @@ main {
   }
   
   
-  /* From here on, just aesthetics */
-  
-  
-  
   .popup a,
   .popup a:visited {
 	color: var(--accent1);
@@ -413,17 +448,13 @@ main {
 	cursor: pointer;
   }
   
-  p {
-	  /* margin: 1em 0; */
-  }
   
   p+p+p {
 	  font-size: 60%;
   }
 
 
-/* POPUP FILTERS */
-  /* This is to be able to center the content in the middle of the page; */
+/* POPUP: FILTERS */
   
   #filters {
 	margin-top: 1em;
@@ -484,41 +515,6 @@ border-color: var(--accent1);
 
 
 
-  /* Populair */
-
-  .select-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.select-wrapper select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding: 10px;
-    font-size: 13px;
-    border: 2px solid var(--tekst-donker);
-	border-radius: 10px;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.select-wrapper:hover {
-	border-color: var(--accent1);
-}
-
-.select-wrapper select:focus {
-    outline: none;
-}
-
-.select-wrapper::after {
-    content: '\25BC'; /* pijl omlaag symbool */
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
 
 
 
@@ -593,8 +589,6 @@ input[type=range]::-moz-range-thumb {
 }
 
 
-/*hide the outline behind the border*/
-
 input[type=range]:-moz-focusring {
   outline: 1px solid white;
   outline-offset: -1px;
@@ -641,10 +635,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-
-
-
-/* CARROUSEL SLIDER */
+/* CARROUSEL SLIDER FILTERS */
 
 #carrousel {
 	width: 100%;
@@ -709,8 +700,11 @@ input[type=range]:focus::-ms-fill-upper {
   }
 
 
+
+
+
 /* //////////////////////////
-	Inloggen
+	INLOGGEN
 ////////////////////////// */
 
 #titleInloggen{
@@ -744,103 +738,14 @@ input[type=range]:focus::-ms-fill-upper {
     background-color: #3d9bff;
 }
 
-/* HEADER */
-
-header {
-	background-color: white;
-	position: fixed;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 3.5em;
-	z-index: 1000;
-	padding: 1em 3em;
-}
-
-.container_menu {
-	cursor: pointer;
-}
-
-.hamburger-menu {
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	z-index: 1001;
-}
-
-.bar {
-    width: 30px;
-    height: 3px;
-    background-color: #333;
-    margin: 6px 0;
-    transition: transform 0.4s ease-in-out;
-}
-
-.menu {
-    position: fixed;
-    top: 0;
-    right: -75%; /* Initially hidden */
-    height: 100%;
-    background-color: var(--tekst-licht);
-    width: 75%;
-    transition: right 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-	z-index: 900;
-}
-
-.menu.show-menu {
-    right: 0;
-	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
-	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
-}
-
-.menu ul {
-    list-style-type: none;
-    padding: 1em;
-	margin-top: 3em;
-}
-
-.menu li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.menu li:last-child {
-    border-bottom: none;
-}
-
-.menu li a {
-    color: var(--accent1);
-    text-decoration: none;
-	font-size: 30px;
-}
 
 
 
-/* NORMAAL MENU */
-
-.normaal_menu ul {
-    list-style-type: none;
-	display: flex;
-}
-
-.normaal_menu li {
-	margin-left: 2em;
-}
-
-.normaal_menu li:last-child {
-    border-bottom: none;
-}
-
-.normaal_menu li a {
-    color: var(--accent1);
-    text-decoration: none;
-	font-size: 20px;
-}
 
 
-
-/* DETAILPAGINA */
+/* //////////////////////////
+	DETAIL PAGINA
+////////////////////////// */
 
 
 .detail section:first-of-type {
@@ -859,26 +764,6 @@ header {
 	max-height: 350px;
 }
 
-@media screen and (min-width: 800px) {
-
-	.detail section:first-of-type {
-		justify-content: flex-start;
-		max-width: 900px;
-	}
-
-	.container_menu {
-		display: none;
-	}
-
-}
-
-@media screen and (max-width: 800px) {
-
-	.normaal_menu {
-		display: none;
-	}
-
-}
 
 .albumcover img {
 	position: absolute;
@@ -896,10 +781,18 @@ header {
 	margin-top: 0.5em;
 }
 
-.titel-flex div {
+.titel-flex div:first-of-type {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.titel-flex div:nth-of-type(2) {
 	display: flex;
 	gap: 0.5em;
+	margin-top: -1em;
 }
+
 
 .grid2 {
 	display: grid;
@@ -908,10 +801,11 @@ header {
 	grid-auto-flow: dense;
 	margin-top: 2em;
 	justify-content:space-around;
-	max-width: 900px;
+	max-width: 1250px;
 	margin: auto;
-
 }
+
+
 .grid2 div {
 	background-color: var(--accent1);
 	border-radius: 10px;
@@ -929,7 +823,7 @@ header {
 .ga-terug {
 	margin-top: 1em;
 	/* background-color: red; */
-	max-width: 900px;
+	max-width: 1250px;
 	margin: auto;
 	padding: 1em;
 }
@@ -960,4 +854,139 @@ a {
 a:visited {
 	text-decoration: none;
 	color: black;
+}
+
+
+
+/* GRID 3: PERSONEN */
+
+.grid3 {
+	display: grid;
+	gap: 2.25em;
+	grid-template-columns: repeat(auto-fill, 100px);
+	grid-auto-flow: dense;
+	margin-top: 2em;
+	justify-content:space-around;
+	max-width: 1250px;
+	margin: auto;
+}
+
+.grid3 a {
+	width: 100px;
+}
+
+
+.grid3 a div:first-of-type {
+	border-radius: 10px;
+	transition: scale 0.25s ease-in-out;
+	position: relative;
+    width: 125px;
+    height: 125px; 
+    overflow: hidden;
+}
+
+.grid3 a img {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.grid3 a div:first-of-type div:first-of-type {
+	position: absolute;
+    top: 0;
+    left: 0;
+	width: 100%;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	box-shadow: 1px 1px 7px rgb(181, 63, 63);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 125px;
+}
+
+.grid3 a div:first-of-type div:nth-of-type(1) p {
+	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
+	font-size: 25px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: white;
+}
+
+.grid3 a div:nth-of-type(2) {
+	margin-top: 0.5em;
+	margin-left: 0.6em;
+}
+
+.grid3 a div:nth-of-type(2) h3 {
+	font-size: 16px;
+}
+
+
+
+@media screen and (min-width: 800px) {
+
+	.detail section:first-of-type {
+		display: block;
+		max-width: 1250px;
+	}
+
+	.detail section:first-of-type div:first-of-type {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	.titel-flex {
+		padding: 0em 0em 1em 1.5em;
+		gap: unset;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.container_menu {
+		display: none;
+	}
+
+}
+
+@media screen and (max-width: 800px) {
+
+	.normaal_menu {
+		display: none;
+	}
+
+	.grid1 {
+		gap: 1em;
+	}
+
+	.grid1 a div:first-of-type {
+		width: 100px;
+		height: 100px; 
+	}
+	
+	.grid1 a div:first-of-type div:first-of-type {
+		height: 100px;
+	}
+
+	.grid3 {
+		gap: 1em;
+	}
+
+	.grid3 a div:first-of-type {
+		width: 100px;
+		height: 100px; 
+	}
+	
+	.grid3 a div:first-of-type div:first-of-type {
+		height: 100px;
+	}
+	
+
 }
