@@ -35,7 +35,7 @@
         <section id="grid1" class="grid1">
 
             <% for(var i=0; i<songs.length; i++) {%>
-                <a href="/detail.ejs">
+                <a href="detail">
                     <div>
                         <img src="./images/covers/<%= songs[i].album %>.png" alt="Achtergrondafbeelding">
                         <div>
@@ -220,6 +220,7 @@
     </main>
 
     <script defer src="./scripts/script.js"></script>
+    <script defer src="./scripts/filter_sorteer.js"></script>
 
 </body>
 

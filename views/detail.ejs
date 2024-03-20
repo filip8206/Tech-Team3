@@ -13,209 +13,60 @@
 
     <%- include('partials/header') %>
 
-    <main>
-        <section>
-            <h1>Ontdek nieuwe muziek</h1>
+    <main class="detail">
 
-            <div id="filters">
-                <div>
-                    <a id="slide" onclick="toggleFilters()"><button class="filterbutton">Filters</button></a>
-                    <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
-                                src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
-
-                </div>
-                <div>
-                    <a id="slide"><button id="toggle_grid"><img id="toggleIcon" src="./images/iconen/list.svg"
-                                alt="Grid View"></button></a>
-                </div>
-
-            </div>
-        </section>
-      
-        <section id="grid1" class="grid1">
-
-            <% for(var i=0; i<songs.length; i++) {%>
-                <a href="detail.ejs">
-                    <div>
-                        <img src="./images/covers/<%= songs[i].album %>.png" alt="Achtergrondafbeelding">
-                        <div>
-                            <p>30%</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3><%= songs[i].title %></h3>
-                        <p><%= songs[i].artist %></p>
-                    </div>
-                </a>
-             <% } %>
-
-        </section>
-
-        <div class="popup" id="popup1">
-            <div>
-                <h3>Filter</h3>
-                <a onclick="toggleFilters()">Opslaan</a>
-            </div>
-
-            <form id="filterForm">
-
-                <section>
-                    <div class="popup-flex">
-                        <h4>Sorteren</h4>
-                    </div>
-                    <div class="filterSection" id="carrousel">
-
-                        <label class="slide">
-                            <input type="radio" name="sorteer" value="1" checked
-                                onchange="updateCheckboxCount(this)"><span>Populariteit</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="radio" name="sorteer" value="2"
-                                onchange="updateCheckboxCount(this)"><span>Titel</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="radio" name="sorteer" value="3"
-                                onchange="updateCheckboxCount(this)"><span>Artiest</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="radio" name="sorteer" value="4"
-                                onchange="updateCheckboxCount(this)"><span>BPM</span>
-                        </label>
-                    </div>
-                </section>
-
-                <section>
-                    <div class="popup-flex">
-                        <h4>Genre</h4>
-                        <p class="checkboxCount">0/5</p>
-                    </div>
-                    <div class="filterSection" id="carrousel">
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="1"
-                                onchange="updateCheckboxCount(this)"><span>House</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="2"
-                                onchange="updateCheckboxCount(this)"><span>Pop</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="3"
-                                onchange="updateCheckboxCount(this)"><span>Techno</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="4"
-                                onchange="updateCheckboxCount(this)"><span>Hiphop</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="5"
-                                onchange="updateCheckboxCount(this)"><span>Nederlands</span>
-                        </label>
-                    </div>
-                </section>
-
-
-                <section>
-                    <div class="popup-flex">
-                        <h4>Tempo</h4>
-                        <p class="rangeValues">Tempo</p>
-                    </div>
-                    <div class="range-slider">
-                        <span class="rangeValues"></span>
-                        <input value="100" min="70" max="180" step="1" type="range">
-                        <input value="130" min="70" max="180" step="1" type="range">
-                    </div>
-                </section>
-
-
-                <section>
-                    <div class="popup-flex">
-                        <h4>Toonsoort</h4>
-                        <p class="checkboxCount">0/7</p>
-                    </div>
-                    <div class="filterSection" id="carrousel">
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="1"
-                                onchange="updateCheckboxCount(this)"><span>A</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="2"
-                                onchange="updateCheckboxCount(this)"><span>B</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="3"
-                                onchange="updateCheckboxCount(this)"><span>C</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="4"
-                                onchange="updateCheckboxCount(this)"><span>D</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="5"
-                                onchange="updateCheckboxCount(this)"><span>E</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="6"
-                                onchange="updateCheckboxCount(this)"><span>F</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="7"
-                                onchange="updateCheckboxCount(this)"><span>G</span>
-                        </label>
-                    </div>
-                </section>
-
-                <section>
-                    <div class="popup-flex">
-                        <h4>Sfeer</h4>
-                        <p class="checkboxCount">0/5</p>
-                    </div>
-                    <div class="filterSection" id="carrousel">
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="1"
-                                onchange="updateCheckboxCount(this)"><span>Vrolijk</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="2"
-                                onchange="updateCheckboxCount(this)"><span>Rustgevend</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="3"
-                                onchange="updateCheckboxCount(this)"><span>Verdrietig</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="4"
-                                onchange="updateCheckboxCount(this)"><span>Energiek</span>
-                        </label>
-
-                        <label class="slide">
-                            <input type="checkbox" name="genre" value="5"
-                                onchange="updateCheckboxCount(this)"><span>Zwaar</span>
-                        </label>
-                    </div>
-                </section>
-
-            </form>
-
+        <div class="ga-terug">
+            <a href="/"><button class="button-secundair"><img src="./images/iconen/arrow_left.svg" alt="Like">Terug</button></a>
         </div>
+
+        <section>
+            <div>
+                <div class="albumcover">
+                    <img src="./images/placeholder_cover.jpg" alt="Achtergrondafbeelding">
+                </div>
+                <div class="titel-flex">
+                    <h1>Starboy</h1>
+                    <div>
+                        <p>80</p>
+                        <img src="./images/iconen/hart.svg" alt="Like">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="grid2">
+            <div>
+                <h3>The Weeknd</h3>
+                <p>Artiest</p>
+            </div>
+
+            <div>
+                <h3>Starboy</h3>
+                <p>Album</p>
+            </div>
+
+            <div>
+                <h3>100</h3>
+                <p>BPM</p>
+            </div>
+
+            <div>
+                <h3>G#</h3>
+                <p>Toonsoort</p>
+            </div>
+
+            <div>
+                <h3>The Weeknd</h3>
+                <p>Artiest</p>
+            </div>
+
+            <div>
+                <h3>The Weeknd</h3>
+                <p>Artiest</p>
+            </div>
+        </section>
+
 
     </main>
 
