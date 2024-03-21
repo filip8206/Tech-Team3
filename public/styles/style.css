@@ -386,7 +386,7 @@ main {
     width: 100%;
 }
 
-label {
+#labelForms {
 	font-family: 'Outfit';
 	font-size: 20px;
     margin-right: 10px;
@@ -416,7 +416,7 @@ input[type="datum"] {
 	margin-top: 30px;
 	margin-bottom: 15px;
 	font-family: 'Outfit';
-	font-size: 15px;
+	font-size: 15px;	
 }
 
 #registreerButton{
@@ -451,12 +451,94 @@ input[type="datum"] {
 /* //////////////////////////
 	genre Selector
 ////////////////////////// */
+#secGenre {
+    text-align: center; /* Center de inhoud van de sectie */
+}
 
-#genres {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
+.genres-container {
+    display: flex;
+    flex-direction: column; /* Stapel de rijen in een kolom */
+    align-items: center; /* Centreer de rijen horizontaal */
+}
 
-	
-	
+.genres-row {
+    display: flex;
+    justify-content: center; /* Centreer de genre-items in de rij */
+}
+
+.genre-item {
+    position: relative;
+    display: flex; /* Gebruik flexbox voor het centreren van inhoud */
+    flex-direction: column; /* Stapel de items in een kolom */
+    align-items: center; /* Centreer items horizontaal */
+    justify-content: center; /* Centreer items verticaal */
+    margin-bottom: 20px; 
+    margin-right: 20px;
+    background-color: #FF5B5B;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+    cursor: pointer; /* Zorg ervoor dat de cursor verandert naar een handje bij het hoveren */
+}
+
+.genre-item label {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    width: 100%; /* Neem de volledige breedte van de genre-item */
+    font-family: 'Outfit';
+    font-size: 20px;
+}
+
+.genre-item img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+}
+
+.genre-item span {
+    display: block;
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    position: absolute; /* Absolute positionering voor de checkbox */
+    top: 5px; /* Afstand vanaf de bovenkant */
+    right: 5px; /* Afstand vanaf de rechterkant */
+    opacity: 0; /* Maak de checkbox onzichtbaar */
+    cursor: pointer; /* Zorg ervoor dat de cursor verandert naar een handje bij het hoveren */
+}
+
+input[type="checkbox"] + label:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px; /* Grootte van de ronde checkbox */
+    height: 40px;
+    border-radius: 50%;
+    border: 0px solid #fff; /* Kleur van de checkbox */
+    transition: background-color 0.3s; /* Voeg een overgangseffect toe */
+}
+
+input[type="checkbox"]:checked + label:before {
+    background-color: #000; /* Kleur van de ronde checkbox wanneer gecheckt */
+    content: "\2713"; /* Vinkje symbool */
+    font-size: 20px; /* Grootte van het vinkje */
+    color: #fff; /* Kleur van het vinkje */
+    position: absolute;
+    padding-top: 8px;
+    transition: background-color 0.3s; /* Voeg een overgangseffect toe */
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .genres-row {
+        flex-direction: column; /* Stapel de genre-items in een kolom op kleinere schermen */
+        align-items: center; /* Centreer de genre-items op kleinere schermen */
+    }
+}
