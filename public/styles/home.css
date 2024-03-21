@@ -4,9 +4,6 @@
 
 /* GRID VIEW */
 
-#grid1 {
-}
-
 .toggle_icon_arrow_draai {
 	transform: rotate(-5.5turn);
 	transition: transform 3.25s ease-in-out;
