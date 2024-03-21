@@ -22,21 +22,20 @@
 }
 
 .grid1 a {
-	width: 100px;
+	width: var(--container);
 }
-
 
 .grid1 a div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 125px;
-    height: 125px; 
+    width: 100%;
+    height: var(--maxwidth);
     overflow: hidden;
 	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
 }
 
-.grid1 a img {
+.grid1 a > img {
 	position: absolute;
     top: 0;
     left: 0;
@@ -45,7 +44,7 @@
     object-fit: cover; 
 }
 
-.grid1 a div:first-of-type div:first-of-type {
+.grid1 a > div:first-of-type > div:first-of-type {
 	position: absolute;
     top: 0;
     left: 0;
@@ -60,7 +59,7 @@
 	height: 125px;
 }
 
-.grid1 a div:first-of-type div:nth-of-type(1) p {
+.grid1 a > div:first-of-type > div:nth-of-type(1) p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
@@ -70,7 +69,7 @@
 	color: white;
 }
 
-.grid1 a div:nth-of-type(2) {
+.grid1 a > div:nth-of-type(2) {
 	margin-top: 0.5em;
 	margin-left: 0.6em;
 }
@@ -540,6 +539,26 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .titel-flex div:nth-of-type(2) {
+	display: flex;
+	gap: 0.5em;
+	margin-top: -1em;
+}
+
+
+.titel-flex-main {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 0.5em;
+}
+
+.titel-flex-main div:first-of-type {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.titel-flex-main div:nth-of-type(2) {
 	display: flex;
 	gap: 0.5em;
 	margin-top: -1em;
