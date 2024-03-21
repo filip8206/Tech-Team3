@@ -421,12 +421,22 @@ header > div:first-of-type {
 	margin-bottom: 3em;
   }
 
-  .popup > div:nth-of-type(1) {
+  .popup form > div:nth-of-type(1) {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 1em;
   }
+
+  .submit-knop {
+	background-color: transparent;
+	border: none;
+	font-weight: bold;
+	color: var(--accent1);
+	cursor: pointer;
+	font-size: 16px;
+	padding-right: 0.5em; /* Optioneel, om de padding te verwijderen */
+}
 
   .popup > div:nth-of-type(1) a {
 	font-size: 18px;
