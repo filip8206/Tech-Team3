@@ -4,22 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/inlog.css" rel="stylesheet">
 </head>
+
 <body>
-    <main>
-        <h1>Formulier</h1>
-        <form method="post" action="/form">
-            <label for="email">E-mail adres</label>
-            <input type="email" name="email" id="email">
+        <section class="secInloggen">
+            <h2 id="titleInloggen">Registreren</h2>
+            <p id="textInloggen">Maak een account aan</p>
 
-            <label for="password">Wachtwoord</label>
-            <input type="password" name="password" id="password">
-
-            <label for="name">Wachtwoord</label>
-            <input type="text" name="name" id="name">
-
-            <input type="submit" value="create">
-        </form>
-    </main>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label id="labelForms" for="name">Volledige naam</label>
+                    <input type="name" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label id="labelForms" for="email">E-mail</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                <label id="labelForms" for="datum">Leeftijd</label>
+                <input type="date" id="datum" name="datum">
+                </div>
+                <div class="form-group">
+                    <label id="labelForms" for="password">Wachtwoord</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label id="labelForms" for="repeatPassword">Herhaal wachtwoord</label>
+                    <input type="password" name="repeatPassword" id="repeatPassword" required>
+                </div>
+                <button id="loginButton" type="submit">Maak account aan</button>
+                <a id="registreerButton" href="inloggen">Al een account? Log hier in</a>
+            </form>
+        </section>
 </body>
 </html>
