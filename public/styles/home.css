@@ -324,6 +324,7 @@ border-color: var(--accent1);
 }
 
 input[type=range] {
+    appearance: none;
   -webkit-appearance: none;
   border: 1px solid var(--tekst-donker);
   border-radius: 5px;
