@@ -67,7 +67,9 @@ img {
 --accent2: #6923F5;
 
 --omslagpunt: 800px;
---maxwidth: 1250px
+--maxwidth: 1250px;
+
+--container: 125px;
 
 }
 

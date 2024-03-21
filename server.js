@@ -54,6 +54,14 @@ app.get('/detail', async (req,res) => {
   res.render('detail')
 })
 
+app.get('/match', async (req,res) => {
+  res.render('match')
+})
+
+app.get('/matchprofiel', async (req,res) => {
+  res.render('matchprofiel')
+})
+
 app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
   const coll = db.collection("users")
