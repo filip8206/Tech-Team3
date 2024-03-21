@@ -555,6 +555,7 @@ input[type=range]:focus::-ms-fill-upper {
 	justify-content:space-around;
 	max-width: var(--maxwidth);
 	margin: auto;
+    hyphens: auto; /* Automatische woordafbreking met streepjes */
 }
 
 
