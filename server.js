@@ -41,6 +41,10 @@ app.get('/', async (req,res) => {
   console.log(songs)
 })
 
+app.get('/filterIndex', async (req,res) => {
+  const {sort, genre, tempo, key} = req.body
+})
+
 app.get('/inloggen', async (req,res) => {
   let incorrect
   res.render('inloggen', incorrect)
