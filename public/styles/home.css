@@ -12,8 +12,8 @@
 
 .grid1 {
 	display: grid;
-	gap: 2.25em;
-	grid-template-columns: repeat(auto-fill, 100px);
+	gap: 1em;
+	grid-template-columns: repeat(auto-fill, var(--container));
 	grid-auto-flow: dense;
 	margin-top: 2em;
 	justify-content:space-around;
@@ -21,45 +21,40 @@
 	margin: auto;
 }
 
-.grid1 a {
-	width: var(--container);
+.grid1 > a {
+	border-radius: 10px;
 }
 
-.grid1 a div:first-of-type {
+
+.grid1 > a > div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 100%;
-    height: var(--maxwidth);
     overflow: hidden;
 	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    width: var(--container);
+    height: var(--container);
 }
 
-.grid1 a > img {
+.hoofdfoto {
 	position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover; /* De afbeelding schalen om de container te vullen */
 }
 
-.grid1 a > div:first-of-type > div:first-of-type {
-	position: absolute;
-    top: 0;
-    left: 0;
-	width: 100%;
+.grid1 > a > div:first-of-type div:first-of-type {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 125px;
+    height: 100%;
+    width: 300px;
+
 }
 
-.grid1 a > div:first-of-type > div:nth-of-type(1) p {
+.grid1 > a > div:first-of-type > div p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
@@ -67,19 +62,25 @@
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: white;
+    z-index: 5;
 }
 
-.grid1 a > div:nth-of-type(2) {
+.grid1 > a > div:nth-of-type(2) {
 	margin-top: 0.5em;
 	margin-left: 0.6em;
 }
 
-#grid1 a div:nth-of-type(2) h3 {
-	font-size: 20px;
+.grid1 > a div:nth-of-type(2) h3 {
+	font-size: 16px;
+    hyphens: auto;
 }
 
-#grid1 a div:nth-of-type(2) p {
-	font-size: 15px;
+.grid1 > a div:nth-of-type(2) p {
+	font-size: 14px;
+}
+
+.grid1 .genres-flex-main {
+    flex-grow: 0
 }
 
 
@@ -97,49 +98,35 @@
 	margin: auto;
 }
 
-.list1 a {
+.list1 > a {
 	background-color: var(--tekst-licht);
 	display: flex;
 	border-radius: 10px;
 }
 
 
-.list1 a div:first-of-type {
+.list1 > a > div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 125px;
-    height: 125px; /* Pas dit aan op basis van de gewenste hoogte van de container */
     overflow: hidden;
 	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    width: var(--container);
+    height: var(--container);
 }
 
-.list1 a img {
-	position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* De afbeelding schalen om de container te vullen */
-
-}
-
-.list1 a div:first-of-type div:first-of-type {
-	position: absolute;
-    top: 0;
-    left: 0;
-	width: 100%;
+.list1 > a > div:first-of-type div:first-of-type {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 125px;
+    height: 100%;
+    width: 300px;
+
 }
 
-.list1 a div:first-of-type div:nth-of-type(1) p {
+.list1 > a > div:first-of-type div:nth-of-type(1) p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
@@ -147,20 +134,63 @@
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: white;
+    z-index: 5;
 }
 
-.list1 a div:nth-of-type(2) {
-	margin-top: 0.5em;
-	margin-left: 0.6em;
+
+.titel-flex-main {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
-.icon_grid {
-	background-image: url("../images/iconen/grid.svg");
+.titel-flex-main div:first-of-type {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.list1 .titel-flex-main div:nth-of-type(2) {
+    margin-top: 0.5em;
+}
+
+.titel-flex-main img {
+    width: 100%;
+}
+
+.list1 .genres-flex-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5em;
+    flex-grow: 2;
+}
+
+.genres-flex-main div:nth-of-type(2) {
+    display: flex;
+    gap: 0.5em;
+}
+
+.genres-flex-main div:nth-of-type(2) p {
+    border: var(--accent1) solid 1px;
+    border-radius: 10px;
+    padding: 0.125em 0.5em 0.125em 0.5em;
+    font-size: auto;
+    font-size: 16px;
+}
+
+
+.grid1 .grid-mini p {
+    display: none;
 }
 
 
 
 /* FILTER MENU */
+
+.icon_grid {
+	background-image: url("../images/iconen/grid.svg");
+}
 
 .popup {
 	position: fixed;
@@ -238,10 +268,7 @@
 	cursor: pointer;
   }
   
-  
-  p+p+p {
-	  font-size: 60%;
-  }
+
 
 
 /* POPUP: FILTERS */
@@ -545,24 +572,6 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-.titel-flex-main {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 0.5em;
-}
-
-.titel-flex-main div:first-of-type {
-	display: flex;
-	flex-direction: column;
-	gap: 0;
-}
-
-.titel-flex-main div:nth-of-type(2) {
-	display: flex;
-	gap: 0.5em;
-	margin-top: -1em;
-}
 
 
 .grid2 {
@@ -630,80 +639,14 @@ a:visited {
 
 
 
-/* GRID 3: PERSONEN */
-
-.grid3 {
-	display: grid;
-	gap: 2.25em;
-	grid-template-columns: repeat(auto-fill, 100px);
-	grid-auto-flow: dense;
-	margin-top: 2em;
-	justify-content:space-around;
-	max-width: var(--maxwidth);
-	margin: auto;
-}
-
-.grid3 a {
-	width: 100px;
-}
-
-
-.grid3 a div:first-of-type {
-	border-radius: 10px;
-	transition: scale 0.25s ease-in-out;
-	position: relative;
-    width: 125px;
-    height: 125px; 
-    overflow: hidden;
-	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
-}
-
-.grid3 a img {
-	position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-}
-
-.grid3 a div:first-of-type div:first-of-type {
-	position: absolute;
-    top: 0;
-    left: 0;
-	width: 100%;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 125px;
-}
-
-.grid3 a div:first-of-type div:nth-of-type(1) p {
-	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
-	font-size: 25px;
-	padding-bottom: 5px;
-	padding-left: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	color: white;
-}
-
-.grid3 a div:nth-of-type(2) {
-	margin-top: 0.5em;
-	margin-left: 0.6em;
-}
-
-.grid3 a div:nth-of-type(2) h3 {
-	font-size: 16px;
-}
-
-
 
 @media screen and (min-width: 800px) {
+
+    :root {
+        --container: 150px;
+        --gap: 3.22em;
+        
+        }
 
 	.detail section:first-of-type {
 		display: block;
@@ -723,6 +666,18 @@ a:visited {
 		width: 100%;
 	}
 
+    .grid1 a div:nth-of-type(2) h3 {
+        font-size: 20px;
+    }
+    
+    .grid1 a div:nth-of-type(2) p {
+        font-size: 16px;
+    }
+
+    .genres-flex-main div:nth-of-type(2) p {
+        font-size: 20px;
+    }
+
 	.container_menu {
 		display: none;
 	}
@@ -739,40 +694,7 @@ a:visited {
 		display: none;
 	}
 
-	.grid1 {
-		gap: 1em;
-	}
 
-	.grid1 a div:first-of-type {
-		width: 100px;
-		height: 100px; 
-	}
-	
-	.grid1 a div:first-of-type div:first-of-type {
-		height: 100px;
-	}
-
-	.grid3 {
-		gap: 1em;
-	}
-
-	.grid3 a div:first-of-type {
-		width: 100px;
-		height: 100px; 
-	}
-	
-	.grid3 a div:first-of-type div:first-of-type {
-		height: 100px;
-	}
-
-	.list1 a div:first-of-type {
-		width: 100px;
-		height: 100px;
-	}
-
-	.list1 a div:first-of-type div:first-of-type {
-		height: 100px;
-	}
 
 	h2 {
 		font-size: 25px;

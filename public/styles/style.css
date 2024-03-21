@@ -41,7 +41,7 @@ body {
 
 img {
 	scale: 100%;
-	align-self: center;
+	/* align-self: center; */
 	display: block;
 	height: auto;
 }
@@ -69,7 +69,8 @@ img {
 --omslagpunt: 800px;
 --maxwidth: 1250px;
 
---container: 125px;
+--container: 100px;
+--gap: 1em
 
 }
 

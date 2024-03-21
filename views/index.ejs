@@ -33,23 +33,31 @@
             </div>
         </section>
 
-        <section id="grid1" class="grid1">
+        <section id="grid1" class="list1">
 
             <% for(var i=0; i<songs.length; i++) {%>
             <a href="detail">
                 <div>
-                    <img src="./images/covers/<%= songs[i].albumId %>.png" alt="Achtergrondafbeelding">
+                    <img class="hoofdfoto" src="./images/covers/<%= songs[i].albumId %>.png"
+                        alt="Achtergrondafbeelding">
                     <div>
                         <p>30%</p>
                     </div>
                 </div>
-                <div class="titel-flex-main">
-                    <div>
-                        <h3><%= songs[i].title %></h3>
-                        <p><%= songs[i].artist %></p>
+                <div class="genres-flex-main">
+                    <div class="titel-flex-main">
+                        <div>
+                            <h3><%= songs[i].title %></h3>
+                            <p><%= songs[i].artist %></p>
+                        </div>
+                        <div>
+                            <img src="./images/iconen/hart.svg" alt="Like">
+                        </div>
                     </div>
-                    <div>
-                        <img src="./images/iconen/hart.svg" alt="Like">
+                    <div class="grid-mini">
+                        <p>Pop</p>
+                        <p>120BPM</p>
+                        <p>G</p>
                     </div>
                 </div>
             </a>
