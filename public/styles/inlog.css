@@ -165,7 +165,7 @@ input[type="checkbox"] {
     top: 5px; /* Afstand vanaf de bovenkant */
     right: 5px; /* Afstand vanaf de rechterkant */
     opacity: 0; /* Maak de checkbox onzichtbaar */
-    cursor: pointer; /* Zorg ervoor dat de cursor verandert naar een handje bij het hoveren */
+    cursor: pointer;
 }
 
 input[type="checkbox"] + label:before {
@@ -176,8 +176,7 @@ input[type="checkbox"] + label:before {
     width: 40px; /* Grootte van de ronde checkbox */
     height: 40px;
     border-radius: 50%;
-    border: 0px solid #fff; /* Kleur van de checkbox */
-    transition: background-color 0.3s; /* Voeg een overgangseffect toe */
+    transition: background-color 0.1s; /* Voeg een overgangseffect toe */
 }
 
 input[type="checkbox"]:checked + label:before {
@@ -187,8 +186,32 @@ input[type="checkbox"]:checked + label:before {
     color: #fff; /* Kleur van het vinkje */
     position: absolute;
     padding-top: 8px;
-    transition: background-color 0.3s; /* Voeg een overgangseffect toe */
+    transition: background-color 0.8s; /* Voeg een overgangseffect toe */
+    z-index: 1;
 }
+
+/* Extra blokje achter het vinkje */
+input[type="checkbox"] + label:after {
+    content: "";
+    position: absolute; 
+    top: 0px;
+    right: 0px;
+    width: 45px; /* Grootte van het extra blokje */
+    height: 45px;
+    background-color: #fff; /* Kleur van het extra blokje */
+    transition: background-color 0.3s, transform 0.3s; /* Voeg overgangseffecten toe voor achtergrondkleur en transformatie */
+    transform-origin: top right; /* Stel de transformatie-oorsprong in op de rechterbovenhoek */
+    transform: scale(0) translate(100%, -100%); /* Maak het blokje onzichtbaar bij de start */
+    border-bottom-left-radius: 15px; /* Geef het extra blokje ronde hoeken */
+    z-index: 0; /* Zet het blokje achter de checkbox */
+}
+
+/* Zichtbaar maken van het extra blokje wanneer checkbox is aangevinkt */
+input[type="checkbox"]:checked + label:after {
+    transform: scale(1) translate(0%, 0%); /* Maak het blokje zichtbaar en zet het terug naar de oorspronkelijke positie */
+}
+
+
 
 
 
