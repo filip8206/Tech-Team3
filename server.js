@@ -47,7 +47,7 @@ app.get('/filterIndex', async (req,res) => {
 
 app.get('/inloggen', async (req,res) => {
   let incorrect
-  res.render('inloggen', incorrect)
+  res.render('inloggen', {incorrect})
 })
 
 app.get('/detail', async (req,res) => {
