@@ -62,6 +62,10 @@ app.get('/matchprofiel', async (req,res) => {
   res.render('matchprofiel')
 })
 
+app.get('/profiel', async (req,res) => {
+  res.render('profiel')
+})
+
 app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
   const coll = db.collection("users")
