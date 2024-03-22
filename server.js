@@ -135,6 +135,7 @@ app.post('/registreer', async (req, res) => {
         })
 
         console.log(req.body + 'geregistreerd')
+        req.session.email = email
         res.redirect('/profiel-aanmaken')
       }
     }
@@ -145,11 +146,11 @@ app.post('/registreer', async (req, res) => {
 app.get('/profiel-aanmaken', async (req, res) => {
   const email = req.session.email
   console.log ('user ' + email)
-  if (email != null) {
+  // if (email != null) {
   res.render('profiel-aanmaken', {email})
-  } else {
-    res.redirect('/inloggen')
-  }
+  // } else {
+    // res.redirect('/inloggen')
+  // }
 })
 
 app.post('/profiel-aanmaken', upload.single('profilephoto') , async (req,res) => {
