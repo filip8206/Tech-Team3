@@ -70,7 +70,10 @@ img {
 --maxwidth: 1250px;
 
 --container: 100px;
---gap: 1em
+--gap: 1em;
+
+--font-titel: 18px;
+--font-ondertitel: 16px;
 
 }
 
@@ -84,7 +87,7 @@ img {
 
 p {
 	font-family: 'Outfit';
-	font-size: 20px;
+	font-size: var(--font-ondertitel);
 }
 
 h1 {
@@ -100,7 +103,7 @@ h2 {
 
 h3 {
 	font-family: 'Outfit';
-	font-size: 30px;
+	font-size: var(--font-titel);
 }
 
 h4 {
