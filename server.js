@@ -33,27 +33,33 @@ app.listen(process.env.PORT, () => {
 // Routes
 
 app.get('/', async (req,res) => {
-  const {sorteren} = req.query
-  const key = req.query.key.split(",")
-  const genre = req.query.genre.split(",")
-  let bpm = req.query.bpm.split(",")
-  bpm = [parseInt(bpm[0]), parseInt(bpm[1])]
-  console.log(key, genre, sorteren, bpm)
-
   const db = client.db("muve")
   const coll = db.collection("songs")
-  let songs = await coll.find({
-    "bpm": { $gte: bpm[0], $lte: bpm[1] },
-    "genre": { $in: Array.isArray(genre) ? genre : [genre] },
-    "key": { $in: Array.isArray(key) ? key : [key] }
-  }).sort({[sorteren]: -1}).toArray()
-  res.render('index', {songs})
+
+  if(Object.keys(req.query).length > 0){
+    const {sorteren} = req.query
+    const key = req.query.key.split(",")
+    const genre = req.query.genre.split(",")
+    let bpm = req.query.bpm.split(",")
+    bpm = [parseInt(bpm[0]), parseInt(bpm[1])]
+    console.log(key, genre, sorteren, bpm)
+
+    let songs = await coll.find({
+      "bpm": { $gte: bpm[0], $lte: bpm[1] },
+      "genre": { $in: Array.isArray(genre) ? genre : [genre] },
+      "key": { $in: Array.isArray(key) ? key : [key] }
+    }).sort({[sorteren]: -1}).toArray()
+    res.render('index', {songs})
+  }else{
+    let songs = await coll.find({}).toArray()
+    res.render('index', {songs})
+  }
 })
 
 app.post('/', async (req,res) => {
   let genre, key = []
   genre = req.body.genre
-  if(genre === undefined){genre=["pop"]}
+  if(genre === undefined){genre=["pop", "dutch"]}
   key = req.body.key
   if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
   const {sorteren, bpmMin, bpmMax} = req.body
