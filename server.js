@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 const app = express()
 const session = require('express-session')
 const { MongoClient, ServerApiVersion } = require('mongodb')
@@ -98,7 +99,11 @@ app.get('/inloggen', async (req,res) => {
 })
 
 app.get('/detail', async (req,res) => {
-  res.render('detail')
+  const songID = req.query.id
+  const db = client.db("muve")
+  const coll = db.collection("songs")
+  const song = await coll.findOne({_id: new ObjectId(songID)})
+  res.render('detail', {song})
 })
 
 app.get('/match', async (req,res) => {
