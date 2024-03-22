@@ -165,6 +165,7 @@
 	justify-content: space-between;
 	padding: 0.5em;
 	flex-grow: 2;
+	text-transform: capitalize;
 }
 
 .genres-flex-main div:nth-of-type(2) {
@@ -556,6 +557,10 @@ input[type=range]:focus::-ms-fill-upper {
 	/* De afbeelding schalen om de container te vullen */
 }
 
+.titel-flex h1 {
+	font-size: 30px;
+}
+
 .titel-flex {
 	display: flex;
 	justify-content: space-between;
@@ -569,6 +574,11 @@ input[type=range]:focus::-ms-fill-upper {
 	gap: 0;
 }
 
+.titel-flex div:nth-of-type(2) img {
+	width: 30px;
+	height: 30px;
+}
+
 .titel-flex div:first-of-type p:last-of-type {
 	margin-top: 1em;
 	max-width: 40vw;
@@ -580,6 +590,8 @@ input[type=range]:focus::-ms-fill-upper {
 	gap: 0.5em;
 	margin-top: 0.25em;
 }
+
+
 
 .over-flex {
 	margin-top: 1em;
