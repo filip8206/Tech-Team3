@@ -59,13 +59,12 @@ app.get('/', async (req,res) => {
 app.post('/', async (req,res) => {
   let genre, key = []
   genre = req.body.genre
-  if(genre === undefined){genre=["pop", "dutch"]}
+  if(genre === undefined){genre=["pop", "dutch", "rap", "rock"]}
   key = req.body.key
   if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
   const {sorteren, bpmMin, bpmMax} = req.body
   const bpm = [bpmMin, bpmMax]
   const url = `/?key=${key}&genre=${genre}&sorteren=${sorteren}&bpm=${bpm}`
-  console.log(key, genre, sorteren, bpm)
   res.redirect(url)
 })
 
