@@ -106,7 +106,13 @@ app.get('/detail', async (req,res) => {
 })
 
 app.get('/match', async (req,res) => {
-  res.render('match')
+  const db = client.db("muve")
+  const coll = db.collection("users")
+
+  const users = await coll.find({}).toArray()
+  console.log(users)
+
+  res.render('match', {users})
 })
 
 app.get('/matchprofiel', async (req,res) => {
