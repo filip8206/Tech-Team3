@@ -16,71 +16,72 @@
 	grid-template-columns: repeat(auto-fill, var(--container));
 	grid-auto-flow: dense;
 	margin-top: 2em;
-	justify-content:space-around;
+	justify-content: space-around;
 	max-width: var(--maxwidth);
 	margin: auto;
 }
 
-.grid1 > a {
+.grid1>a {
 	border-radius: 10px;
 }
 
 
-.grid1 > a > div:first-of-type {
+.grid1>a>div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    overflow: hidden;
+	overflow: hidden;
 	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
-    width: var(--container);
-    height: var(--container);
+	width: var(--container);
+	height: var(--container);
 }
 
 .hoofdfoto {
 	position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* De afbeelding schalen om de container te vullen */
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* De afbeelding schalen om de container te vullen */
 }
 
-.grid1 > a > div:first-of-type div:first-of-type {
+.grid1>a>div:first-of-type div:first-of-type {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-    height: 100%;
-    width: 300px;
+	height: 100%;
+	width: 300px;
 
 }
 
-.grid1 > a > div:first-of-type > div p {
-	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
+.grid1>a>div:first-of-type>div p {
+	background: linear-gradient(0deg, rgba(255, 0, 127, 1) 0%, rgba(9, 9, 121, 0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
 	padding-left: 10px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: white;
-    z-index: 5;
+	z-index: 5;
 }
 
-.grid1 > a > div:nth-of-type(2) {
+.grid1>a>div:nth-of-type(2) {
 	margin-top: 0.5em;
 	margin-left: 0.6em;
 }
 
-.grid1 > a div:nth-of-type(2) h3 {
+.grid1>a div:nth-of-type(2) h3 {
 	font-size: 16px;
-    hyphens: auto;
+	hyphens: auto;
 }
 
-.grid1 > a div:nth-of-type(2) p {
+.grid1>a div:nth-of-type(2) p {
 	font-size: 14px;
 }
 
 .grid1 .genres-flex-main {
-    flex-grow: 0
+	flex-grow: 0
 }
 
 
@@ -90,51 +91,51 @@
 .list1 {
 	display: grid;
 	gap: 1em;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 	grid-auto-flow: dense;
 	margin-top: 2em;
-	justify-content:space-around;
+	justify-content: space-around;
 	max-width: var(--maxwidth);
 	margin: auto;
 }
 
-.list1 > a {
+.list1>a {
 	background-color: var(--tekst-licht);
 	display: flex;
 	border-radius: 10px;
 }
 
 
-.list1 > a > div:first-of-type {
+.list1>a>div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    overflow: hidden;
+	overflow: hidden;
 	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
-    width: var(--container);
-    height: var(--container);
+	width: var(--container);
+	height: var(--container);
 }
 
-.list1 > a > div:first-of-type div:first-of-type {
+.list1>a>div:first-of-type div:first-of-type {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-    height: 100%;
-    width: 300px;
+	height: 100%;
+	width: 300px;
 
 }
 
-.list1 > a > div:first-of-type div:nth-of-type(1) p {
-	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
-	font-size: 25px;
+.list1>a>div:first-of-type div:nth-of-type(1) p {
+	background: linear-gradient(0deg, rgba(255, 0, 127, 1) 0%, rgba(9, 9, 121, 0) 100%);
+	font-size: var(--font-titel);
 	padding-bottom: 5px;
 	padding-left: 10px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: white;
-    z-index: 5;
+	z-index: 5;
 }
 
 
@@ -151,37 +152,36 @@
 }
 
 .list1 .titel-flex-main div:nth-of-type(2) {
-    margin-top: 0.5em;
+	margin-top: 0.5em;
 }
 
 .titel-flex-main img {
-    width: 100%;
+	width: 25px;
 }
 
 .list1 .genres-flex-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0.5em;
-    flex-grow: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0.5em;
+	flex-grow: 2;
 }
 
 .genres-flex-main div:nth-of-type(2) {
-    display: flex;
-    gap: 0.5em;
+	display: flex;
+	gap: 0.5em;
 }
 
 .genres-flex-main div:nth-of-type(2) p {
-    border: var(--accent1) solid 1px;
-    border-radius: 10px;
-    padding: 0.125em 0.5em 0.125em 0.5em;
-    font-size: auto;
-    font-size: 16px;
+	border: var(--accent1) solid 1px;
+	border-radius: 5px;
+	padding: 0.125em 0.5em 0.125em 0.5em;
+	font-size: calc(var(--font-ondertitel) - 4px);
 }
 
 
 .grid1 .grid-mini p {
-    display: none;
+	display: none;
 }
 
 
@@ -202,96 +202,97 @@
 	z-index: 20;
 	border-radius: 10px;
 	background-color: var(--achtergrond-licht);
-    transition: bottom 0.25s, box-shadow 0.25s;
+	transition: bottom 0.25s, box-shadow 0.25s;
 	bottom: 0px;
-	bottom: -100%; 
+	bottom: -100%;
 	max-width: var(--omslagpunt);
 
-  }
+}
 
-  .popup.show-popup {
+.popup.show-popup {
 	bottom: 0%;
-	-webkit-box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
-	box-shadow:  0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
-  }
+	-webkit-box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.6);
+}
 
-  .popup section {
+.popup section {
 	padding: 0px;
 	margin-bottom: 2em;
-  }
+}
 
-  .popup section:nth-of-type(3) {
+.popup section:nth-of-type(3) {
 	margin-bottom: 3em;
-  }
+}
 
-  .popup form > div:nth-of-type(1) {
+.popup form>div:nth-of-type(1) {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 1em;
-  }
+}
 
-  .submit-knop {
+.submit-knop {
 	background-color: transparent;
 	border: none;
 	font-weight: bold;
 	color: var(--accent1);
 	cursor: pointer;
 	font-size: 16px;
-	padding-right: 0.5em; /* Optioneel, om de padding te verwijderen */
+	padding-right: 0.5em;
+	/* Optioneel, om de padding te verwijderen */
 }
 
-  .popup > div:nth-of-type(1) a {
+.popup>div:nth-of-type(1) a {
 	font-size: 18px;
-  }
+}
 
-  .popup-flex  {
+.popup-flex {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-  }
+}
 
-  .popup-flex p {
+.popup-flex p {
 	font-size: 16px;
-  }
+}
 
-  .noscroll {
+.noscroll {
 	overflow: hidden;
-  }
-  
-  
-  .popup a,
-  .popup a:visited {
+}
+
+
+.popup a,
+.popup a:visited {
 	color: var(--accent1);
 	text-decoration: none;
 	font-weight: bold;
 	cursor: pointer;
-  }
-  
+}
+
 
 
 
 /* POPUP: FILTERS */
-  
-  #filters {
+
+#filters {
 	margin-top: 1em;
 	display: flex;
-	justify-content:space-between;
+	justify-content: space-between;
 	transition: opacity 0.25s ease-in-out;
-  }
+}
 
-  #filters div:nth-of-type(1) {
+#filters div:nth-of-type(1) {
 	display: flex;
 	gap: 0.5em;
-  }  
+}
 
 .filters-remove {
 	opacity: 0;
 	transition: opacity 0.25s ease-in-out;
 }
 
-  .slide {
-	float: left; 
+.slide {
+	float: left;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-bottom: 0.5em;
@@ -299,35 +300,35 @@
 	border-radius: 5px;
 	border: 2px solid #000000;
 	background-color: transparent;
-  }
-  
-  .slide span {
+}
+
+.slide span {
 	text-align: center;
 	display: block;
-  }
-  
-  .slide input {
+}
+
+.slide input {
 	position: absolute;
 	display: none;
 	color: #000 !important;
-  }
+}
 
-  .slide input + span{
+.slide input+span {
 	color: var(--tekst-donker);
 }
-  
-  .slide input:checked + span {
+
+.slide input:checked+span {
 	color: var(--accent1);
 	font-weight: bold;
-  }
+}
 
-  .slide:has(input:checked) {
-border-color: var(--accent1);
-  }
+.slide:has(input:checked) {
+	border-color: var(--accent1);
+}
 
-  button {
+button {
 	white-space: nowrap
-  }
+}
 
 
 
@@ -338,51 +339,52 @@ border-color: var(--accent1);
 
 /* BPM RANGE SLIDER */
 
-  
+
 .range-slider {
-  width: 100%;
-  margin-top: 1em;
-  text-align: center;
-  position: relative;
-  .rangeValues {
-    display: block;
-  }
+	width: 100%;
+	margin-top: 1em;
+	text-align: center;
+	position: relative;
+
+	.rangeValues {
+		display: block;
+	}
 }
 
 input[type=range] {
-    appearance: none;
-  -webkit-appearance: none;
-  border: 1px solid var(--tekst-donker);
-  border-radius: 5px;
-  width: 100%;
-  position: absolute;
-  left: 0;
+	appearance: none;
+	-webkit-appearance: none;
+	border: 1px solid var(--tekst-donker);
+	border-radius: 5px;
+	width: 100%;
+	position: absolute;
+	left: 0;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-  width: 300px;
-  height: 5px;
-  background: transparent;
-  border: none;
-  border-radius: 3px;
+	width: 300px;
+	height: 5px;
+	background: transparent;
+	border: none;
+	border-radius: 3px;
 
 }
 
 input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: var(--accent1);
-  margin-top: -4px;
-    cursor: pointer;
-      position: relative;
-    z-index: 1;
+	-webkit-appearance: none;
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: var(--accent1);
+	margin-top: -4px;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
 }
 
 input[type=range]:focus {
-  outline: none;
+	outline: none;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
@@ -390,66 +392,66 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-moz-range-track {
-  width: 300px;
-  height: 5px;
-  background: transparent;
-  border: none;
-  border-radius: 3px;
+	width: 300px;
+	height: 5px;
+	background: transparent;
+	border: none;
+	border-radius: 3px;
 }
 
 input[type=range]::-moz-range-thumb {
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #21c1ff;
-  
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: #21c1ff;
+
 }
 
 
 input[type=range]:-moz-focusring {
-  outline: 1px solid white;
-  outline-offset: -1px;
+	outline: 1px solid white;
+	outline-offset: -1px;
 }
 
 input[type=range]::-ms-track {
-  width: 300px;
-  height: 5px;
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
-  background: transparent;
-  /*leave room for the larger thumb to overflow with a transparent border */
-  border-color: transparent;
-  border-width: 6px 0;
-  /*remove default tick marks*/
-  color: transparent;
-    z-index: -4;
+	width: 300px;
+	height: 5px;
+	/*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+	background: transparent;
+	/*leave room for the larger thumb to overflow with a transparent border */
+	border-color: transparent;
+	border-width: 6px 0;
+	/*remove default tick marks*/
+	color: transparent;
+	z-index: -4;
 
 }
 
 input[type=range]::-ms-fill-lower {
-  background: #777;
-  border-radius: 10px;
+	background: #777;
+	border-radius: 10px;
 }
 
 input[type=range]::-ms-fill-upper {
-  background: #ddd;
-  border-radius: 10px;
+	background: #ddd;
+	border-radius: 10px;
 }
 
 input[type=range]::-ms-thumb {
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #21c1ff;
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: #21c1ff;
 }
 
 input[type=range]:focus::-ms-fill-lower {
-  background: #888;
+	background: #888;
 }
 
 input[type=range]:focus::-ms-fill-upper {
-  background: #ccc;
+	background: #ccc;
 }
 
 
@@ -498,12 +500,12 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-#slide button  {
-    padding: 10px 20px;
-    background-color: transparent;
-    color: var(--tekst-donker);
-    border: none;
-    border-radius: 10px;
+#slide button {
+	padding: 10px 20px;
+	background-color: transparent;
+	color: var(--tekst-donker);
+	border: none;
+	border-radius: 10px;
 	border: 2px solid var(--tekst-donker);
 
 }
@@ -515,7 +517,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .highlight1 {
 	border-color: var(--accent1) !important;
-  }
+}
 
 
 
@@ -535,9 +537,10 @@ input[type=range]:focus::-ms-fill-upper {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 90vw;
-    height: 90vw; /* Pas dit aan op basis van de gewenste hoogte van de container */
-    overflow: hidden;
+	width: 90vw;
+	height: 90vw;
+	/* Pas dit aan op basis van de gewenste hoogte van de container */
+	overflow: hidden;
 	max-width: 350px;
 	max-height: 350px;
 }
@@ -545,11 +548,12 @@ input[type=range]:focus::-ms-fill-upper {
 
 .albumcover img {
 	position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* De afbeelding schalen om de container te vullen */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* De afbeelding schalen om de container te vullen */
 }
 
 .titel-flex {
@@ -588,13 +592,14 @@ input[type=range]:focus::-ms-fill-upper {
 .grid2 {
 	display: grid;
 	gap: 1em;
-	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr) );
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 	grid-auto-flow: dense;
 	margin-top: 2em;
-	justify-content:space-around;
+	justify-content: space-around;
 	max-width: var(--maxwidth);
 	margin: auto;
-    hyphens: auto; /* Automatische woordafbreking met streepjes */
+	hyphens: auto;
+	/* Automatische woordafbreking met streepjes */
 }
 
 
@@ -665,9 +670,10 @@ a:visited {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 40vw;
-    height: 40vw; /* Pas dit aan op basis van de gewenste hoogte van de container */
-    overflow: hidden;
+	width: 40vw;
+	height: 40vw;
+	/* Pas dit aan op basis van de gewenste hoogte van de container */
+	overflow: hidden;
 	max-width: 350px;
 	max-height: 350px;
 }
@@ -675,11 +681,12 @@ a:visited {
 
 .profiel-foto img {
 	position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* De afbeelding schalen om de container te vullen */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* De afbeelding schalen om de container te vullen */
 }
 
 
@@ -695,35 +702,35 @@ a:visited {
 	text-align: left;
 	max-width: 500px;
 	margin: auto;
-  }
-  
-  .profiel-aanpassen h2 {
+}
+
+.profiel-aanpassen h2 {
 	margin-top: 0;
 	font-size: 24px;
 	color: var(--accent1);
 	margin-bottom: 0.5em;
-  }
-  
-  .profiel-aanpassen form {
+}
+
+.profiel-aanpassen form {
 	display: flex;
 	flex-direction: column;
-  }
-  
-  .profiel-aanpassen label {
+}
+
+.profiel-aanpassen label {
 	margin-bottom: 4px;
 	font-weight: bold;
 	color: #333;
-  }
-  
-  .profiel-aanpassen input {
+}
+
+.profiel-aanpassen input {
 	padding: 10px;
 	margin-bottom: 20px;
 	border-radius: 8px;
 	border: 1px solid #ccc;
-  }
-  
-  .profiel-aanpassen button,
-  .foto-aanpassen button {
+}
+
+.profiel-aanpassen button,
+.foto-aanpassen button {
 	padding: 12px 24px;
 	background-color: #0070c9;
 	color: #fff;
@@ -731,36 +738,36 @@ a:visited {
 	border-radius: 8px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
-  }
-  
-  .profiel-aanpassen button:hover,
-  .foto-aanpassen button:hover {
+}
+
+.profiel-aanpassen button:hover,
+.foto-aanpassen button:hover {
 	background-color: #005aa7;
-  }
+}
 
 
 
-  /* FOTO AANPASSEN */
+/* FOTO AANPASSEN */
 
-  .foto-aanpassen {
+.foto-aanpassen {
 	text-align: center;
 	font-family: 'Outfit';
-  }
-  
-  .profile-container {
+}
+
+.profile-container {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-  }
-  
-  #profile-image {
+}
+
+#profile-image {
 	width: 200px;
 	height: 200px;
 	border-radius: 10px;
 	object-fit: cover;
-  }
-  
-  .custom-file-upload {
+}
+
+.custom-file-upload {
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
@@ -769,40 +776,40 @@ a:visited {
 	padding: 5px 10px;
 	border-radius: 5px;
 	cursor: pointer;
-  }
-  
-  input[type="file"] {
-	display: none;
-  }
+}
 
-  .foto-aanpassen button {
+input[type="file"] {
+	display: none;
+}
+
+.foto-aanpassen button {
 	margin-top: 1em;
 	width: 100%;
-  }
-  
+}
+
 /* UITLOGGEN */
 
 .profiel-uitloggen {
 	display: flex;
-	justify-content:space-evenly;
+	justify-content: space-evenly;
 	max-width: 500px;
 	margin: auto;
 }
 
 .profiel-uitloggen button {
-  padding: 12px 24px;
-  background-color: var(--accent1);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+	padding: 12px 24px;
+	background-color: var(--accent1);
+	color: #fff;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 
 }
 
 
 .profiel-uitloggen button:hover {
-  background-color: #005aa7;
+	background-color: #005aa7;
 }
 
 
@@ -810,11 +817,15 @@ a:visited {
 
 @media screen and (min-width: 800px) {
 
-    :root {
-        --container: 150px;
-        --gap: 3.22em;
-        
-        }
+	:root {
+
+		--font-titel: 20px;
+		--font-ondertitel: 18px;
+
+		--container: 125px;
+		--gap: 3.22em;
+
+	}
 
 	.detail section:first-of-type {
 		display: block;
@@ -838,17 +849,6 @@ a:visited {
 		display: none;
 	}
 
-    .grid1 a div:nth-of-type(2) h3 {
-        font-size: 20px;
-    }
-    
-    .grid1 a div:nth-of-type(2) p {
-        font-size: 16px;
-    }
-
-    .genres-flex-main div:nth-of-type(2) p {
-        font-size: 20px;
-    }
 
 	.container_menu {
 		display: none;
@@ -857,8 +857,10 @@ a:visited {
 	.popup {
 		left: calc(50% - (800px / 2));
 
+	}
 }
-}
+
+/* TELEFOON */
 
 @media screen and (max-width: 800px) {
 
@@ -870,17 +872,9 @@ a:visited {
 		font-size: 25px;
 	}
 
-	.list1 a div:nth-of-type(2) h3 {
-        font-size: 20px;
-    }
-    
-    .list1 a div:nth-of-type(2) p {
-        font-size: 16px;
-    }
-
 	.titel-flex div:first-of-type p:last-of-type {
 		display: none;
 	}
-	
+
 
 }

@@ -16,7 +16,6 @@
 
         <p id="textInloggen">Log in op je account</p>
         <form id="loginForm" action="genreSelect" method="post">
-
         <% if(incorrect){ %>
         <p class="foutmelding"><%= incorrect %></p>
         <% } %>
@@ -24,7 +23,7 @@
 
             <div class="form-group">
                 <label id="labelForms" for="username">E-mail:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label id="labelForms" for="password">Wachtwoord:</label>
@@ -34,8 +33,6 @@
             <button id="loginButton" type="submit">Inloggen</button>
         
             <a id="registreerButton" href="registreer">Nog geen account? Registreer hier</a>
-
-                
       
         </form>
         <div id="message"></div>
