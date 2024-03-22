@@ -116,6 +116,14 @@ li {
 	font-size: 12px;
 }
 
+a {
+	color: black
+}
+
+a:visited {
+	color: black;
+}
+
 
 
 /* //////////////////////////
