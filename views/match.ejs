@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/home.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <%- include('partials/header') %>
+
+    <main>
+        <section>
+            <h1>Match personen</h1>
+
+            <div id="filters">
+                <div>
+                    <a id="slide" onclick="toggleFilters()"><button class="filterbutton">Filters</button></a>
+                    <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
+                                src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
+
+                </div>
+                <div>
+                    <a id="slide"><button id="toggle_grid"><img id="toggleIcon" src="./images/iconen/list.svg"
+                                alt="Grid View"></button></a>
+                </div>
+
+            </div>
+        </section>
+      
+        <section id="grid1" class="list1">
+
+            <a href="matchprofiel">
+                <div>
+                    <img class="hoofdfoto" src="./images/binc.jpg"
+                        alt="Achtergrondafbeelding">
+                    <div>
+                        <p>30%</p>
+                    </div>
+                </div>
+                <div class="genres-flex-main">
+                    <div class="titel-flex-main">
+                        <div>
+                            <h3>Filip Hensels</h3>
+                            <p>House</p>
+                        </div>
+                        <button class="button-secundair"><img src="./images/iconen/plus.svg"
+                            alt="Like"></button>
+                        <div>
+                        </div>
+                    </div>
+                    <div class="grid-mini">
+                        <p>House</p>
+                        <p>Pop</p>
+                        <p>Nederlands</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="matchprofiel">
+                <div>
+                    <img class="hoofdfoto" src="./images/binc.jpg"
+                        alt="Achtergrondafbeelding">
+                    <div>
+                        <p>30%</p>
+                    </div>
+                </div>
+                <div class="genres-flex-main">
+                    <div class="titel-flex-main">
+                        <div>
+                            <h3>Filip Hensels</h3>
+                            <p>House</p>
+                        </div>
+                        <button class="button-secundair"><img src="./images/iconen/plus.svg"
+                            alt="Like"></button>
+                        <div>
+                        </div>
+                    </div>
+                    <div class="grid-mini">
+                        <p>House</p>
+                        <p>Pop</p>
+                        <p>Nederlands</p>
+                    </div>
+                </div>
+            </a>
+
+        </section>
+
+        <div class="popup" id="popup1">
+
+            <form id="filterForm" action="/filterIndex" method="POST">
+
+                <div>
+                    <h3>Filter</h3>
+                    <input type="submit" class="submit-knop" onclick="toggleFilters()" value="Opslaan">
+                </div>
+
+                <section>
+                    <div class="popup-flex">
+                        <h4>Sorteren</h4>
+                    </div>
+                    <div class="filterSection" id="carrousel">
+
+                        <label class="slide">
+                            <input type="radio" name="sorteren" value="match" checked><span>Match</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="radio" name="sorteren" value="naam"><span>Naam</span>
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="popup-flex">
+                        <h4>Mensen die houden van</h4>
+                        <p class="checkboxCount">0/5</p>
+                    </div>
+                    <div class="filterSection" id="carrousel">
+
+                        <label class="slide">
+                            <input type="checkbox" name="genre" value="house"
+                                onchange="updateCheckboxCount(this)"><span>House</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="checkbox" name="genre" value="pop"
+                                onchange="updateCheckboxCount(this)"><span>Pop</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="checkbox" name="genre" value="techno"
+                                onchange="updateCheckboxCount(this)"><span>Techno</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="checkbox" name="genre" value="hiphop"
+                                onchange="updateCheckboxCount(this)"><span>Hiphop</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="checkbox" name="genre" value="nederlands"
+                                onchange="updateCheckboxCount(this)"><span>Nederlands</span>
+                        </label>
+                    </div>
+                </section>
+            </form>
+
+        </div>
+
+    </main>
+
+    <script defer src="./scripts/script.js"></script>
+    <script defer src="./scripts/filters.js"></script>
+
+</body>
+
+</html>

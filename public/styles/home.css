@@ -12,8 +12,8 @@
 
 .grid1 {
 	display: grid;
-	gap: 2.25em;
-	grid-template-columns: repeat(auto-fill, 100px);
+	gap: 1em;
+	grid-template-columns: repeat(auto-fill, var(--container));
 	grid-auto-flow: dense;
 	margin-top: 2em;
 	justify-content:space-around;
@@ -21,46 +21,40 @@
 	margin: auto;
 }
 
-.grid1 a {
-	width: 100px;
+.grid1 > a {
+	border-radius: 10px;
 }
 
 
-.grid1 a div:first-of-type {
+.grid1 > a > div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 125px;
-    height: 125px; 
     overflow: hidden;
 	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    width: var(--container);
+    height: var(--container);
 }
 
-.grid1 a img {
+.hoofdfoto {
 	position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover; /* De afbeelding schalen om de container te vullen */
 }
 
-.grid1 a div:first-of-type div:first-of-type {
-	position: absolute;
-    top: 0;
-    left: 0;
-	width: 100%;
+.grid1 > a > div:first-of-type div:first-of-type {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 125px;
+    height: 100%;
+    width: 300px;
+
 }
 
-.grid1 a div:first-of-type div:nth-of-type(1) p {
+.grid1 > a > div:first-of-type > div p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
@@ -68,19 +62,25 @@
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: white;
+    z-index: 5;
 }
 
-.grid1 a div:nth-of-type(2) {
+.grid1 > a > div:nth-of-type(2) {
 	margin-top: 0.5em;
 	margin-left: 0.6em;
 }
 
-#grid1 a div:nth-of-type(2) h3 {
-	font-size: 20px;
+.grid1 > a div:nth-of-type(2) h3 {
+	font-size: 16px;
+    hyphens: auto;
 }
 
-#grid1 a div:nth-of-type(2) p {
-	font-size: 15px;
+.grid1 > a div:nth-of-type(2) p {
+	font-size: 14px;
+}
+
+.grid1 .genres-flex-main {
+    flex-grow: 0
 }
 
 
@@ -98,49 +98,35 @@
 	margin: auto;
 }
 
-.list1 a {
+.list1 > a {
 	background-color: var(--tekst-licht);
 	display: flex;
 	border-radius: 10px;
 }
 
 
-.list1 a div:first-of-type {
+.list1 > a > div:first-of-type {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 125px;
-    height: 125px; /* Pas dit aan op basis van de gewenste hoogte van de container */
     overflow: hidden;
 	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    width: var(--container);
+    height: var(--container);
 }
 
-.list1 a img {
-	position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* De afbeelding schalen om de container te vullen */
-
-}
-
-.list1 a div:first-of-type div:first-of-type {
-	position: absolute;
-    top: 0;
-    left: 0;
-	width: 100%;
+.list1 > a > div:first-of-type div:first-of-type {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 125px;
+    height: 100%;
+    width: 300px;
+
 }
 
-.list1 a div:first-of-type div:nth-of-type(1) p {
+.list1 > a > div:first-of-type div:nth-of-type(1) p {
 	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
 	font-size: 25px;
 	padding-bottom: 5px;
@@ -148,20 +134,63 @@
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: white;
+    z-index: 5;
 }
 
-.list1 a div:nth-of-type(2) {
-	margin-top: 0.5em;
-	margin-left: 0.6em;
+
+.titel-flex-main {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
-.icon_grid {
-	background-image: url("../images/iconen/grid.svg");
+.titel-flex-main div:first-of-type {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.list1 .titel-flex-main div:nth-of-type(2) {
+    margin-top: 0.5em;
+}
+
+.titel-flex-main img {
+    width: 100%;
+}
+
+.list1 .genres-flex-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5em;
+    flex-grow: 2;
+}
+
+.genres-flex-main div:nth-of-type(2) {
+    display: flex;
+    gap: 0.5em;
+}
+
+.genres-flex-main div:nth-of-type(2) p {
+    border: var(--accent1) solid 1px;
+    border-radius: 10px;
+    padding: 0.125em 0.5em 0.125em 0.5em;
+    font-size: auto;
+    font-size: 16px;
+}
+
+
+.grid1 .grid-mini p {
+    display: none;
 }
 
 
 
 /* FILTER MENU */
+
+.icon_grid {
+	background-image: url("../images/iconen/grid.svg");
+}
 
 .popup {
 	position: fixed;
@@ -239,10 +268,7 @@
 	cursor: pointer;
   }
   
-  
-  p+p+p {
-	  font-size: 60%;
-  }
+
 
 
 /* POPUP: FILTERS */
@@ -324,6 +350,7 @@ border-color: var(--accent1);
 }
 
 input[type=range] {
+    appearance: none;
   -webkit-appearance: none;
   border: 1px solid var(--tekst-donker);
   border-radius: 5px;
@@ -528,7 +555,7 @@ input[type=range]:focus::-ms-fill-upper {
 .titel-flex {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: top;
 	margin-top: 0.5em;
 }
 
@@ -538,11 +565,24 @@ input[type=range]:focus::-ms-fill-upper {
 	gap: 0;
 }
 
+.titel-flex div:first-of-type p:last-of-type {
+	margin-top: 1em;
+	max-width: 40vw;
+}
+
+
 .titel-flex div:nth-of-type(2) {
 	display: flex;
 	gap: 0.5em;
-	margin-top: -1em;
+	margin-top: 0.25em;
 }
+
+.over-flex {
+	margin-top: 1em;
+	max-width: 350px;
+}
+
+
 
 
 .grid2 {
@@ -554,6 +594,7 @@ input[type=range]:focus::-ms-fill-upper {
 	justify-content:space-around;
 	max-width: var(--maxwidth);
 	margin: auto;
+    hyphens: auto; /* Automatische woordafbreking met streepjes */
 }
 
 
@@ -608,81 +649,172 @@ a:visited {
 }
 
 
+/* PROFIEL */
 
-/* GRID 3: PERSONEN */
-
-.grid3 {
-	display: grid;
-	gap: 2.25em;
-	grid-template-columns: repeat(auto-fill, 100px);
-	grid-auto-flow: dense;
-	margin-top: 2em;
-	justify-content:space-around;
-	max-width: var(--maxwidth);
-	margin: auto;
+.profiel section:first-of-type {
+	display: flex;
+	justify-content: center;
 }
 
-.grid3 a {
-	width: 100px;
-}
+/* .profiel > section > div:first-of-type {
+	display: flex;
+	justify-content: center;
+} */
 
-
-.grid3 a div:first-of-type {
+.profiel-foto {
 	border-radius: 10px;
 	transition: scale 0.25s ease-in-out;
 	position: relative;
-    width: 125px;
-    height: 125px; 
+    width: 40vw;
+    height: 40vw; /* Pas dit aan op basis van de gewenste hoogte van de container */
     overflow: hidden;
-	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+	max-width: 350px;
+	max-height: 350px;
 }
 
-.grid3 a img {
+
+.profiel-foto img {
 	position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover; /* De afbeelding schalen om de container te vullen */
 }
 
-.grid3 a div:first-of-type div:first-of-type {
-	position: absolute;
-    top: 0;
-    left: 0;
+
+/* AANPASSEN FORM */
+
+.profiel-aanpassen {
 	width: 100%;
-	border-radius: 10px;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	font-family: 'Outfit';
+	text-align: left;
+	max-width: 500px;
+	margin: auto;
+  }
+  
+  .profiel-aanpassen h2 {
+	margin-top: 0;
+	font-size: 24px;
+	color: var(--accent1);
+	margin-bottom: 0.5em;
+  }
+  
+  .profiel-aanpassen form {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
-	box-shadow: 1px 1px 7px rgb(181, 63, 63);
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 125px;
+  }
+  
+  .profiel-aanpassen label {
+	margin-bottom: 4px;
+	font-weight: bold;
+	color: #333;
+  }
+  
+  .profiel-aanpassen input {
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+  }
+  
+  .profiel-aanpassen button,
+  .foto-aanpassen button {
+	padding: 12px 24px;
+	background-color: #0070c9;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .profiel-aanpassen button:hover,
+  .foto-aanpassen button:hover {
+	background-color: #005aa7;
+  }
+
+
+
+  /* FOTO AANPASSEN */
+
+  .foto-aanpassen {
+	text-align: center;
+	font-family: 'Outfit';
+  }
+  
+  .profile-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  #profile-image {
+	width: 200px;
+	height: 200px;
+	border-radius: 10px;
+	object-fit: cover;
+  }
+  
+  .custom-file-upload {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	background: var(--accent1);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+  
+  input[type="file"] {
+	display: none;
+  }
+
+  .foto-aanpassen button {
+	margin-top: 1em;
+	width: 100%;
+  }
+  
+/* UITLOGGEN */
+
+.profiel-uitloggen {
+	display: flex;
+	justify-content:space-evenly;
+	max-width: 500px;
+	margin: auto;
 }
 
-.grid3 a div:first-of-type div:nth-of-type(1) p {
-	background: linear-gradient(0deg, rgba(255,0,127,1) 0%, rgba(9,9,121,0) 100%);
-	font-size: 25px;
-	padding-bottom: 5px;
-	padding-left: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	color: white;
+.profiel-uitloggen button {
+  padding: 12px 24px;
+  background-color: var(--accent1);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
 }
 
-.grid3 a div:nth-of-type(2) {
-	margin-top: 0.5em;
-	margin-left: 0.6em;
+
+.profiel-uitloggen button:hover {
+  background-color: #005aa7;
 }
 
-.grid3 a div:nth-of-type(2) h3 {
-	font-size: 16px;
-}
 
 
 
 @media screen and (min-width: 800px) {
+
+    :root {
+        --container: 150px;
+        --gap: 3.22em;
+        
+        }
 
 	.detail section:first-of-type {
 		display: block;
@@ -702,6 +834,22 @@ a:visited {
 		width: 100%;
 	}
 
+	.over-flex {
+		display: none;
+	}
+
+    .grid1 a div:nth-of-type(2) h3 {
+        font-size: 20px;
+    }
+    
+    .grid1 a div:nth-of-type(2) p {
+        font-size: 16px;
+    }
+
+    .genres-flex-main div:nth-of-type(2) p {
+        font-size: 20px;
+    }
+
 	.container_menu {
 		display: none;
 	}
@@ -718,43 +866,20 @@ a:visited {
 		display: none;
 	}
 
-	.grid1 {
-		gap: 1em;
-	}
-
-	.grid1 a div:first-of-type {
-		width: 100px;
-		height: 100px; 
-	}
-	
-	.grid1 a div:first-of-type div:first-of-type {
-		height: 100px;
-	}
-
-	.grid3 {
-		gap: 1em;
-	}
-
-	.grid3 a div:first-of-type {
-		width: 100px;
-		height: 100px; 
-	}
-	
-	.grid3 a div:first-of-type div:first-of-type {
-		height: 100px;
-	}
-
-	.list1 a div:first-of-type {
-		width: 100px;
-		height: 100px;
-	}
-
-	.list1 a div:first-of-type div:first-of-type {
-		height: 100px;
-	}
-
 	h2 {
 		font-size: 25px;
+	}
+
+	.list1 a div:nth-of-type(2) h3 {
+        font-size: 20px;
+    }
+    
+    .list1 a div:nth-of-type(2) p {
+        font-size: 16px;
+    }
+
+	.titel-flex div:first-of-type p:last-of-type {
+		display: none;
 	}
 	
 

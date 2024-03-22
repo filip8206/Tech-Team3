@@ -70,11 +70,23 @@ app.post('/', async (req,res) => {
 
 app.get('/inloggen', async (req,res) => {
   let incorrect
-  res.render('inloggen', incorrect)
+  res.render('inloggen', {incorrect})
 })
 
 app.get('/detail', async (req,res) => {
   res.render('detail')
+})
+
+app.get('/match', async (req,res) => {
+  res.render('match')
+})
+
+app.get('/matchprofiel', async (req,res) => {
+  res.render('matchprofiel')
+})
+
+app.get('/profiel', async (req,res) => {
+  res.render('profiel')
 })
 
 app.post('/login', async (req,res) => {
@@ -99,4 +111,8 @@ app.post('/login', async (req,res) => {
 
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
+})
+
+app.get('/genreSelect', async (req, res) => {
+  res.render('genreSelect')
 })

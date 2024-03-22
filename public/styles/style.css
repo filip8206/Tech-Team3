@@ -41,7 +41,7 @@ body {
 
 img {
 	scale: 100%;
-	align-self: center;
+	/* align-self: center; */
 	display: block;
 	height: auto;
 }
@@ -67,7 +67,10 @@ img {
 --accent2: #6923F5;
 
 --omslagpunt: 800px;
---maxwidth: 1250px
+--maxwidth: 1250px;
+
+--container: 100px;
+--gap: 1em
 
 }
 
@@ -194,7 +197,6 @@ header > div:first-of-type {
 	font-size: 30px;
 }
 
-
 /* NORMAAL MENU */
 
 .normaal_menu ul {
@@ -215,6 +217,4 @@ header > div:first-of-type {
     text-decoration: none;
 	font-size: 20px;
 }
-
-
 
