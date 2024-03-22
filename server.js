@@ -55,14 +55,69 @@ let incorrect
 
 // Routes
 
+
+app.get('/', async (req,res) => {
+  const db = client.db("muve")
+  const coll = db.collection("songs")
+
+  if(Object.keys(req.query).length > 0){
+    const {sorteren} = req.query
+    const key = req.query.key.split(",")
+    const genre = req.query.genre.split(",")
+    let bpm = req.query.bpm.split(",")
+    bpm = [parseInt(bpm[0]), parseInt(bpm[1])]
+    console.log(key, genre, sorteren, bpm)
+
+    let songs = await coll.find({
+      "bpm": { $gte: bpm[0], $lte: bpm[1] },
+      "genre": { $in: Array.isArray(genre) ? genre : [genre] },
+      "key": { $in: Array.isArray(key) ? key : [key] }
+    }).sort({[sorteren]: -1}).toArray()
+    res.render('index', {songs})
+  }else{
+    let songs = await coll.find({}).toArray()
+    res.render('index', {songs})
+  }
+})
+
+app.post('/', async (req,res) => {
+  let genre, key = []
+  genre = req.body.genre
+  if(genre === undefined){genre=["pop", "dutch", "rap", "rock"]}
+  key = req.body.key
+  if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
+  const {sorteren, bpmMin, bpmMax} = req.body
+  const bpm = [bpmMin, bpmMax]
+  const url = `/?key=${key}&genre=${genre}&sorteren=${sorteren}&bpm=${bpm}`
+  res.redirect(url)
+})
+
+app.get('/inloggen', async (req,res) => {
+  let incorrect
+  res.render('inloggen', {incorrect})
+})
+
+app.get('/detail', async (req,res) => {
+  res.render('detail')
+})
+
+app.get('/match', async (req,res) => {
+  res.render('match')
+})
+
+app.get('/matchprofiel', async (req,res) => {
+  res.render('matchprofiel')
+})
+
+app.get('/profiel', async (req,res) => {
+  res.render('profiel')
+})
+
+app.post('/login', async (req,res) => {
+  const db = client.db("DatabaseTechTest")
 app.get('/', async (req, res) => {
   res.render('index')
   console.log(req.session.userID + ' is ingelogd')
-})
-
-/////////// Inloggen
-app.get('/inloggen', async (req, res) => {
-  res.render('inloggen', { incorrect })
 })
 
 
@@ -94,6 +149,11 @@ app.post('/login', async (req,res) => {
 ////////// Registreren
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
+})
+
+
+app.get('/genreSelect', async (req, res) => {
+  res.render('genreSelect')
 })
 
 app.post('/registreer', async (req, res) => {
@@ -179,3 +239,4 @@ app.get('/klaar', async (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
 })
+

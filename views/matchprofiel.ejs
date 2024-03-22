@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/home.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <%- include('partials/header') %>
+
+    <main class="detail">
+
+        <div class="ga-terug">
+            <a href="/match"><button class="button-secundair"><img src="./images/iconen/arrow_left.svg"
+                        alt="Like">Terug</button></a>
+        </div>
+
+        <section>
+            <div>
+                <div class="albumcover">
+                    <img src="./images/binc.jpg" alt="Achtergrondafbeelding">
+                </div>
+                <div class="titel-flex">
+                    <div>
+                        <h1>Filip Hensels</h1>
+                        <p>Matcht 87%</p>
+                        <p>Ik ben een creatieve ziel die gedreven wordt door verhalen en emoties. Mijn muzieksmaak varieert van melancholische indie folk tot energieke elektronische beats, maar altijd met een diepgaande boodschap die mijn ziel raakt.</p>
+
+                    </div>
+                    <div>
+                        <a href="/"><button class="button-secundair"><img src="./images/iconen/plus.svg"
+                            alt="Like">Volgen</button></a>
+                    </div>
+                </div>
+                <div class="over-flex">
+                    <p>Ik ben een creatieve ziel die gedreven wordt door verhalen en emoties. Mijn muzieksmaak varieert van melancholische indie folk tot energieke elektronische beats, maar altijd met een diepgaande boodschap die mijn ziel raakt.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <div class="grid2">
+            <div>
+                <h3>House</h3>
+                <p>Hoofdgenre</p>
+            </div>
+
+            <div>
+                <h3>Pop</h3>
+                <p>2e</p>
+            </div>
+
+            <div>
+                <h3>Nederlands</h3>
+                <p>3e</p>
+            </div>
+
+            <div>
+                <h3>32</h3>
+                <p>Favoriete nummers</p>
+            </div>
+
+            <div>
+                <h3>45</h3>
+                <p>Volgers</p>
+            </div>
+        </div>
+        </section>
+
+
+        <section>
+            <h2>Nummers die Filip leuk vindt</h2>
+            <div class="grid1">
+
+                <a href="detail">
+                    <div>
+                        <img class="hoofdfoto" src="./images/placeholder_cover.jpg"
+                            alt="Achtergrondafbeelding">
+                        <div>
+                            <p>Pop</p>
+                        </div>
+                    </div>
+                    <div class="genres-flex-main">
+                        <div class="titel-flex-main">
+                            <div>
+                                <h3>Starboy</h3>
+                                <p>The Weeknd</p>
+                            </div>
+                            <div>
+                                <img src="./images/iconen/hart.svg" alt="Like">
+                            </div>
+                        </div>
+                        <div class="grid-mini">
+                            <p>Pop</p>
+                            <p>120BPM</p>
+                            <p>G</p>
+                        </div>
+                    </div>
+                </a>
+
+
+        </div>
+        </section>
+
+
+    </main>
+
+    <script defer src="./scripts/script.js"></script>
+
+</body>
+
+</html>

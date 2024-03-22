@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/home.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <%- include('partials/header') %>
+
+    <main class="profiel">
+
+        <section>
+            <div class="foto-aanpassen">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                  <div class="profile-container">
+                    <img id="profile-image" src="/images/binc.jpg" alt="Profielfoto">
+                    <label for="file-upload" class="custom-file-upload">
+                      <i class="fa fa-camera"></i>Kies foto
+                    </label>
+                    <input type="file" id="file-upload" name="profileImage" accept="image/*">
+                  </div>
+                  <button type="submit">Opslaan</button>
+                </form>
+              </div>
+        </section>
+
+        <section>
+            <div class="profiel-aanpassen">
+                <h2>Persoonlijke gegevens</h2>
+                <form action="#" method="post">
+                  <label for="name">Naam</label>
+                  <input type="text" id="name" name="name" required>
+            
+                  <label for="email">Over jezelf</label>
+                  <input type="email" id="email" name="email" required>
+            
+                  <button type="submit">Opslaan</button>
+                </form>
+              </div>
+        </section>
+
+        <section>
+            <div class="profiel-aanpassen">
+                <h2>Mail</h2>
+                <form action="#" method="post">
+            
+                  <label for="email">E-mailadres</label>
+                  <input type="email" id="email" name="email" required>
+            
+                  <button type="submit">Opslaan</button>
+                </form>
+              </div>
+        </section>
+
+        <section>
+            <div class="profiel-aanpassen">
+                <h2>Wachtwoord</h2>
+                <form action="#" method="post">
+            
+                  <label for="password">Huidig wachtwoord</label>
+                  <input type="password" id="password" name="password" required>
+            
+                  <label for="newPassword">Nieuw wachtwoord</label>
+                  <input type="password" id="newPassword" name="newPassword">
+            
+                  <button type="submit">Opslaan</button>
+                </form>
+              </div>
+        </section>
+
+        <section>
+            <div class="profiel-uitloggen">
+            <form action="/uitloggen" method="post">
+        
+                <button type="submit">Uitloggen</button>
+              </form>
+              </div>
+        </section>
+
+
+      
+
+
+    </main>
+
+    <script defer src="./scripts/script.js"></script>
+
+</body>
+
+</html>

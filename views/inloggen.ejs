@@ -7,35 +7,36 @@
     <title>Document</title>
 
     <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/inlog.css" rel="stylesheet">
 </head>
 
 <body>
     <section class="secInloggen">
         <h2 id="titleInloggen">Inloggen</h2>
+
         <p id="textInloggen">Log in op je account</p>
+        <form id="loginForm" action="genreSelect" method="post">
         <% if(incorrect){ %>
         <p class="foutmelding"><%= incorrect %></p>
         <% } %>
         <form id="loginForm" action="/login" method="post">
+
             <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="mail" id="email" name="email" required>
+                <label id="labelForms" for="username">E-mail:</label>
+                <input type="text" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="password">Wachtwoord:</label>
+                <label id="labelForms" for="password">Wachtwoord:</label>
                 <input type="password" id="password" name="password" required>
             </div>
             <p id="textWwVergeten">Wachtwoord vergeten?</p>
             <button id="loginButton" type="submit">Inloggen</button>
         
             <a id="registreerButton" href="registreer">Nog geen account? Registreer hier</a>
-
-            
       
         </form>
         <div id="message"></div>
     </section>
-
 </body>
 
 </html>
