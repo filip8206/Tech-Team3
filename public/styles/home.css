@@ -599,6 +599,7 @@ input[type=range]:focus::-ms-fill-upper {
 	max-width: var(--maxwidth);
 	margin: auto;
 	hyphens: auto;
+	text-transform: capitalize;
 	/* Automatische woordafbreking met streepjes */
 }
 
