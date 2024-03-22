@@ -1,5 +1,5 @@
 const validator = require('express-validator')
 
-export const inlogschema = [
-
+export const inlogSchema = [
+    body("username")
 ]

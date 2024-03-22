@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/profiel-aanmaken" enctype="multipart/form-data">
+        <h2>User ID: 
+        <%= email %> </h2>
+        <label for="profilephoto">Profielfoto</label>
+
+        <input type="file" name="profilephoto" id="profilephoto">
+
+        <label for="description">Vertel wat over jezelf</label>
+        <textarea name="description" id="description"></textarea>
+        <h2>Genres</h2>
+
+        <label for="pop">Pop</label>
+        <input name="genres" type="checkbox" id="pop" value="pop">
+
+        <label for="classic">Klassiek</label>
+        <input name="genres" type="checkbox" id="classic" value="classic">
+
+        <label for="rock">Rock</label>
+        <input name="genres" type="checkbox" id="rock" value="rock">
+
+        <label for="hiphop">Hiphop</label>
+        <input name="genres" type="checkbox" id="hiphop" value="hiphop">
+
+        <label for="dutch">Nederlands</label>
+        <input name="genres" type="checkbox" id="dutch" value="dutch">
+
+        <label for="rap">Rap</label>
+        <input name="genres" type="checkbox" id="rap" value="dutch">
+
+        <label for="house">House</label>
+        <input name="genres" type="checkbox" id="house" value="house">
+
+        <label for="techno">Techno</label>
+        <input name="genres" type="checkbox" id="techno" value="techno">
+
+        <input type="submit">
+    </form>
+</body>
+</html>
