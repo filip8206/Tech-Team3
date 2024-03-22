@@ -34,8 +34,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 toggle_sorteer.addEventListener('click', function () {
   toggle_sorteer.classList.toggle("toggle_icon_arrow_draai");
-  element.classList.toggle("toggle_icon_arrow_draai");
 
+  const nummerContainer = document.querySelector("#grid1")
+  const nummers = Array.from(nummerContainer.children)
+
+  nummers.forEach((nummer) => {
+    nummerContainer.removeChild(nummer)
+  })
+
+  nummers.reverse()
+
+  nummers.forEach((nummer) => {
+    nummerContainer.appendChild(nummer)
+  })
 });
 
 function toggleFilters() {
