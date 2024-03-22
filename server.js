@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
-const { MongoClient, ServerApiVersion } = require('mongodb')
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 const app = express()
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_NAME}`
 //import { bezoekerSchema } from "./schema.js"
@@ -74,7 +74,11 @@ app.get('/inloggen', async (req,res) => {
 })
 
 app.get('/detail', async (req,res) => {
-  res.render('detail')
+  const songID = req.query.id
+  const db = client.db("muve")
+  const coll = db.collection("songs")
+  const song = await coll.findOne({_id: new ObjectId(songID)})
+  res.render('detail', {song})
 })
 
 app.get('/match', async (req,res) => {
