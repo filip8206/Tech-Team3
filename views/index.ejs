@@ -54,7 +54,7 @@
 
         <div class="popup" id="popup1">
 
-            <form id="filterForm" action="/filterIndex" method="POST">
+            <form id="filterForm" action="/" method="POST">
 
                 <div>
                     <h3>Filter</h3>
@@ -68,11 +68,11 @@
                     <div class="filterSection" id="carrousel">
 
                         <label class="slide">
-                            <input type="radio" name="sorteren" value="populair" checked><span>Populariteit</span>
+                            <input type="radio" name="sorteren" value="popular" checked><span>Populariteit</span>
                         </label>
 
                         <label class="slide">
-                            <input type="radio" name="sorteren" value="titel"><span>Titel</span>
+                            <input type="radio" name="sorteren" value="title"><span>Titel</span>
                         </label>
 
                         <label class="slide">
@@ -127,8 +127,8 @@
                     </div>
                     <div class="range-slider">
                         <span class="rangeValues"></span>
-                        <input value="100" min="70" max="180" step="1" type="range">
-                        <input value="130" min="70" max="180" step="1" type="range">
+                        <input value="100" min="70" max="180" step="1" type="range" name="bpmMin">
+                        <input value="130" min="70" max="180" step="1" type="range" name="bpmMax">
                     </div>
                 </section>
 

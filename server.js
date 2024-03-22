@@ -41,8 +41,28 @@ app.get('/', async (req,res) => {
   console.log(songs)
 })
 
-app.get('/filterIndex', async (req,res) => {
-  const {sort, genre, tempo, key} = req.body
+app.post('/', async (req,res) => {
+  let genre, key = []
+  genre = req.body.genre
+  if(genre === undefined){genre=["pop"]}
+  key = req.body.key
+  if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
+  const {sorteren, bpmMin, bpmMax} = req.body
+  const bpm = [parseInt(bpmMin), parseInt(bpmMax)]
+  console.log(sorteren, genre, bpm, key)
+
+  const db = client.db("muve")
+  const coll = db.collection("songs")
+
+  let songs = await coll.find({
+    "bpm": { $gte: bpm[0], $lte: bpm[1] },
+    "genre": { $in: Array.isArray(genre) ? genre : [genre] },
+    "key": { $in: Array.isArray(key) ? key : [key] }
+  }).sort({
+    [sorteren]: -1
+  }).toArray()
+  res.render('index', {songs})
+  console.log(songs)
 })
 
 app.get('/inloggen', async (req,res) => {
