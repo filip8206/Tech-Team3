@@ -33,12 +33,21 @@ app.listen(process.env.PORT, () => {
 // Routes
 
 app.get('/', async (req,res) => {
+  const {sorteren} = req.query
+  const key = req.query.key.split(",")
+  const genre = req.query.genre.split(",")
+  let bpm = req.query.bpm.split(",")
+  bpm = [parseInt(bpm[0]), parseInt(bpm[1])]
+  console.log(key, genre, sorteren, bpm)
+
   const db = client.db("muve")
   const coll = db.collection("songs")
-
-  const songs = await coll.find().toArray()
+  let songs = await coll.find({
+    "bpm": { $gte: bpm[0], $lte: bpm[1] },
+    "genre": { $in: Array.isArray(genre) ? genre : [genre] },
+    "key": { $in: Array.isArray(key) ? key : [key] }
+  }).sort({[sorteren]: -1}).toArray()
   res.render('index', {songs})
-  console.log(songs)
 })
 
 app.post('/', async (req,res) => {
@@ -48,21 +57,10 @@ app.post('/', async (req,res) => {
   key = req.body.key
   if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
   const {sorteren, bpmMin, bpmMax} = req.body
-  const bpm = [parseInt(bpmMin), parseInt(bpmMax)]
-  console.log(sorteren, genre, bpm, key)
-
-  const db = client.db("muve")
-  const coll = db.collection("songs")
-
-  let songs = await coll.find({
-    "bpm": { $gte: bpm[0], $lte: bpm[1] },
-    "genre": { $in: Array.isArray(genre) ? genre : [genre] },
-    "key": { $in: Array.isArray(key) ? key : [key] }
-  }).sort({
-    [sorteren]: -1
-  }).toArray()
-  res.render('index', {songs})
-  console.log(songs)
+  const bpm = [bpmMin, bpmMax]
+  const url = `/?key=${key}&genre=${genre}&sorteren=${sorteren}&bpm=${bpm}`
+  console.log(key, genre, sorteren, bpm)
+  res.redirect(url)
 })
 
 app.get('/inloggen', async (req,res) => {
