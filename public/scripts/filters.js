@@ -108,3 +108,55 @@ function updateCheckboxCount(checkbox) {
     filterbutton_highlight.classList.add('filterbutton');
   }
 }
+
+
+  const searchParams = new URLSearchParams(window.location.search)
+  const keyResult = searchParams.get('key').split(",")
+  const genreResult = searchParams.get('genre').split(",")
+  const sorterenResult = searchParams.get('sorteren')
+  const bpmResult = searchParams.get('bpm').split(",")
+
+  const keyInput = document.querySelectorAll('input[name="key"]')
+  const genreInput = document.querySelectorAll('input[name=genre]')
+  const sorterenInput = document.querySelectorAll('input[name=sorteren]')
+  const bpmMinInput = document.querySelector('input[name=bpmMin]')
+  const bpmMaxInput = document.querySelector('input[name=bpmMax]')
+
+  //als alle genres geselcteerd zijn staan ze allemaal uit
+  const aantalGenres = 5
+
+  //bpm goed zetten aan de hand van URL
+  bpmMinInput.value = bpmResult[0]
+  bpmMaxInput.value = bpmResult[1]
+
+  //key goed zetten aan de hand van URL
+  if(keyResult.length != 7){
+    keyResult.forEach((keyRes) => {
+      keyInput.forEach((key) => {
+        if(keyRes == key.value){
+          key.checked = true
+        }
+      })
+    })
+  }
+
+  //genre goed zetten aan de hand van URL
+  console.log(genreInput[0])
+  if(genreResult.length != aantalGenres){
+    genreResult.forEach((genreRes) => {
+      genreInput.forEach((genre) => {
+        if(genreRes == genre.value){
+          genre.checked = true
+        }
+      })
+    })
+  }
+
+  //sorteren goed zetten aan de hand van URL
+  console.log(sorterenInput[0])
+
+  sorterenInput.forEach((input) => {
+    if(input.value == sorterenResult){
+      input.checked = true
+    }
+  })
