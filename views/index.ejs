@@ -36,7 +36,7 @@
         <section id="grid1" class="list1">
 
             <% for(var i=0; i<songs.length; i++) {%>
-            <a href="detail">
+                <a href="detail?id=<%= songs[i]._id %>">
                 <div>
                     <img class="hoofdfoto" src="./images/covers/<%= songs[i].albumId %>.png"
                         alt="Achtergrondafbeelding">
@@ -67,7 +67,7 @@
 
         <div class="popup" id="popup1">
 
-            <form id="filterForm" action="/filterIndex" method="POST">
+            <form id="filterForm" action="/" method="POST">
 
                 <div>
                     <h3>Filter</h3>
@@ -81,11 +81,11 @@
                     <div class="filterSection" id="carrousel">
 
                         <label class="slide">
-                            <input type="radio" name="sorteren" value="populair" checked><span>Populariteit</span>
+                            <input type="radio" name="sorteren" value="popular" checked><span>Populariteit</span>
                         </label>
 
                         <label class="slide">
-                            <input type="radio" name="sorteren" value="titel"><span>Titel</span>
+                            <input type="radio" name="sorteren" value="title"><span>Titel</span>
                         </label>
 
                         <label class="slide">
@@ -121,13 +121,18 @@
                         </label>
 
                         <label class="slide">
-                            <input type="checkbox" name="genre" value="hiphop"
+                            <input type="checkbox" name="genre" value="rap"
                                 onchange="updateCheckboxCount(this)"><span>Hiphop</span>
                         </label>
 
                         <label class="slide">
-                            <input type="checkbox" name="genre" value="nederlands"
+                            <input type="checkbox" name="genre" value="dutch"
                                 onchange="updateCheckboxCount(this)"><span>Nederlands</span>
+                        </label>
+
+                        <label class="slide">
+                            <input type="checkbox" name="genre" value="rock"
+                                onchange="updateCheckboxCount(this)"><span>Rock</span>
                         </label>
                     </div>
                 </section>
@@ -140,8 +145,8 @@
                     </div>
                     <div class="range-slider">
                         <span class="rangeValues"></span>
-                        <input value="100" min="70" max="180" step="1" type="range">
-                        <input value="130" min="70" max="180" step="1" type="range">
+                        <input value="100" min="70" max="180" step="1" type="range" name="bpmMin">
+                        <input value="130" min="70" max="180" step="1" type="range" name="bpmMax">
                     </div>
                 </section>
 

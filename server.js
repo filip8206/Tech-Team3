@@ -36,13 +36,36 @@ app.get('/', async (req,res) => {
   const db = client.db("muve")
   const coll = db.collection("songs")
 
-  const songs = await coll.find().toArray()
-  res.render('index', {songs})
-  console.log(songs)
+  if(Object.keys(req.query).length > 0){
+    const {sorteren} = req.query
+    const key = req.query.key.split(",")
+    const genre = req.query.genre.split(",")
+    let bpm = req.query.bpm.split(",")
+    bpm = [parseInt(bpm[0]), parseInt(bpm[1])]
+    console.log(key, genre, sorteren, bpm)
+
+    let songs = await coll.find({
+      "bpm": { $gte: bpm[0], $lte: bpm[1] },
+      "genre": { $in: Array.isArray(genre) ? genre : [genre] },
+      "key": { $in: Array.isArray(key) ? key : [key] }
+    }).sort({[sorteren]: -1}).toArray()
+    res.render('index', {songs})
+  }else{
+    let songs = await coll.find({}).toArray()
+    res.render('index', {songs})
+  }
 })
 
-app.get('/filterIndex', async (req,res) => {
-  const {sort, genre, tempo, key} = req.body
+app.post('/', async (req,res) => {
+  let genre, key = []
+  genre = req.body.genre
+  if(genre === undefined){genre=["pop", "dutch", "rap", "rock"]}
+  key = req.body.key
+  if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
+  const {sorteren, bpmMin, bpmMax} = req.body
+  const bpm = [bpmMin, bpmMax]
+  const url = `/?key=${key}&genre=${genre}&sorteren=${sorteren}&bpm=${bpm}`
+  res.redirect(url)
 })
 
 app.get('/inloggen', async (req,res) => {
