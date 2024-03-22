@@ -115,6 +115,8 @@ app.get('/profiel', async (req,res) => {
 
 app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
+})
+
 app.get('/', async (req, res) => {
   res.render('index')
   console.log(req.session.userID + ' is ingelogd')
@@ -239,4 +241,3 @@ app.get('/klaar', async (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
 })
-
