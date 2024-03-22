@@ -35,9 +35,10 @@
       
         <section id="grid1" class="list1">
 
-            <a href="matchprofiel">
+            <% for(let i=0; i<users.length; i++) {%>
+            <a href="/matchprofiel?id=<%=users[i]._id%>">
                 <div>
-                    <img class="hoofdfoto" src="./images/binc.jpg"
+                    <img class="hoofdfoto" src="./images/users/<%= users[i]._id %>.jpg"
                         alt="Achtergrondafbeelding">
                     <div>
                         <p>30%</p>
@@ -46,8 +47,8 @@
                 <div class="genres-flex-main">
                     <div class="titel-flex-main">
                         <div>
-                            <h3>Filip Hensels</h3>
-                            <p>House</p>
+                            <h3><%= users[i].name %></h3>
+                            <p><%= users[i].genres[0] %></p>
                         </div>
                         <button class="button-secundair"><img src="./images/iconen/plus.svg"
                             alt="Like"></button>
@@ -55,39 +56,13 @@
                         </div>
                     </div>
                     <div class="grid-mini">
-                        <p>House</p>
-                        <p>Pop</p>
-                        <p>Nederlands</p>
+                        <% for(let j=1; j<3; j++) {%>
+                            <p><%= users[i].genres[j] %></p>
+                        <% } %>
                     </div>
                 </div>
             </a>
-
-            <a href="matchprofiel">
-                <div>
-                    <img class="hoofdfoto" src="./images/binc.jpg"
-                        alt="Achtergrondafbeelding">
-                    <div>
-                        <p>30%</p>
-                    </div>
-                </div>
-                <div class="genres-flex-main">
-                    <div class="titel-flex-main">
-                        <div>
-                            <h3>Filip Hensels</h3>
-                            <p>House</p>
-                        </div>
-                        <button class="button-secundair"><img src="./images/iconen/plus.svg"
-                            alt="Like"></button>
-                        <div>
-                        </div>
-                    </div>
-                    <div class="grid-mini">
-                        <p>House</p>
-                        <p>Pop</p>
-                        <p>Nederlands</p>
-                    </div>
-                </div>
-            </a>
+            <% } %>
 
         </section>
 
