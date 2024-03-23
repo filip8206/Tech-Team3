@@ -37,30 +37,29 @@
 
             <% for(var i=0; i<songs.length; i++) {%>
                 <a href="detail?id=<%= songs[i]._id %>">
-                <div>
-                    <img class="hoofdfoto" src="./images/covers/<%= songs[i].albumId %>.png"
-                        alt="Achtergrondafbeelding">
                     <div>
+                      <img class="hoofdfoto" src="./images/covers/<%= songs[i].albumId %>.png" alt="Achtergrondafbeelding">
+                      <div>
                         <p>30%</p>
+                      </div>
                     </div>
-                </div>
-                <div class="genres-flex-main">
-                    <div class="titel-flex-main">
+                    <div class="genres-flex-main">
+                      <div class="titel-flex-main">
                         <div>
-                            <h3><%= songs[i].title %></h3>
-                            <p><%= songs[i].artist %></p>
+                          <h3><%= songs[i].title %></h3>
+                          <p><%= songs[i].artist %></p>
                         </div>
                         <div>
-                            <img src="./images/iconen/hart.svg" alt="Like">
+                          <img onclick="likeButton()" id="like-btn" src="./images/iconen/hart.svg" alt="Like">
                         </div>
-                    </div>
-                    <div class="grid-mini">
+                      </div>
+                      <div class="grid-mini">
                         <p><%= songs[i].genre %></p>
                         <p><%= songs[i].bpm %></p>
                         <p><%= songs[i].key %></p>
+                      </div>
                     </div>
-                </div>
-            </a>
+                  </a>
             <% } %>
 
         </section>
@@ -203,6 +202,7 @@
 
     <script defer src="./scripts/script.js"></script>
     <script defer src="./scripts/filters.js"></script>
+    <script defer src="./scripts/buttons.js"></script>
 
 </body>
 
