@@ -8,13 +8,14 @@ function likeButton(likeId) {
   likeItem.classList.add('liked'); 
   console.log("Like button werkt");
 
-  event.stopPropagation();
-  event.preventDefault();
+    event.stopPropagation();
+    event.preventDefault();
 
-  likeItem.classList.add("heartbeat");
-  setTimeout(function() {
-    likeItem.classList.remove("heartbeat");
-  }, 1000); 
+    likeItem.classList.add("heartbeat");
+    likeItem.src = "./images/iconen/hart_filled.svg";
+    setTimeout(function() {
+      likeItem.classList.remove("heartbeat");
+    }, 1000); 
 
 
   // URL waar de POST-request naartoe wordt gestuurd
