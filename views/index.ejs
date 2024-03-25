@@ -36,7 +36,7 @@
         <section id="grid1" class="list1">
 
             <% for(var i=0; i<songs.length; i++) {%>
-                <a>
+                <a href="/detail?id=<%= songs[i]._id %>">
                     <div>
                       <img class="hoofdfoto" src="./images/covers/<%= songs[i].albumId %>.png" alt="Achtergrondafbeelding">
                       <div>
