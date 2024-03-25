@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 toggle_sorteer.addEventListener('click', function () {
-  toggle_sorteer.classList.toggle("toggle_icon_arrow_draai");
+  toggle_sorteer.classList.toggle("arrow-draai");
+  
 
   const nummerContainer = document.querySelector("#grid1")
   const nummers = Array.from(nummerContainer.children)

@@ -21,7 +21,7 @@
             <div id="filters">
                 <div>
                     <a id="slide" onclick="toggleFilters()"><button class="filterbutton">Filters</button></a>
-                    <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
+                    <a id="slide"><button id="toggle_sorteer"><img id="toggleIcon_arrow"
                                 src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
 
                 </div>
@@ -36,7 +36,7 @@
         <section id="grid1" class="list1">
 
             <% for(var i=0; i<songs.length; i++) {%>
-                <a href="detail?id=<%= songs[i]._id %>">
+                <a>
                     <div>
                       <img class="hoofdfoto" src="./images/covers/<%= songs[i].albumId %>.png" alt="Achtergrondafbeelding">
                       <div>
@@ -50,7 +50,7 @@
                           <p><%= songs[i].artist %></p>
                         </div>
                         <div>
-                          <img onclick="likeButton()" id="like-btn" src="./images/iconen/hart.svg" alt="Like">
+                          <img id="<%= songs[i]._id %>" onclick="likeButton('<%= songs[i]._id %>')" src="./images/iconen/hart.svg" alt="Like">
                         </div>
                       </div>
                       <div class="grid-mini">

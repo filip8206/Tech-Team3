@@ -4,10 +4,11 @@
 
 /* GRID VIEW */
 
-.toggle_icon_arrow_draai {
-	transform: rotate(-5.5turn);
-	transition: transform 3.25s ease-in-out;
+.arrow-draai {
+	transform: rotate(-0.5turn);
+	transition: transform 0.25s ease-in-out;
 }
+
 
 
 .grid1 {
