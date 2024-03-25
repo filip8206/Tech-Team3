@@ -1,6 +1,5 @@
 console.log("Script: Buttons");
 
-const likeImg = document.querySelector('.like-animatie');
 
 
 function likeButton(likeId) {

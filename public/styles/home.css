@@ -152,6 +152,7 @@ a:hover .titel-flex-main h3 {
 	background-color: var(--tekst-licht);
 	display: flex;
 	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 
