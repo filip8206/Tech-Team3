@@ -1,20 +1,19 @@
 console.log("Script: Buttons");
 
-const svgImg = document.querySelector('.like-animatie');
-
+const likeImg = document.querySelector('.like-animatie');
 
 
 function likeButton(likeId) {
     const likeItem = document.getElementById(likeId);
-    likeItem.classList.add('heartBeat'); 
+    likeItem.classList.add('liked'); 
     console.log("Like button werkt");
 
     event.stopPropagation();
     event.preventDefault();
 
-    likeItem.classList.add("heartBeat");
+    likeItem.classList.add("heartbeat");
     setTimeout(function() {
-      likeItem.classList.remove("heartBeat");
+      likeItem.classList.remove("heartbeat");
     }, 1000); 
 
   }
