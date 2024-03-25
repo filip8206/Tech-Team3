@@ -19,6 +19,7 @@
 	justify-content: space-around;
 	max-width: var(--maxwidth);
 	margin: auto;
+	text-transform: capitalize;
 }
 
 .grid1>a {
@@ -139,6 +140,7 @@ a:hover .titel-flex-main h3 {
 	justify-content: space-around;
 	max-width: var(--maxwidth);
 	margin: auto;
+	text-transform: capitalize;
 }
 
 .list1>a {
@@ -212,7 +214,6 @@ a:hover .titel-flex-main h3 {
 	justify-content: space-between;
 	padding: 0.5em;
 	flex-grow: 2;
-	text-transform: capitalize;
 }
 
 .genres-flex-main div:nth-of-type(2) {
