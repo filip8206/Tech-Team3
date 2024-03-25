@@ -58,7 +58,10 @@ img {
 --tekst-donker: black;
 
 --achtergrond-licht: #F6F0FF;
---achtergrond-donker: #232323;
+--achtergrond-donker: #3e2339;
+
+--container-licht: white;
+--container-donker: black;
 
 --box-licht: white;
 --box-donker: black;
@@ -93,6 +96,7 @@ p {
 h1 {
 	font-family: 'Outfit';
 	font-size: 40px;
+	color: var(--tekst-donker);
 }
 
 h2 {
@@ -331,3 +335,20 @@ input[type="name"] {
 	Registreren
 ////////////////////////// */
 
+@media (prefers-color-scheme: dark) {
+
+	:root {
+		--achtergrond-licht: var(--achtergrond-donker);
+		--container-licht: var(--container-donker);
+		--tekst-donker: var(--tekst-licht);
+	}
+
+	.titel-flex-main div img {
+		filter: invert(100%); /* Inverteer de kleuren (van zwart naar wit) */
+	}
+
+	#filters img {
+		filter: invert(100%); /* Inverteer de kleuren (van zwart naar wit) */
+
+	}
+  }
