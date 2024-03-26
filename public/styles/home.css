@@ -245,13 +245,12 @@ a:hover .titel-flex-main h3 {
 }
 
 .titel-flex-main svg path {
-	fill: transparent;
-	stroke: black;
-	stroke-width: 2px;
+	stroke-width: 1.5px;
 }
 
 .liked path {
 	fill: red;
+	stroke: red;
 }
 
 .list1 .genres-flex-main {

@@ -14,7 +14,6 @@ function likeButton(likeId) {
     event.preventDefault();
 
     likeItem.classList.add("heartbeat");
-    likeItem.src = "./images/iconen/hart_filled.svg";
     setTimeout(function () {
       likeItem.classList.remove("heartbeat");
     }, 1000);
@@ -63,7 +62,6 @@ function likeButton(likeId) {
     event.preventDefault();
 
     likeItem.classList.add("heartbeat-remove");
-    likeItem.src = "./images/iconen/hart.svg";
     setTimeout(function () {
       likeItem.classList.remove("heartbeat-remove");
     }, 1000);
