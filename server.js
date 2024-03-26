@@ -58,8 +58,15 @@ let incorrect
 
 app.get('/', async (req,res) => {
   const db = client.db("muve")
-  const coll = db.collection("songs")
+  const songColl = db.collection("songs")
+  const userColl = db.collection("users")
+  const userID = "65f85a70bc8844d354d4b8f2"
 
+  //likes ophalen
+  const user = await userColl.findOne({_id: new ObjectId(userID)})
+  const likes = user.likes
+
+  //nummers ophalen + pagina renderen
   if(Object.keys(req.query).length > 0){
     const {sorteren} = req.query
     const key = req.query.key.split(",")
@@ -68,15 +75,15 @@ app.get('/', async (req,res) => {
     bpm = [parseInt(bpm[0]), parseInt(bpm[1])]
     console.log(key, genre, sorteren, bpm)
 
-    let songs = await coll.find({
+    let songs = await songColl.find({
       "bpm": { $gte: bpm[0], $lte: bpm[1] },
       "genre": { $in: Array.isArray(genre) ? genre : [genre] },
       "key": { $in: Array.isArray(key) ? key : [key] }
     }).sort({[sorteren]: -1}).toArray()
-    res.render('index', {songs})
+    res.render('index', {songs, likes})
   }else{
-    let songs = await coll.find({}).toArray()
-    res.render('index', {songs})
+    let songs = await songColl.find({}).toArray()
+    res.render('index', {songs, likes})
   }
 })
 
