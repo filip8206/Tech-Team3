@@ -99,6 +99,13 @@ app.post('/', async (req,res) => {
 app.post('/likePost', async (req, res) => {
   const {userID, songID} = req.body
   console.log("userID: " + userID + "    songID: " + songID)
+
+  //like aan de user toevoegen
+  const db = client.db("muve")
+  const coll = db.collection("songs")
+
+  //like aan het nummer toevoegen
+
 })
 
 app.get('/inloggen', async (req,res) => {
