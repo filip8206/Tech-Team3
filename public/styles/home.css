@@ -94,7 +94,7 @@
 	scale: 1.025;
 }
 
-a:hover .titel-flex-main div img {
+a:hover .titel-flex-main div svg {
 	transform: rotate(-0.015turn);
 	scale: 1.025;
 	transition: transform 0.25s ease-in-out, scale 0.25s ease-in-out;
