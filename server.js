@@ -98,14 +98,15 @@ app.post('/', async (req,res) => {
 
 app.post('/likePost', async (req, res) => {
   const {userID, songID} = req.body
-  console.log("userID: " + userID + "    songID: " + songID)
+  const db = client.db("muve")
+  const coll = db.collection("users")
+  const songColl = db.collection("songs")
 
   //like aan de user toevoegen
-  const db = client.db("muve")
-  const coll = db.collection("songs")
+  await coll.updateOne({_id: new ObjectId(userID)}, { $push: {likes: songID}})
 
   //like aan het nummer toevoegen
-
+  await songColl.updateOne({_id: new ObjectId(songID)}, { $push: {likes: userID}})
 })
 
 app.get('/inloggen', async (req,res) => {
