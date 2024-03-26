@@ -50,7 +50,8 @@
                           <p><%= songs[i].artist %></p>
                         </div>
                         <div>
-                          <img id="<%= songs[i]._id %>" onclick="likeButton('<%= songs[i]._id %>')" src="./images/iconen/hart.svg" alt="Like">
+                            <img id="<%= songs[i]._id %>" onclick="likeButton('<%= songs[i]._id %>')" src="./images/iconen/hart.svg" alt="Like" 
+                            class="<% for(var j=0; j<likes.length; j++) { if(likes[j] == songs[i]._id){ %>liked<% }} %>">
                         </div>
                       </div>
                       <div class="grid-mini">
