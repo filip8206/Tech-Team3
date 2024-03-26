@@ -351,4 +351,13 @@ input[type="name"] {
 		filter: invert(100%); /* Inverteer de kleuren (van zwart naar wit) */
 
 	}
+
+	.titel-flex-main svg path {
+		stroke-width: 1.5px;
+		stroke: white;
+	}
+
+	.titel-flex-main .liked path {
+		stroke: red;
+	}
   }
