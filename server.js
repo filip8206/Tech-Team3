@@ -96,6 +96,11 @@ app.post('/', async (req,res) => {
   }
 })
 
+app.post('/likePost', async (req, res) => {
+  const {userID, songID} = req.body
+  console.log("userID: " + userID + "    songID: " + songID)
+})
+
 app.get('/inloggen', async (req,res) => {
   let incorrect
   res.render('inloggen', {incorrect})

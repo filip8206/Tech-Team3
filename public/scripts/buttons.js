@@ -18,11 +18,12 @@ function likeButton(likeId) {
 
 
   // URL waar de POST-request naartoe wordt gestuurd
-  const url = 'localhost:9000/';
+  const url = 'http://localhost:9000/likePost';
 
   // De gegevens die je wilt verzenden (in JSON-formaat)
   const data = {
-    test: "dit is een testbericht"
+    songID: likeId,
+    userID: "65f85a70bc8844d354d4b8f2"
   };
 
   // Instellingen voor het POST-verzoek
@@ -40,7 +41,7 @@ function likeButton(likeId) {
       if (!response.ok) {
         throw new Error('Netwerkrespons was niet ok');
       }
-      return response.json(); // Lees de JSON van de respons
+      return response.text(); // Lees de JSON van de respons
     })
     .then(data => {
       console.log('Response ontvangen:', data);
