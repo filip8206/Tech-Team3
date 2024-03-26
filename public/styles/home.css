@@ -238,9 +238,20 @@ a:hover .titel-flex-main h3 {
 	margin-top: 0.25em;
 }
 
-.titel-flex-main img {
-	width: 25px;
+.titel-flex-main svg {
+	width: 30px;
+	height: 30px;
 	transition: transform 0.25s ease-in-out, scale 0.25s ease-in-out;
+}
+
+.titel-flex-main svg path {
+	fill: transparent;
+	stroke: black;
+	stroke-width: 2px;
+}
+
+.liked path {
+	fill: red;
 }
 
 .list1 .genres-flex-main {
