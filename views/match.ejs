@@ -50,8 +50,7 @@
                             <h3><%= users[i].name %></h3>
                             <p><%= users[i].genres[0] %></p>
                         </div>
-                        <button class="button-secundair"><img src="./images/iconen/plus.svg"
-                            alt="Like"></button>
+                        <img id="<%= users[i]._id %>" onclick="likeButton('<%= users[i]._id %>')" src="./images/iconen/hart.svg" alt="Like">
                         <div>
                         </div>
                     </div>

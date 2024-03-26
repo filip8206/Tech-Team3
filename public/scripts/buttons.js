@@ -71,3 +71,49 @@ function likeButton(likeId) {
   }
 }
 
+
+
+
+
+
+
+
+console.log("Script: Buttons");
+
+
+
+function likeButton(likeId) {
+  const likeItem = document.getElementById(likeId);
+
+  // Controleer of de class "liked" nog niet is toegevoegd aan likeItem
+  if (!likeItem.classList.contains('follow')) {
+    likeItem.classList.add('follow');
+    console.log("Volg button werkt");
+
+    event.stopPropagation();
+    event.preventDefault();
+
+    likeItem.classList.add("volgen");
+    setTimeout(function () {
+      likeItem.classList.remove("volgen");
+    }, 1000);
+  } 
+  
+  
+  else {
+    likeItem.classList.remove('follow');
+    console.log("Unfollow button werkt");
+
+    event.stopPropagation();
+    event.preventDefault();
+
+    likeItem.classList.add("heartbeat-remove");
+    likeItem.src = "./images/iconen/hart.svg";
+    setTimeout(function () {
+      likeItem.classList.remove("heartbeat-remove");
+    }, 1000);
+
+  }
+}
+
+
