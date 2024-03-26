@@ -102,17 +102,30 @@ a:hover .titel-flex-main div img {
 }
 
 @keyframes heartBeat {
-    0% {
-        transform: scale(1), rotate(0.045turn);
+	0% {
+		transform: perspective(400px) rotateY(0);
+		animation-timing-function: ease-out;
 		filter: hue-rotate(0deg); /* Roteer de kleur met 120 graden (rood) op hover */
-    }
-    50% {
-        transform: scale(1.3); /* Roteer de kleur met 120 graden (rood) op hover */
-    }
-    100% {
-        transform: scale(1), rotate(-0.045turn);
+
+	}
+	40% {
+		transform: perspective(400px) translateZ(150px) rotateY(170deg);
+		animation-timing-function: ease-out;
+	}
+	50% {
+		transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+		animation-timing-function: ease-in;
+	}
+	80% {
+		transform: perspective(400px) rotateY(0) scale(.95);
+		animation-timing-function: ease-in;
+	}
+	100% {
+		transform: perspective(400px) scale(1);
+		animation-timing-function: ease-in;
 		filter: hue-rotate(360deg); /* Roteer de kleur met 120 graden (rood) op hover */
-    }
+
+	}
 }
 
 .heartbeat {
@@ -122,6 +135,21 @@ a:hover .titel-flex-main div img {
 
 .liked {
 	fill: red;
+}
+
+@keyframes heartBeat-remove {
+	0% { transform: translateX(0%); }
+	15% { transform: translateX(-25%) rotate(-5deg); }
+	30% { transform: translateX(20%) rotate(3deg); }
+	45% { transform: translateX(-15%) rotate(-3deg); }
+	60% { transform: translateX(10%) rotate(2deg); }
+	75% { transform: translateX(-5%) rotate(-1deg); }
+	100% { transform: translateX(0%); }
+}
+
+.heartbeat-remove {
+	animation: heartBeat-remove 0.8s ease-in-out;
+
 }
 
 
