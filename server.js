@@ -50,12 +50,10 @@ const upload = multer({ storage: storage })
 
 console.log('Server gestart');
 
-//foutmeldingen
-let incorrect
+//alle genres
+const alleGenres = ["pop", "nederlands", "rap", "rock", "house"]
 
 // Routes
-
-
 app.get('/', async (req,res) => {
   const db = client.db("muve")
   const songColl = db.collection("songs")
@@ -88,19 +86,15 @@ app.get('/', async (req,res) => {
 })
 
 app.post('/', async (req,res) => {
-  if(Object.keys(req.body).length > 1){
-    console.log(req.body.test)
-  } else {
-    let genre, key = []
-    genre = req.body.genre
-    if(genre === undefined){genre=["pop", "nederlands", "rap", "rock", "house"]}
-    key = req.body.key
-    if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
-    const {sorteren, bpmMin, bpmMax} = req.body
-    const bpm = [bpmMin, bpmMax]
-    const url = `/?key=${key}&genre=${genre}&sorteren=${sorteren}&bpm=${bpm}`
-    res.redirect(url)
-  }
+  let genre, key = []
+  genre = req.body.genre
+  if(genre === undefined){genre=alleGenres}
+  key = req.body.key
+  if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
+  const {sorteren, bpmMin, bpmMax} = req.body
+  const bpm = [bpmMin, bpmMax]
+  const url = `/?key=${key}&genre=${genre}&sorteren=${sorteren}&bpm=${bpm}`
+  res.redirect(url)
 })
 
 app.post('/likePost', async (req, res) => {
@@ -109,10 +103,10 @@ app.post('/likePost', async (req, res) => {
   const coll = db.collection("users")
   const songColl = db.collection("songs")
 
-  //like aan de user toevoegen
+  //like aan de user db toevoegen
   await coll.updateOne({_id: new ObjectId(userID)}, { $push: {likes: songID}})
 
-  //like aan het nummer toevoegen
+  //like aan de nummer db toevoegen
   await songColl.updateOne({_id: new ObjectId(songID)}, { $push: {likes: userID}})
 })
 
@@ -122,10 +116,10 @@ app.post('/unlikePost', async (req, res) => {
   const coll = db.collection("users")
   const songColl = db.collection("songs")
 
-  //like aan de user toevoegen
+  //like van de user db verweideren
   await coll.updateOne({_id: new ObjectId(userID)}, { $pull: {likes: songID}})
 
-  //like aan het nummer toevoegen
+  //like van de nummer db verweideren
   await songColl.updateOne({_id: new ObjectId(songID)}, { $pull: {likes: userID}})
 })
 
@@ -146,10 +140,24 @@ app.get('/match', async (req,res) => {
   const db = client.db("muve")
   const coll = db.collection("users")
 
-  const users = await coll.find({}).toArray()
-  console.log(users)
+  if(Object.keys(req.query).length > 0){
+    const {sorteren} = req.query
+    const genre = req.query.genre.split(",")
 
-  res.render('match', {users})
+    const users = await coll.find({genre: { $in: Array.isArray(genre) ? genre : [genre] }}).sort({[sorteren]: -1}).toArray()
+    console.log("de gebruikers zijn: " + users)
+    res.render('match', {users})
+  } else {
+    const users = await coll.find({}).toArray()
+    res.render('match', {users})
+  }
+})
+
+app.post('/match', async (req,res) => {
+  const {sorteren, genre} = req.body
+  if(!genre){genre = alleGenres}
+  const url = `/match/?sorteren=${sorteren}&genre=${genre}`
+  res.redirect(url)
 })
 
 app.get('/matchprofiel', async (req,res) => {
