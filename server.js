@@ -133,7 +133,11 @@ app.get('/detail', async (req,res) => {
   const db = client.db("muve")
   const coll = db.collection("songs")
   const song = await coll.findOne({_id: new ObjectId(songID)})
-  res.render('detail', {song})
+
+  //id ophalen uit storage
+  const userID = "65f85a70bc8844d354d4b8f2"
+
+  res.render('detail', {song, userID})
 })
 
 app.get('/match', async (req,res) => {
