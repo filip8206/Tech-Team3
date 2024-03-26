@@ -248,6 +248,18 @@ a:hover .titel-flex-main h3 {
 	stroke-width: 1.5px;
 }
 
+
+.detail-flex svg {
+	width: 30px;
+	height: 30px;
+	transition: transform 0.25s ease-in-out, scale 0.25s ease-in-out;
+}
+
+.detail-flex svg path {
+	stroke-width: 1.5px;
+}
+
+
 .liked path {
 	fill: red;
 	stroke: red;

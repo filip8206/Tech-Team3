@@ -31,7 +31,7 @@
                         <h1><%= song.title %></h1>
                         <p><%= song.artist %></p>
                     </div>
-                    <div>
+                    <div class="detail-flex">
                         <p><%= song.likes.length %></p>
                         <svg id="<%= song._id %>" onclick="likeButton('<%= song._id %>')"
                             src="./images/iconen/hart_filled.svg" alt="Like"
