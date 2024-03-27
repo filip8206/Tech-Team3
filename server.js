@@ -172,6 +172,11 @@ app.get('/profiel', async (req,res) => {
   res.render('profiel')
 })
 
+app.get('/chat', async (req,res) => {
+  res.render('chat')
+})
+
+
 app.post('/login', async (req,res) => {
   const db = client.db("DatabaseTechTest")
 })

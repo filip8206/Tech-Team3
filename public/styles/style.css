@@ -235,6 +235,46 @@ header > div:first-of-type {
 }
 
 
+/* KNOPPEN */
+
+.ga-terug {
+	margin-top: 1em;
+	/* background-color: red; */
+	max-width: var(--maxwidth);
+	margin: auto;
+	padding: 1em;
+}
+
+.button-secundair {
+	border: black solid 2px;
+	border-radius: 10px;
+	padding: 0.5em;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 0.75em;
+	font-size: 16px;
+	transition: scale 0.25s ease-in-out;
+	cursor: pointer;
+}
+
+.button-secundair:hover {
+	border-color: var(--accent1);
+	scale: 1.025;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+
+
 /* //////////////////////////
 	Inloggen
 ////////////////////////// */
