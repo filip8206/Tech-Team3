@@ -55,6 +55,9 @@ const alleGenres = ["pop", "nederlands", "rap", "rock", "house"]
 
 // Routes
 app.get('/', async (req,res) => {
+  if(req.session.userID){
+    res.redirect('/inloggen')
+  } else{
   const db = client.db("muve")
   const songColl = db.collection("songs")
   const userColl = db.collection("users")
@@ -82,6 +85,7 @@ app.get('/', async (req,res) => {
   }else{
     let songs = await songColl.find({}).toArray()
     res.render('index', {songs, likes})
+  }
   }
 })
 
@@ -128,35 +132,44 @@ app.post('/unlikePost', async (req, res) => {
   await songColl.updateOne({_id: new ObjectId(songID)}, { $pull: {likes: userID}})
 })
 
+
+////////// NUMMERS DETAILPAGINA
+
 app.get('/detail', async (req,res) => {
-  const songID = req.query.id
-  const db = client.db("muve")
-  const coll = db.collection("songs")
-  const song = await coll.findOne({_id: new ObjectId(songID)})
+  if(req.session.userID){
+    res.redirect('/inloggen')
+  } else{
+    const songID = req.query.id
+    const db = client.db("muve")
+    const coll = db.collection("songs")
+    const song = await coll.findOne({_id: new ObjectId(songID)})
+    const userID = req.session.userID
 
-  //id ophalen uit storage
-  const userID = req.session.userID
-
-  res.render('detail', {song, userID})
+    res.render('detail', {song, userID})
+  }
 })
 
 
 ////////// MATCHES
 
 app.get('/match', async (req,res) => {
-  const db = client.db("muve")
-  const coll = db.collection("users")
+  if(req.session.userID){
+    res.redirect('/inloggen')
+  } else{
+    const db = client.db("muve")
+    const coll = db.collection("users")
 
-  if(Object.keys(req.query).length > 0){
-    const {sorteren} = req.query
-    const genre = req.query.genre.split(",")
+    if(Object.keys(req.query).length > 0){
+      const {sorteren} = req.query
+      const genre = req.query.genre.split(",")
 
-    const users = await coll.find({genre: { $in: Array.isArray(genre) ? genre : [genre] }}).sort({[sorteren]: -1}).toArray()
-    console.log("de gebruikers zijn: " + users)
-    res.render('match', {users})
-  } else {
-    const users = await coll.find({}).toArray()
-    res.render('match', {users})
+      const users = await coll.find({genre: { $in: Array.isArray(genre) ? genre : [genre] }}).sort({[sorteren]: -1}).toArray()
+      console.log("de gebruikers zijn: " + users)
+      res.render('match', {users})
+    } else {
+      const users = await coll.find({}).toArray()
+      res.render('match', {users})
+    }
   }
 })
 
@@ -169,20 +182,32 @@ app.post('/match', async (req,res) => {
 })
 
 app.get('/matchprofiel', async (req,res) => {
-  res.render('matchprofiel')
+  if(req.session.userID){
+    res.redirect('/inloggen')
+  } else{
+    res.render('matchprofiel')
+  }
 })
 
 app.get('/profiel', async (req,res) => {
-  const userID = req.session.userID
-  const db = client.db("muve")
-  const coll = db.collection("users")
-  const user = await coll.findOne({_id: new ObjectId(userID)})
-  console.log(user)
-  res.render('profiel', {user})
+  if(req.session.userID){
+    res.redirect('/inloggen')
+  } else{
+    const userID = req.session.userID
+    const db = client.db("muve")
+    const coll = db.collection("users")
+    const user = await coll.findOne({_id: new ObjectId(userID)})
+    console.log(user)
+    res.render('profiel', {user})
+  }
 })
 
 app.get('/chat', async (req,res) => {
-  res.render('chat')
+  if(req.session.userID){
+    res.redirect('/inloggen')
+  } else{
+    res.render('chat')
+  }
 })
 
 
@@ -206,6 +231,7 @@ app.post('/login', async (req,res) => {
     if(result === true){
       console.log('gegevens kloppen')
       req.session.email = user.email
+      req.session.userID = user._id
       if (req.session.redirect) {
         console.log('redirect naar ' + req.session.redirect)
         res.redirect(req.session.redirect)
