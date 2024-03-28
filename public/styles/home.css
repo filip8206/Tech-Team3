@@ -974,6 +974,37 @@ input[type="file"] {
 
 
 
+/* POPUP */
+
+.profiel-aanpassen.goed {
+    background: linear-gradient(140deg, #007aff -75%, var(--accent1) 100%);
+	color: white;
+	animation: popup-account 1s ease infinite alternate;
+	background-size: 100% 100%
+}
+
+.profiel-aanpassen.goed h2 {
+	color: white;
+}
+
+.popup-goed h2 {
+	font-size: 20px;
+}
+
+@keyframes popup-account {
+	0% {
+		background-position: 0% 50%; /* Startpositie van de gradiënt */
+		scale: 1;
+	}
+
+	100% {
+		background-position: 100% 100%; /* Startpositie van de gradiënt */
+		scale: 1.015;
+	}
+}
+  
+
+
 
 @media screen and (min-width: 800px) {
 
