@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/chat.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="conversation-partner">
+                <div class="chevron"><a href="#" onclick="history.back(); return false;"><img src="./images/iconen/chevron.left.svg" alt="Profile Picture"></a></div>
+                <img src="./images/binc.jpg" alt="Profile Picture">
+                <h2>Designer</h2>
+            </div>
+        </div>
+
+        <div class="chatbox" id="chat-box">
+            <div class="receive">
+                Goedemorgen! Hoe gaat het met je? Heb je nog vragen over het ontwerp van de website?
+            </div>
+            <div class="send">
+                Hey! Het gaat goed, bedankt voor het vragen. Ik had eigenlijk een vraag over de lay-out van de
+                startpagina.
+            </div>
+            <div class="send">
+                Zou je me daarbij kunnen helpen?
+            </div>
+            <div class="receive">
+                Natuurlijk🤩 ik help je graag! Wat specifiek wil je aanpassen aan de lay-out van de stapagina?
+            </div>
+            <div class="receive">
+                Startpagina*
+            </div>
+
+            <div class="receive">
+                Goedemorgen! Hoe gaat het met je? Heb je nog vragen over het ontwerp van de website?
+            </div>
+            <div class="send">
+                Hey! Het gaat goed, bedankt voor het vragen. Ik had eigenlijk een vraag over de lay-out van de
+                startpagina.
+            </div>
+            <div class="send">
+                Zou je me daarbij kunnen helpen?
+            </div>
+            <div class="receive">
+                Natuurlijk🤩 ik help je graag! Wat specifiek wil je aanpassen aan de lay-out van de stapagina?
+            </div>
+            <div class="receive">
+                Startpagina*
+            </div>
+        </div>
+
+        <div>
+            <form class="input-container">
+            <input type="text" id="message-input" class="message-input" placeholder="Verstuur bericht...">
+            <button type="submit" class="send-button">Verstuur</button>
+        </form>
+        </div>
+    </div>
+    <script src="chat.js"></script>
+</body>
+
+</html>

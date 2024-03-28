@@ -21,7 +21,7 @@
             <div id="filters">
                 <div>
                     <a id="slide" onclick="toggleFilters()"><button class="filterbutton">Filters</button></a>
-                    <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
+                    <a id="slide"><button id="toggle_sorteer"><img id="toggleIcon_arrow"
                                 src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
 
                 </div>
@@ -36,7 +36,7 @@
         <section id="grid1" class="list1">
 
             <% for(var i=0; i<songs.length; i++) {%>
-                <a href="detail?id=<%= songs[i]._id %>">
+            <a href="/detail?id=<%= songs[i]._id %>">
                 <div>
                     <img class="hoofdfoto" src="./images/covers/<%= songs[i].albumId %>.png"
                         alt="Achtergrondafbeelding">
@@ -51,13 +51,23 @@
                             <p><%= songs[i].artist %></p>
                         </div>
                         <div>
-                            <img src="./images/iconen/hart.svg" alt="Like">
+                            <svg id="<%= songs[i]._id %>" onclick="likeButton('<%= songs[i]._id %>')"
+                                src="./images/iconen/hart_filled.svg" alt="Like"
+                                class="<% for(var j=0; j<likes.length; j++) { if(likes[j] == songs[i]._id){ %>liked<% }} %>"
+                                width="32px" height="32px" viewBox="0 0 24.00 24.00" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" stroke="#000000"
+                                stroke-width="0.00024000000000000003">
+
+                                <path
+                                    d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"
+                                    fill="none" />
+                            </svg>
                         </div>
                     </div>
                     <div class="grid-mini">
-                        <p>Pop</p>
-                        <p>120BPM</p>
-                        <p>G</p>
+                        <p><%= songs[i].genre %></p>
+                        <p><%= songs[i].bpm %></p>
+                        <p><%= songs[i].key %></p>
                     </div>
                 </div>
             </a>
@@ -101,7 +111,7 @@
                 <section>
                     <div class="popup-flex">
                         <h4>Genre</h4>
-                        <p class="checkboxCount">0/5</p>
+                        <p class="checkboxCount">0/6</p>
                     </div>
                     <div class="filterSection" id="carrousel">
 
@@ -126,7 +136,7 @@
                         </label>
 
                         <label class="slide">
-                            <input type="checkbox" name="genre" value="dutch"
+                            <input type="checkbox" name="genre" value="nederlands"
                                 onchange="updateCheckboxCount(this)"><span>Nederlands</span>
                         </label>
 
@@ -145,8 +155,8 @@
                     </div>
                     <div class="range-slider">
                         <span class="rangeValues"></span>
-                        <input value="100" min="70" max="180" step="1" type="range" name="bpmMin">
-                        <input value="130" min="70" max="180" step="1" type="range" name="bpmMax">
+                        <input value="70" min="70" max="180" step="1" type="range" name="bpmMin">
+                        <input value="180" min="70" max="180" step="1" type="range" name="bpmMax">
                     </div>
                 </section>
 
@@ -203,6 +213,7 @@
 
     <script defer src="./scripts/script.js"></script>
     <script defer src="./scripts/filters.js"></script>
+    <script defer src="./scripts/buttons.js"></script>
 
 </body>
 

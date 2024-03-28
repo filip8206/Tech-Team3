@@ -1,9 +1,9 @@
 require('dotenv').config()
 
 const express = require('express')
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 const app = express()
 const session = require('express-session')
-const { MongoClient, ServerApiVersion } = require('mongodb')
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=techteam3`;
 
 //const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_NAME}`
@@ -50,16 +50,21 @@ const upload = multer({ storage: storage })
 
 console.log('Server gestart');
 
-//foutmeldingen
-let incorrect
+//alle genres
+const alleGenres = ["pop", "nederlands", "rap", "rock", "house"]
 
 // Routes
-
-
 app.get('/', async (req,res) => {
   const db = client.db("muve")
-  const coll = db.collection("songs")
+  const songColl = db.collection("songs")
+  const userColl = db.collection("users")
+  const userID = req.session.userID
 
+  //likes ophalen
+  const user = await userColl.findOne({_id: new ObjectId(userID)})
+  const likes = user.likes
+
+  //nummers ophalen + pagina renderen
   if(Object.keys(req.query).length > 0){
     const {sorteren} = req.query
     const key = req.query.key.split(",")
@@ -68,22 +73,23 @@ app.get('/', async (req,res) => {
     bpm = [parseInt(bpm[0]), parseInt(bpm[1])]
     console.log(key, genre, sorteren, bpm)
 
-    let songs = await coll.find({
+    let songs = await songColl.find({
       "bpm": { $gte: bpm[0], $lte: bpm[1] },
       "genre": { $in: Array.isArray(genre) ? genre : [genre] },
       "key": { $in: Array.isArray(key) ? key : [key] }
     }).sort({[sorteren]: -1}).toArray()
-    res.render('index', {songs})
+    res.render('index', {songs, likes})
   }else{
-    let songs = await coll.find({}).toArray()
-    res.render('index', {songs})
+    let songs = await songColl.find({}).toArray()
+    res.render('index', {songs, likes})
   }
 })
 
+// filteren van home
 app.post('/', async (req,res) => {
   let genre, key = []
   genre = req.body.genre
-  if(genre === undefined){genre=["pop", "dutch", "rap", "rock"]}
+  if(genre === undefined){genre=alleGenres}
   key = req.body.key
   if(key === undefined){key=["a", "b", "c", "d", "e", "f", "g"]}
   const {sorteren, bpmMin, bpmMax} = req.body
@@ -92,17 +98,74 @@ app.post('/', async (req,res) => {
   res.redirect(url)
 })
 
-app.get('/inloggen', async (req,res) => {
-  let incorrect
-  res.render('inloggen', {incorrect})
+// een post liken
+app.post('/likePost', async (req, res) => {
+  const songID = req.body.songID
+  const userID = req.session.userID
+  const db = client.db("muve")
+  const coll = db.collection("users")
+  const songColl = db.collection("songs")
+
+  //like aan de user db toevoegen
+  await coll.updateOne({_id: new ObjectId(userID)}, { $push: {likes: songID}})
+
+  //like aan de nummer db toevoegen
+  await songColl.updateOne({_id: new ObjectId(songID)}, { $push: {likes: userID}})
+})
+
+// een post unliken
+app.post('/unlikePost', async (req, res) => {
+  const songID = req.body.songID
+  const userID = req.session.userID
+  const db = client.db("muve")
+  const coll = db.collection("users")
+  const songColl = db.collection("songs")
+
+  //like van de user db verweideren
+  await coll.updateOne({_id: new ObjectId(userID)}, { $pull: {likes: songID}})
+
+  //like van de nummer db verweideren
+  await songColl.updateOne({_id: new ObjectId(songID)}, { $pull: {likes: userID}})
 })
 
 app.get('/detail', async (req,res) => {
-  res.render('detail')
+  const songID = req.query.id
+  const db = client.db("muve")
+  const coll = db.collection("songs")
+  const song = await coll.findOne({_id: new ObjectId(songID)})
+
+  //id ophalen uit storage
+  const userID = req.session.userID
+
+  res.render('detail', {song, userID})
 })
 
+
+////////// MATCHES
+
 app.get('/match', async (req,res) => {
-  res.render('match')
+  const db = client.db("muve")
+  const coll = db.collection("users")
+
+  if(Object.keys(req.query).length > 0){
+    const {sorteren} = req.query
+    const genre = req.query.genre.split(",")
+
+    const users = await coll.find({genre: { $in: Array.isArray(genre) ? genre : [genre] }}).sort({[sorteren]: -1}).toArray()
+    console.log("de gebruikers zijn: " + users)
+    res.render('match', {users})
+  } else {
+    const users = await coll.find({}).toArray()
+    res.render('match', {users})
+  }
+})
+
+// matches filteren
+app.post('/match', async (req,res) => {
+  const {sorteren, genre} = req.body
+  if(!genre){genre = alleGenres}
+  const url = `/match/?sorteren=${sorteren}&genre=${genre}`
+  res.redirect(url)
 })
 
 app.get('/matchprofiel', async (req,res) => {
@@ -110,14 +173,24 @@ app.get('/matchprofiel', async (req,res) => {
 })
 
 app.get('/profiel', async (req,res) => {
-  res.render('profiel')
+  const userID = req.session.userID
+  const db = client.db("muve")
+  const coll = db.collection("users")
+  const user = await coll.findOne({_id: new ObjectId(userID)})
+  console.log(user)
+  res.render('profiel', {user})
 })
 
-app.get('/', async (req, res) => {
-  res.render('index')
-  console.log(req.session.userID + ' is ingelogd')
+app.get('/chat', async (req,res) => {
+  res.render('chat')
 })
 
+
+////////// INLOGGEN
+
+app.get('/inloggen', async (req,res) => {
+  res.render('inloggen')
+})
 
 app.post('/login', async (req,res) => {
   const db = client.db("muve")
@@ -145,7 +218,9 @@ app.post('/login', async (req,res) => {
   }
 })
 
+
 ////////// Registreren
+
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
 })
@@ -203,7 +278,9 @@ app.post('/registreer', async (req, res) => {
   }
 })
 
+
 ////////// Profiel aanmaken
+
 app.get('/profiel-aanmaken', async (req, res) => {
   const email = req.session.email
   console.log ('user ' + email)
