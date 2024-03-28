@@ -176,11 +176,6 @@ app.get('/chat', async (req,res) => {
   res.render('chat')
 })
 
-
-app.post('/login', async (req,res) => {
-  const db = client.db("DatabaseTechTest")
-})
-
 app.get('/', async (req, res) => {
   res.render('index')
   console.log(req.session.userID + ' is ingelogd')
