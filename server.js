@@ -203,18 +203,43 @@ app.get('/profiel', async (req,res) => {
     const db = client.db("muve")
     const coll = db.collection("users")
     const user = await coll.findOne({_id: new ObjectId(userID)})
-    console.log(user)
     res.render('profiel', {user})
   }
 })
+
+
+////////// CHAT
 
 app.get('/inbox', async (req,res) => {
   if(!req.session.userID){
     req.session.redirect = '/inbox'
     res.redirect('/inloggen')
   } else{
-    res.render('inbox')
+    const userID = req.session.userID
+    const db = client.db("muve")
+    const coll = db.collection("chats")
+    // const chatOverzicht = await coll.find({users: new ObjectId(userID)}).toArray
+    const chat = await coll.findOne({users: userID})
+    let volgorde = ["receive", "send"]
+    req.session.chatID = chat._id
+    if(chat.users[0] === userID){
+      volgorde.reverse()
+      req.session.chatUser = 0
+    } else {req.session.chatUser = 1}
+    console.log(chat, volgorde)
+    res.render('inbox', {chat, volgorde})
   }
+})
+
+app.post('/sendChat', async (req,res) => {
+  const db = client.db("muve")
+  const coll = db.collection("chats")
+  const formChat = req.body.chat
+  const sendChat = {user: req.session.chatUser, text: formChat}
+
+  await coll.updateOne({_id: new ObjectId(req.session.chatID)}, {$push: {chat: sendChat}})
+
+  res.redirect('/inbox')
 })
 
 app.get('/chat', async (req,res) => {

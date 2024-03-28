@@ -31,6 +31,13 @@
               </div>
         </section>
 
+        <section class="popup-message-goed">
+          <div class="profiel-aanpassen goed">
+          <h2>Je gegevens zijn opgeslagen</h2>
+          <p>Je [] is succesvol gewijzigd</p>
+        </div>
+        </section>
+
         <section>
             <div class="profiel-aanpassen">
                 <h2>Persoonlijke gegevens</h2>
@@ -45,6 +52,21 @@
                 </form>
               </div>
         </section>
+
+        <section>
+          <div class="profiel-aanpassen">
+              <h2>Genres</h2>
+              <form action="#" method="post">
+                <label for="name">Naam</label>
+                <input type="text" id="name" name="name" value="<%= user.name %>" required>
+          
+                <label for="description">Over jezelf</label>
+                <input type="text" id="description" name="description" value="<%= user.description %>" required>
+          
+                <button type="submit">Opslaan</button>
+              </form>
+            </div>
+      </section>
 
         <section>
             <div class="profiel-aanpassen">
@@ -76,14 +98,13 @@
         </section>
 
         <section>
-            <div class="profiel-uitloggen">
+          <div class="profiel-aanpassen uitloggen">
             <form action="/uitloggen" method="post">
         
-                <button type="submit">Uitloggen</button>
-              </form>
-              </div>
-        </section>
-
+              <button type="submit">Uitloggen</button>
+            </form>
+            </div>
+      </section>
 
       
 

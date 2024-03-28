@@ -1,0 +1,25 @@
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="conversation-partner">
+                <div class="chevron"><a href="#" onclick="history.back(); return false;"><img src="./images/iconen/chevron.left.svg" alt="Profile Picture"></a></div>
+                <img src="./images/binc.jpg" alt="Profile Picture">
+                <h2>Designer</h2>
+            </div>
+        </div>
+
+        <div class="chatbox" id="chat-box">
+            <% for(var i=0; i<chat.chat.length; i++) {%>
+                <div class="<%= volgorde[chat.chat[i].user] %>">
+                    <%= chat.chat[i].text %>
+                </div>
+            <% } %>
+        </div>
+
+        <div>
+            <form class="input-container" action="/sendChat" method="POST">
+            <input type="text" id="message-input" class="message-input" placeholder="Verstuur bericht..." name="chat">
+            <button type="submit" class="send-button">Verstuur</button>
+        </form>
+        </div>
+    </div>
+    <script src="chat.js"></script>
