@@ -138,7 +138,7 @@ a:visited {
 /* HEADER */
 
 header {
-	background-color: white;
+	background-color: var(--container-licht);
 	position: fixed;
 	z-index: 1000;
 	width: 100vw;
@@ -180,7 +180,7 @@ header > div:first-of-type {
     top: 0;
     right: -75%; /* Initially hidden */
     height: 100%;
-    background-color: var(--tekst-licht);
+    background-color: var(--container-licht);
     width: 75%;
     transition: right 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 	z-index: 900;
@@ -247,7 +247,7 @@ header > div:first-of-type {
 }
 
 .button-secundair {
-	border: black solid 2px;
+	border: var(--tekst-donker) solid 2px;
 	border-radius: 10px;
 	padding: 0.5em;
 	background-color: transparent;
@@ -258,6 +258,7 @@ header > div:first-of-type {
 	font-size: 16px;
 	transition: scale 0.25s ease-in-out;
 	cursor: pointer;
+	color: var(--tekst-donker);
 }
 
 .button-secundair:hover {
@@ -271,7 +272,7 @@ a {
 
 a:visited {
 	text-decoration: none;
-	color: black;
+	color: var(--tekst-donker);
 }
 
 
@@ -382,6 +383,7 @@ input[type="name"] {
 		--achtergrond-licht: var(--achtergrond-donker);
 		--container-licht: var(--container-donker);
 		--tekst-donker: var(--tekst-licht);
+		--accent1: orange;
 	}
 
 	.titel-flex-main div img {
@@ -400,6 +402,14 @@ input[type="name"] {
 
 	.titel-flex-main .liked path {
 		stroke: red;
+	}
+
+	header img {
+		filter: invert(100%);
+	}
+
+	.button-secundair img {
+		filter: invert(100%);
 	}
   }
 
