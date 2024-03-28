@@ -206,8 +206,12 @@ app.post('/login', async (req,res) => {
     if(result === true){
       console.log('gegevens kloppen')
       req.session.email = user.email
-      console.log('redirect naar ' + req.session.redirect)
-      res.redirect(req.session.redirect)
+      if (req.session.redirect) {
+        console.log('redirect naar ' + req.session.redirect)
+        res.redirect(req.session.redirect)
+      } else {
+        res.redirect('/')
+      }
     } else {
       incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
       res.redirect('/inloggen')
