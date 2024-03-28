@@ -13,34 +13,31 @@
     <section class="secInloggen">
         <h2 id="titleInloggen">Registreren</h2>
         <p id="textInloggen">Maak een account aan</p>
-
-        <form id="loginForm">
-            <div class="form-group">
-                <label id="labelForms" for="name">Naam</label>
-                <input type="name" name="name" id="name" required>
-            </div>
-            <div class="form-group">
-                <label id="labelForms" for="email">E-mail</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-            <div class="form-group">
+            <form id="loginForm" method="post" action="/registreer">
+                <div class="form-group">
+                    <label id="labelForms" for="name">Volledige naam</label>
+                    <input type="name" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label id="labelForms" for="email">E-mail</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-group">
                 <label id="labelForms" for="datum">Leeftijd</label>
-                <input type="date" id="datum" name="datum">
-            </div>
-            <div class="form-group">
-                <label id="labelForms" for="password">Wachtwoord</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <div class="form-group">
-                <label id="labelForms" for="repeatPassword">Herhaal wachtwoord</label>
-                <input type="password" name="repeatPassword" id="repeatPassword" required>
-            </div>
-            <div class="button-flex">
-            <button id="loginButton" type="submit">Maak account aan</button>
-            <a id="registreerButton" href="inloggen">Al een account? Log hier in</a>
-        </div>
-        </form>
-    </section>
+                <input type="date" id="datum" name="date">
+                </div>
+                <div class="form-group">
+                    <label id="labelForms" for="password">Wachtwoord</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label id="labelForms" for="repeatPassword">Herhaal wachtwoord</label>
+                    <input type="password" name="repeatPassword" id="repeatPassword" required>
+                </div>
+                <button id="loginButton" type="submit">Maak account aan</button>
+                <a id="registreerButton" href="inloggen">Al een account? Log hier in</a>
+            </form>
+        </section>
 </body>
 
 </html>

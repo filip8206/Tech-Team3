@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
     cb(null, 'public/images/users/')
   },
   filename: function (req, file, cb) {
-    cb(null, req.session.userID + path.extname(file.originalname));
+    cb(null, req.session.email + path.extname(file.originalname));
   }
 });
 
@@ -198,15 +198,16 @@ app.post('/login', async (req,res) => {
   const {email, password} = req.body
 
   
-
+  console.log('gegevens zoeken')
   const user = await coll.findOne({ email: email })
+  console.log(user)
   if (user != null) {
   bcrypt.compare(password, user.password).then(function(result) {
     if(result === true){
-      console.log(user._id)
-      req.session.userID = user._id
+      console.log('gegevens kloppen')
       req.session.email = user.email
-      res.redirect('/')
+      console.log('redirect naar ' + req.session.redirect)
+      res.redirect(req.session.redirect)
     } else {
       incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
       res.redirect('/inloggen')
@@ -247,6 +248,7 @@ app.post('/registreer', async (req, res) => {
     const formPassword = xss(req.body.password)
     const formPasswordConfirm = xss(req.body.repeatPassword)
     const formName = xss(req.body.name)
+    const formBirthdate = req.body.date
 
     if (formPassword != formPasswordConfirm) {
       res.redirect('/registreer')
@@ -264,11 +266,12 @@ app.post('/registreer', async (req, res) => {
         coll.insertOne({
           email: formEmail,
           password: hashedPassword,
-          name: formName
+          name: formName,
+          birthdate: formBirthdate
         })
 
         console.log(req.body + 'geregistreerd')
-        req.session.email = email
+        req.session.email = formEmail
         res.redirect('/profiel-aanmaken')
       }
     }
@@ -281,11 +284,12 @@ app.post('/registreer', async (req, res) => {
 app.get('/profiel-aanmaken', async (req, res) => {
   const email = req.session.email
   console.log ('user ' + email)
-  // if (email != null) {
+  if (email != null) {
   res.render('profiel-aanmaken', {email})
-  // } else {
-    // res.redirect('/inloggen')
-  // }
+  } else {
+    req.session.redirect = '/profiel-aanmaken'
+    res.redirect('/inloggen')
+  }
 })
 
 app.post('/profiel-aanmaken', upload.single('profilephoto') , async (req,res) => {
@@ -299,9 +303,9 @@ app.post('/profiel-aanmaken', upload.single('profilephoto') , async (req,res) =>
   const user = await coll.findOne({ email: req.session.email })
   console.log(user)
   coll.updateOne({ email: req.session.email},{ $set: {
-    profilePicturePath: req.file.path,
     description: formDescription,
-    genres: req.body.genres
+    genres: req.body.genres,
+    profilePicturePath: req.file.path
 }})
   console.log('profiel bijgewerkt')
   res.redirect('/')
@@ -311,6 +315,11 @@ app.get('/klaar', async (req, res) => {
   res.render('klaar')
 })
 
+////////// Profiel bewerken routes
+
+
+
+////////// App listen
 app.listen(process.env.PORT, () => {
   console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
 })
