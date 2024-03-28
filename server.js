@@ -217,28 +217,48 @@ app.get('/inbox', async (req,res) => {
   } else{
     const userID = req.session.userID
     const db = client.db("muve")
-    const coll = db.collection("chats")
-    // const chatOverzicht = await coll.find({users: new ObjectId(userID)}).toArray
-    const chat = await coll.findOne({users: userID})
+    const chatColl = db.collection("chats")
+    const userColl = db.collection("users")
+
+    // chatbox gegevens ophalen
+    let chat
+    if(Object.keys(req.query).length > 0){
+      chat = await chatColl.findOne({$and: [
+        {users: userID},
+        {users: req.query.chatID}
+      ]})
+    } else {
+      chat = await chatColl.findOne({users: userID})
+    }
+    console.log("de chat: " + chat)
     let volgorde = ["receive", "send"]
     req.session.chatID = chat._id
     if(chat.users[0] === userID){
       volgorde.reverse()
       req.session.chatUser = 0
     } else {req.session.chatUser = 1}
-    console.log(chat, volgorde)
-    res.render('inbox', {chat, volgorde})
+
+    // chat overzicht gegevens ophalen
+    const chatOverzicht = await chatColl.find({users: userID}).toArray()
+    let andereGebruikers = []
+    chatOverzicht.forEach((chat) => {
+      chat.users.forEach((user) => {if(user != userID){
+        let zetErin = new ObjectId(user)
+        andereGebruikers.push(zetErin)
+      }})
+    })
+    const overzichtGegevens = await userColl.find({_id: { $in: Array.isArray(andereGebruikers) ? andereGebruikers : [genandereGebruikersre] }}).toArray()
+    console.log(chatOverzicht, overzichtGegevens)
+
+    res.render('inbox', {chat, volgorde, overzichtGegevens})
   }
 })
 
 app.post('/sendChat', async (req,res) => {
   const db = client.db("muve")
   const coll = db.collection("chats")
-  const formChat = req.body.chat
-  const sendChat = {user: req.session.chatUser, text: formChat}
-
+  const sendChat = {user: req.session.chatUser, text: req.body.chat}
   await coll.updateOne({_id: new ObjectId(req.session.chatID)}, {$push: {chat: sendChat}})
-
   res.redirect('/inbox')
 })
 

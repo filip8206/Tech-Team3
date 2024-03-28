@@ -28,46 +28,27 @@
 
             <section id="grid1" class="list-chat">
 
-
-                <a href="/chat">
-                    <div>
-                        <img class="hoofdfoto" src="./images/binc.jpg" alt="Achtergrondafbeelding">
-                    </div>
-                    <div class="genres-flex-main">
-                        <div class="titel-flex-main chat-chevron">
-                            <div>
-                                <h3>Binc van Buren</h3>
-                                <p class="last-chat">Hey, ik wilde nog even wat wijzigingen doorgeven voor de website.
-                                    Heb jij daar vandaag tijd voor?</p>
-                            </div>
-                            <div>
-                                <p class="tijd">9:41</p>
-                                <img src="./images/iconen/chevron.right.svg" alt="Like">
+                <% for(var i=0; i<overzichtGegevens.length; i++) {%>
+                    <a href="/inbox?chatID=<%= overzichtGegevens[i]._id %>">
+                        <div>
+                            <img class="hoofdfoto" src="<%= overzichtGegevens[i].profilePicturePath.substring(7) %>" alt="Achtergrondafbeelding">
+                        </div>
+                        <div class="genres-flex-main">
+                            <div class="titel-flex-main chat-chevron">
+                                <div>
+                                    <h3><%= overzichtGegevens[i].name %></h3>
+                                    <p class="last-chat">Hey, ik wilde nog even wat wijzigingen doorgeven voor de website.
+                                        Heb jij daar vandaag tijd voor?</p>
+                                </div>
+                                <div>
+                                    <p class="tijd">9:41</p>
+                                    <img src="./images/iconen/chevron.right.svg" alt="Like">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </a>
-
-                <a href="/chat">
-                    <div>
-                        <img class="hoofdfoto" src="./images/binc.jpg" alt="Achtergrondafbeelding">
-                    </div>
-                    <div class="genres-flex-main">
-                        <div class="titel-flex-main chat-chevron">
-                            <div>
-                                <h3>Binc van Buren</h3>
-                                <p class="last-chat">Hey, ik wilde nog even wat wijzigingen doorgeven voor de website.
-                                    Heb jij daar vandaag tijd voor?</p>
-                            </div>
-                            <div>
-                                <p class="tijd">9:41</p>
-                                <img src="./images/iconen/chevron.right.svg" alt="Like">
-                            </div>
                         </div>
-                    </div>
-                    </div>
-                </a>
+                    </a>
+                <% } %>
 
             </section>
 
