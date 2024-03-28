@@ -50,12 +50,14 @@ const upload = multer({ storage: storage })
 
 console.log('Server gestart');
 
-//alle genres
+//algemene variabelen
 const alleGenres = ["pop", "nederlands", "rap", "rock", "house"]
 
 // Routes
 app.get('/', async (req,res) => {
-  if(req.session.userID){
+  console.log(req.session.userID)
+  if(!req.session.userID){
+    req.session.redirect = '/'
     res.redirect('/inloggen')
   } else{
   const db = client.db("muve")
@@ -136,7 +138,8 @@ app.post('/unlikePost', async (req, res) => {
 ////////// NUMMERS DETAILPAGINA
 
 app.get('/detail', async (req,res) => {
-  if(req.session.userID){
+  if(!req.session.userID){
+    req.session.redirect = '/detail'
     res.redirect('/inloggen')
   } else{
     const songID = req.query.id
@@ -153,7 +156,8 @@ app.get('/detail', async (req,res) => {
 ////////// MATCHES
 
 app.get('/match', async (req,res) => {
-  if(req.session.userID){
+  if(!req.session.userID){
+    req.session.redirect = '/match'
     res.redirect('/inloggen')
   } else{
     const db = client.db("muve")
@@ -182,7 +186,8 @@ app.post('/match', async (req,res) => {
 })
 
 app.get('/matchprofiel', async (req,res) => {
-  if(req.session.userID){
+  if(!req.session.userID){
+    req.session.redirect = '/matchprofiel'
     res.redirect('/inloggen')
   } else{
     res.render('matchprofiel')
@@ -190,7 +195,8 @@ app.get('/matchprofiel', async (req,res) => {
 })
 
 app.get('/profiel', async (req,res) => {
-  if(req.session.userID){
+  if(!req.session.userID){
+    req.session.redirect = '/profiel'
     res.redirect('/inloggen')
   } else{
     const userID = req.session.userID
@@ -203,11 +209,17 @@ app.get('/profiel', async (req,res) => {
 })
 
 app.get('/inbox', async (req,res) => {
-  res.render('inbox')
+  if(!req.session.userID){
+    req.session.redirect = '/inbox'
+    res.redirect('/inloggen')
+  } else{
+    res.render('inbox')
+  }
 })
 
 app.get('/chat', async (req,res) => {
-  if(req.session.userID){
+  if(!req.session.userID){
+    req.session.redirect = '/chat'
     res.redirect('/inloggen')
   } else{
     res.render('chat')
