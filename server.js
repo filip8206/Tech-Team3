@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
     cb(null, 'public/images/users/')
   },
   filename: function (req, file, cb) {
-    cb(null, req.session.userID + path.extname(file.originalname));
+    cb(null, req.session.email + path.extname(file.originalname));
   }
 });
 
@@ -58,7 +58,7 @@ app.get('/', async (req,res) => {
   const db = client.db("muve")
   const songColl = db.collection("songs")
   const userColl = db.collection("users")
-  const userID = "65f85a70bc8844d354d4b8f2"
+  const userID = req.session.userID
 
   //likes ophalen
   const user = await userColl.findOne({_id: new ObjectId(userID)})
@@ -85,6 +85,7 @@ app.get('/', async (req,res) => {
   }
 })
 
+// filteren van home
 app.post('/', async (req,res) => {
   let genre, key = []
   genre = req.body.genre
@@ -97,8 +98,10 @@ app.post('/', async (req,res) => {
   res.redirect(url)
 })
 
+// een post liken
 app.post('/likePost', async (req, res) => {
-  const {userID, songID} = req.body
+  const songID = req.body.songID
+  const userID = req.session.userID
   const db = client.db("muve")
   const coll = db.collection("users")
   const songColl = db.collection("songs")
@@ -110,8 +113,10 @@ app.post('/likePost', async (req, res) => {
   await songColl.updateOne({_id: new ObjectId(songID)}, { $push: {likes: userID}})
 })
 
+// een post unliken
 app.post('/unlikePost', async (req, res) => {
-  const {userID, songID} = req.body
+  const songID = req.body.songID
+  const userID = req.session.userID
   const db = client.db("muve")
   const coll = db.collection("users")
   const songColl = db.collection("songs")
@@ -123,11 +128,6 @@ app.post('/unlikePost', async (req, res) => {
   await songColl.updateOne({_id: new ObjectId(songID)}, { $pull: {likes: userID}})
 })
 
-app.get('/inloggen', async (req,res) => {
-  let incorrect
-  res.render('inloggen', {incorrect})
-})
-
 app.get('/detail', async (req,res) => {
   const songID = req.query.id
   const db = client.db("muve")
@@ -135,10 +135,13 @@ app.get('/detail', async (req,res) => {
   const song = await coll.findOne({_id: new ObjectId(songID)})
 
   //id ophalen uit storage
-  const userID = "65f85a70bc8844d354d4b8f2"
+  const userID = req.session.userID
 
   res.render('detail', {song, userID})
 })
+
+
+////////// MATCHES
 
 app.get('/match', async (req,res) => {
   const db = client.db("muve")
@@ -157,6 +160,7 @@ app.get('/match', async (req,res) => {
   }
 })
 
+// matches filteren
 app.post('/match', async (req,res) => {
   const {sorteren, genre} = req.body
   if(!genre){genre = alleGenres}
@@ -169,7 +173,12 @@ app.get('/matchprofiel', async (req,res) => {
 })
 
 app.get('/profiel', async (req,res) => {
-  res.render('profiel')
+  const userID = req.session.userID
+  const db = client.db("muve")
+  const coll = db.collection("users")
+  const user = await coll.findOne({_id: new ObjectId(userID)})
+  console.log(user)
+  res.render('profiel', {user})
 })
 
 app.get('/inbox', async (req,res) => {
@@ -180,11 +189,12 @@ app.get('/chat', async (req,res) => {
   res.render('chat')
 })
 
-app.get('/', async (req, res) => {
-  res.render('index')
-  console.log(req.session.userID + ' is ingelogd')
-})
 
+////////// INLOGGEN
+
+app.get('/inloggen', async (req,res) => {
+  res.render('inloggen')
+})
 
 app.post('/login', async (req,res) => {
   const db = client.db("muve")
@@ -192,15 +202,20 @@ app.post('/login', async (req,res) => {
   const {email, password} = req.body
 
   
-
+  console.log('gegevens zoeken')
   const user = await coll.findOne({ email: email })
+  console.log(user)
   if (user != null) {
   bcrypt.compare(password, user.password).then(function(result) {
     if(result === true){
-      console.log(user._id)
-      req.session.userID = user._id
+      console.log('gegevens kloppen')
       req.session.email = user.email
-      res.redirect('/')
+      if (req.session.redirect) {
+        console.log('redirect naar ' + req.session.redirect)
+        res.redirect(req.session.redirect)
+      } else {
+        res.redirect('/')
+      }
     } else {
       incorrect = "Uw gebruikersnaam of wachtwoord is incorrect."
       res.redirect('/inloggen')
@@ -211,7 +226,9 @@ app.post('/login', async (req,res) => {
   }
 })
 
+
 ////////// Registreren
+
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
 })
@@ -239,6 +256,7 @@ app.post('/registreer', async (req, res) => {
     const formPassword = xss(req.body.password)
     const formPasswordConfirm = xss(req.body.repeatPassword)
     const formName = xss(req.body.name)
+    const formBirthdate = req.body.date
 
     if (formPassword != formPasswordConfirm) {
       res.redirect('/registreer')
@@ -256,26 +274,30 @@ app.post('/registreer', async (req, res) => {
         coll.insertOne({
           email: formEmail,
           password: hashedPassword,
-          name: formName
+          name: formName,
+          birthdate: formBirthdate
         })
 
         console.log(req.body + 'geregistreerd')
-        req.session.email = email
+        req.session.email = formEmail
         res.redirect('/profiel-aanmaken')
       }
     }
   }
 })
 
+
 ////////// Profiel aanmaken
+
 app.get('/profiel-aanmaken', async (req, res) => {
   const email = req.session.email
   console.log ('user ' + email)
-  // if (email != null) {
+  if (email != null) {
   res.render('profiel-aanmaken', {email})
-  // } else {
-    // res.redirect('/inloggen')
-  // }
+  } else {
+    req.session.redirect = '/profiel-aanmaken'
+    res.redirect('/inloggen')
+  }
 })
 
 app.post('/profiel-aanmaken', upload.single('profilephoto') , async (req,res) => {
@@ -289,9 +311,9 @@ app.post('/profiel-aanmaken', upload.single('profilephoto') , async (req,res) =>
   const user = await coll.findOne({ email: req.session.email })
   console.log(user)
   coll.updateOne({ email: req.session.email},{ $set: {
-    profilePicturePath: req.file.path,
     description: formDescription,
-    genres: req.body.genres
+    genres: req.body.genres,
+    profilePicturePath: req.file.path
 }})
   console.log('profiel bijgewerkt')
   res.redirect('/')
@@ -301,6 +323,11 @@ app.get('/klaar', async (req, res) => {
   res.render('klaar')
 })
 
+////////// Profiel bewerken routes
+
+
+
+////////// App listen
 app.listen(process.env.PORT, () => {
   console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
 })

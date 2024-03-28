@@ -15,10 +15,7 @@
         <h2 id="titleInloggen">Inloggen</h2>
 
         <p id="textInloggen">Log in op je account</p>
-        <% if(incorrect){ %>
-        <p class="foutmelding"><%= incorrect %></p>
-        <% } %>
-        <form id="loginForm" action="/login" method="post">
+        <form id="loginForm" action="/login" method="POST">
 
             <div class="form-group">
                 <label id="labelForms" for="username">E-mail</label>
