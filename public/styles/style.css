@@ -59,7 +59,7 @@ img {
 --tekst-donker: black;
 
 --achtergrond-licht: #F6F0FF;
---achtergrond-donker: #3e2339;
+--achtergrond-donker: #1f181e;
 
 --container-licht: white;
 --container-donker: black;
@@ -395,14 +395,18 @@ input[type="name"] {
 
 	}
 
-	.titel-flex-main svg path {
+	.titel-flex-main svg path,
+	.titel-flex svg path {
 		stroke-width: 1.5px;
 		stroke: white;
 	}
 
-	.titel-flex-main .liked path {
+
+	.titel-flex-main .liked path,
+	.titel-flex .liked path {
 		stroke: red;
 	}
+	
 
 	header img {
 		filter: invert(100%);
