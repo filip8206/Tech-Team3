@@ -218,7 +218,7 @@ app.get('/inbox', async (req,res) => {
     // const chatOverzicht = await coll.find({users: new ObjectId(userID)}).toArray
     const chat = await coll.findOne({users: userID})
     let volgorde = ["receive", "send"]
-    if(chat.users[0] === userID){volgorde.reverse}
+    if(chat.users[0] === userID){volgorde.reverse()}
     console.log(chat, volgorde)
     res.render('inbox', {chat, volgorde})
   }
