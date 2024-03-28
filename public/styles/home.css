@@ -949,28 +949,21 @@ input[type="file"] {
 
 /* UITLOGGEN */
 
-.profiel-uitloggen {
-	display: flex;
-	justify-content: space-evenly;
-	max-width: 500px;
-	margin: auto;
+.profiel-aanpassen.uitloggen {
+	padding: 0px;
+	margin-bottom: 5em;
 }
 
-.profiel-uitloggen button {
-	padding: 12px 24px;
+.profiel-aanpassen.uitloggen button {
 	background-color: var(--accent1);
-	color: #fff;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-
+	transition: font-size 0.2s ease-in-out;
 }
 
-
-.profiel-uitloggen button:hover {
-	background-color: #005aa7;
+.profiel-aanpassen.uitloggen button:hover {
+	background-color: red;
+	font-size: 16px;
 }
+
 
 
 
