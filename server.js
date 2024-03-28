@@ -216,9 +216,11 @@ app.get('/inbox', async (req,res) => {
     const db = client.db("muve")
     const coll = db.collection("chats")
     // const chatOverzicht = await coll.find({users: new ObjectId(userID)}).toArray
-    const chat = await coll.findOne({users: new ObjectId(userID)})
-    console.log(chat.chat)
-    res.render('inbox', {chat})
+    const chat = await coll.findOne({users: userID})
+    let volgorde = ["receive", "send"]
+    if(chat.users[0] === userID){volgorde.reverse}
+    console.log(chat, volgorde)
+    res.render('inbox', {chat, volgorde})
   }
 })
 
