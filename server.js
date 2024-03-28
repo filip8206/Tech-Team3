@@ -173,7 +173,12 @@ app.get('/matchprofiel', async (req,res) => {
 })
 
 app.get('/profiel', async (req,res) => {
-  res.render('profiel')
+  const userID = req.session.userID
+  const db = client.db("muve")
+  const coll = db.collection("users")
+  const user = await coll.findOne({_id: new ObjectId(userID)})
+  console.log(user)
+  res.render('profiel', {user})
 })
 
 app.get('/chat', async (req,res) => {

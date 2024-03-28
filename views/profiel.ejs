@@ -20,7 +20,7 @@
             <div class="foto-aanpassen">
                 <form action="/upload" method="POST" enctype="multipart/form-data">
                   <div class="profile-container">
-                    <img id="profile-image" src="/images/binc.jpg" alt="Profielfoto">
+                    <img id="profile-image" src="<%= user.profilePicturePath.substring(7) %>" alt="Profielfoto">
                     <label for="file-upload" class="custom-file-upload">
                       <i class="fa fa-camera"></i>Kies foto
                     </label>
@@ -36,10 +36,10 @@
                 <h2>Persoonlijke gegevens</h2>
                 <form action="#" method="post">
                   <label for="name">Naam</label>
-                  <input type="text" id="name" name="name" required>
+                  <input type="text" id="name" name="name" value="<%= user.name %>" required>
             
-                  <label for="email">Over jezelf</label>
-                  <input type="email" id="email" name="email" required>
+                  <label for="description">Over jezelf</label>
+                  <input type="text" id="description" name="description" value="<%= user.description %>" required>
             
                   <button type="submit">Opslaan</button>
                 </form>
@@ -52,7 +52,7 @@
                 <form action="#" method="post">
             
                   <label for="email">E-mailadres</label>
-                  <input type="email" id="email" name="email" required>
+                  <input type="email" id="email" name="email" value="<%= user.email %>" required>
             
                   <button type="submit">Opslaan</button>
                 </form>
