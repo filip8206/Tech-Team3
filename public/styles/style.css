@@ -402,8 +402,3 @@ input[type="name"] {
 	}
   }
 
-
-  .chat-flex {
-	display: flex;
-	flex-direction: row-reverse;
-  }
