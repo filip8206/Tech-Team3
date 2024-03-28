@@ -58,7 +58,7 @@ app.get('/', async (req,res) => {
   const db = client.db("muve")
   const songColl = db.collection("songs")
   const userColl = db.collection("users")
-  const userID = "65f85a70bc8844d354d4b8f2"
+  const userID = req.session.userID
 
   //likes ophalen
   const user = await userColl.findOne({_id: new ObjectId(userID)})
@@ -85,6 +85,7 @@ app.get('/', async (req,res) => {
   }
 })
 
+// filteren van home
 app.post('/', async (req,res) => {
   let genre, key = []
   genre = req.body.genre
@@ -97,8 +98,10 @@ app.post('/', async (req,res) => {
   res.redirect(url)
 })
 
+// een post liken
 app.post('/likePost', async (req, res) => {
-  const {userID, songID} = req.body
+  const songID = req.body.songID
+  const userID = req.session.userID
   const db = client.db("muve")
   const coll = db.collection("users")
   const songColl = db.collection("songs")
@@ -110,8 +113,10 @@ app.post('/likePost', async (req, res) => {
   await songColl.updateOne({_id: new ObjectId(songID)}, { $push: {likes: userID}})
 })
 
+// een post unliken
 app.post('/unlikePost', async (req, res) => {
-  const {userID, songID} = req.body
+  const songID = req.body.songID
+  const userID = req.session.userID
   const db = client.db("muve")
   const coll = db.collection("users")
   const songColl = db.collection("songs")
@@ -123,11 +128,6 @@ app.post('/unlikePost', async (req, res) => {
   await songColl.updateOne({_id: new ObjectId(songID)}, { $pull: {likes: userID}})
 })
 
-app.get('/inloggen', async (req,res) => {
-  let incorrect
-  res.render('inloggen', {incorrect})
-})
-
 app.get('/detail', async (req,res) => {
   const songID = req.query.id
   const db = client.db("muve")
@@ -135,10 +135,13 @@ app.get('/detail', async (req,res) => {
   const song = await coll.findOne({_id: new ObjectId(songID)})
 
   //id ophalen uit storage
-  const userID = "65f85a70bc8844d354d4b8f2"
+  const userID = req.session.userID
 
   res.render('detail', {song, userID})
 })
+
+
+////////// MATCHES
 
 app.get('/match', async (req,res) => {
   const db = client.db("muve")
@@ -157,6 +160,7 @@ app.get('/match', async (req,res) => {
   }
 })
 
+// matches filteren
 app.post('/match', async (req,res) => {
   const {sorteren, genre} = req.body
   if(!genre){genre = alleGenres}
@@ -176,11 +180,12 @@ app.get('/chat', async (req,res) => {
   res.render('chat')
 })
 
-app.get('/', async (req, res) => {
-  res.render('index')
-  console.log(req.session.userID + ' is ingelogd')
-})
 
+////////// INLOGGEN
+
+app.get('/inloggen', async (req,res) => {
+  res.render('inloggen')
+})
 
 app.post('/login', async (req,res) => {
   const db = client.db("muve")
@@ -207,7 +212,9 @@ app.post('/login', async (req,res) => {
   }
 })
 
+
 ////////// Registreren
+
 app.get('/registreer', async (req, res) => {
   res.render('registreer')
 })
@@ -263,7 +270,9 @@ app.post('/registreer', async (req, res) => {
   }
 })
 
+
 ////////// Profiel aanmaken
+
 app.get('/profiel-aanmaken', async (req, res) => {
   const email = req.session.email
   console.log ('user ' + email)
