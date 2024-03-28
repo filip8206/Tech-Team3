@@ -16,8 +16,8 @@
         </div>
 
         <div>
-            <form class="input-container">
-            <input type="text" id="message-input" class="message-input" placeholder="Verstuur bericht...">
+            <form class="input-container" action="/sendChat" method="POST">
+            <input type="text" id="message-input" class="message-input" placeholder="Verstuur bericht..." name="chat">
             <button type="submit" class="send-button">Verstuur</button>
         </form>
         </div>
