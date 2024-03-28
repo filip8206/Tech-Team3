@@ -949,28 +949,21 @@ input[type="file"] {
 
 /* UITLOGGEN */
 
-.profiel-uitloggen {
-	display: flex;
-	justify-content: space-evenly;
-	max-width: 500px;
-	margin: auto;
+.profiel-aanpassen.uitloggen {
+	padding: 0px;
+	margin-bottom: 5em;
 }
 
-.profiel-uitloggen button {
-	padding: 12px 24px;
+.profiel-aanpassen.uitloggen button {
 	background-color: var(--accent1);
-	color: #fff;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-
+	transition: font-size 0.2s ease-in-out;
 }
 
-
-.profiel-uitloggen button:hover {
-	background-color: #005aa7;
+.profiel-aanpassen.uitloggen button:hover {
+	background-color: red;
+	font-size: 16px;
 }
+
 
 
 
@@ -979,8 +972,8 @@ input[type="file"] {
 .profiel-aanpassen.goed {
     background: linear-gradient(140deg, #007aff -75%, var(--accent1) 100%);
 	color: white;
-	animation: popup-account 1s ease infinite alternate;
-	background-size: 100% 100%
+	animation: popup-account 10s ease forwards;
+	background-size: 100% 150%
 }
 
 .profiel-aanpassen.goed h2 {
@@ -994,12 +987,21 @@ input[type="file"] {
 @keyframes popup-account {
 	0% {
 		background-position: 0% 50%; /* Startpositie van de gradiënt */
+		scale: 0;
+	}
+
+	10% {
+		scale: 1;
+	}
+
+	90% {
 		scale: 1;
 	}
 
 	100% {
 		background-position: 100% 100%; /* Startpositie van de gradiënt */
-		scale: 1.015;
+		scale: 0;
+		display: none;
 	}
 }
   

@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
     cb(null, 'public/images/users/')
   },
   filename: function (req, file, cb) {
-    cb(null, req.session.email + path.extname(file.originalname));
+    cb(null, req.session.userID + path.extname(file.originalname));
   }
 });
 
@@ -358,11 +358,15 @@ app.post('/registreer', async (req, res) => {
           email: formEmail,
           password: hashedPassword,
           name: formName,
-          birthdate: formBirthdate
+          birthdate: formBirthdate,
+          likes: []
         })
-
+        const newUser = await coll.findOne({
+          email: req.body.email
+        })
         console.log(req.body + 'geregistreerd')
         req.session.email = formEmail
+        req.session.userID = newUser._id
         res.redirect('/profiel-aanmaken')
       }
     }
@@ -407,8 +411,77 @@ app.get('/klaar', async (req, res) => {
 })
 
 ////////// Profiel bewerken routes
+app.post('/new-photo', upload.single('profileImage'), async (req, res) => {
+  const db = client.db('muve')
+  const coll = db.collection('users')
+  coll.updateOne({ email: req.session.email},{ $set: {
+    profilePicturePath: req.file.path
+  }})
+  const confirmation = 'Je profielfoto is bijgewerkt!'
+  res.redirect('/profiel')
+})
 
 
+app.post('/new-name', async (req, res) => {
+  const db = client.db('muve')
+  const coll = db.collection('users')
+  const formName = xss(req.body.name)
+  const formDescription = xss(req.body.description)
+  coll.updateOne({ email: req.session.email},{ $set: {
+    name: formName,
+    description: formDescription
+}})
+  const confirmation = 'Je naam en omschrijving zijn bijgewerkt!'
+  res.redirect('/profiel')
+})
+
+
+app.post('/new-mail', async (req, res) => {
+  const db = client.db('muve')
+  const coll = db.collection('users')
+  const user = await coll.findOne({_id: new ObjectId(req.session.userID)})
+  const formEmail = xss(req.body.email)
+  const otherUser = await coll.findOne({email: formEmail})
+  if (user.email == formEmail) {
+    const error = 'Dit email adres gebruik je al.'
+    res.redirect('/profiel')
+  } else if (otherUser != null) {
+    const error = 'Dit email adres is al in gebruik.'
+    res.redirect('/profiel')
+  } else {
+    coll.updateOne({ email: req.session.email},{ $set: {
+      email: formEmail
+    }})
+    const confirmation = 'Je email is bijgewerkt!'
+    res.redirect('/profiel')
+  }
+})
+
+app.post('/new-password', async (req, res) => {
+  const db = client.db('muve')
+  const coll = db.collection('users')
+  const user = await coll.findOne({_id: new ObjectId(req.session.userID)})
+  const formOldPassword = xss(req.body.password)
+  const formNewPassword = xss(req.body.newPassword)
+  bcrypt.compare(formOldPassword, user.password).then(function(result) {
+  if (result === true) {
+    const hashedNewPassword = bcrypt.hashSync(formNewPassword, saltRounds)
+    coll.updateOne({ email: req.session.email},{ $set: {
+      password: hashedNewPassword
+    }})
+    const confirmation = 'Je wachtwoord is bijgewerkt!'
+    res.redirect('/profiel')
+  } else {
+    const error = "Je hebt het verkeerde wachtwoord opgegeven."
+    res.redirect('/profiel')
+  }})
+})
+
+app.post('/uitloggen', async (req, res) => {
+  req.session.userID = null
+  req.session.email = null
+  res.redirect('/inloggen')
+})
 
 ////////// App listen
 app.listen(process.env.PORT, () => {

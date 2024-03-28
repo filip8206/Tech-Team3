@@ -18,7 +18,7 @@
 
         <section>
             <div class="foto-aanpassen">
-                <form action="/upload" method="POST" enctype="multipart/form-data">
+                <form action="/new-photo" method="POST" enctype="multipart/form-data">
                   <div class="profile-container">
                     <img id="profile-image" src="<%= user.profilePicturePath.substring(7) %>" alt="Profielfoto">
                     <label for="file-upload" class="custom-file-upload">
@@ -41,7 +41,7 @@
         <section>
             <div class="profiel-aanpassen">
                 <h2>Persoonlijke gegevens</h2>
-                <form action="#" method="post">
+                <form action="/new-name" method="post">
                   <label for="name">Naam</label>
                   <input type="text" id="name" name="name" value="<%= user.name %>" required>
             
@@ -54,9 +54,24 @@
         </section>
 
         <section>
+          <div class="profiel-aanpassen">
+              <h2>Genres</h2>
+              <form action="#" method="post">
+                <label for="name">Naam</label>
+                <input type="text" id="name" name="name" value="<%= user.name %>" required>
+          
+                <label for="description">Over jezelf</label>
+                <input type="text" id="description" name="description" value="<%= user.description %>" required>
+          
+                <button type="submit">Opslaan</button>
+              </form>
+            </div>
+      </section>
+
+        <section>
             <div class="profiel-aanpassen">
                 <h2>Mail</h2>
-                <form action="#" method="post">
+                <form action="/new-mail" method="post">
             
                   <label for="email">E-mailadres</label>
                   <input type="email" id="email" name="email" value="<%= user.email %>" required>
@@ -69,7 +84,7 @@
         <section>
             <div class="profiel-aanpassen">
                 <h2>Wachtwoord</h2>
-                <form action="#" method="post">
+                <form action="/new-password" method="post">
             
                   <label for="password">Huidig wachtwoord</label>
                   <input type="password" id="password" name="password" required>
@@ -83,13 +98,13 @@
         </section>
 
         <section>
-            <div class="profiel-uitloggen">
+          <div class="profiel-aanpassen uitloggen">
             <form action="/uitloggen" method="post">
         
-                <button type="submit">Uitloggen</button>
-              </form>
-              </div>
-        </section>
+              <button type="submit">Uitloggen</button>
+            </form>
+            </div>
+      </section>
 
       
 
