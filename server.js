@@ -203,7 +203,6 @@ app.get('/profiel', async (req,res) => {
     const db = client.db("muve")
     const coll = db.collection("users")
     const user = await coll.findOne({_id: new ObjectId(userID)})
-    console.log(user)
     res.render('profiel', {user})
   }
 })
@@ -213,7 +212,13 @@ app.get('/inbox', async (req,res) => {
     req.session.redirect = '/inbox'
     res.redirect('/inloggen')
   } else{
-    res.render('inbox')
+    const userID = req.session.userID
+    const db = client.db("muve")
+    const coll = db.collection("chats")
+    // const chatOverzicht = await coll.find({users: new ObjectId(userID)}).toArray
+    const chat = await coll.findOne({users: new ObjectId(userID)})
+    console.log(chat.chat)
+    res.render('inbox', {chat})
   }
 })
 
