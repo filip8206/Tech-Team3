@@ -972,8 +972,8 @@ input[type="file"] {
 .profiel-aanpassen.goed {
     background: linear-gradient(140deg, #007aff -75%, var(--accent1) 100%);
 	color: white;
-	animation: popup-account 1s ease infinite alternate;
-	background-size: 100% 100%
+	animation: popup-account 10s ease forwards;
+	background-size: 100% 150%
 }
 
 .profiel-aanpassen.goed h2 {
@@ -987,12 +987,21 @@ input[type="file"] {
 @keyframes popup-account {
 	0% {
 		background-position: 0% 50%; /* Startpositie van de gradiënt */
+		scale: 0;
+	}
+
+	10% {
+		scale: 1;
+	}
+
+	90% {
 		scale: 1;
 	}
 
 	100% {
 		background-position: 100% 100%; /* Startpositie van de gradiënt */
-		scale: 1.015;
+		scale: 0;
+		display: none;
 	}
 }
   

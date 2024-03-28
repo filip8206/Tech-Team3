@@ -25,6 +25,7 @@ section {
 	padding: 1em;
 	max-width: var(--maxwidth);
 	margin: auto;
+	transition: height 0.3s ease;
 }
 
 section > div {
