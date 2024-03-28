@@ -202,6 +202,10 @@ app.get('/profiel', async (req,res) => {
   }
 })
 
+app.get('/inbox', async (req,res) => {
+  res.render('inbox')
+})
+
 app.get('/chat', async (req,res) => {
   if(req.session.userID){
     res.redirect('/inloggen')

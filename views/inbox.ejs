@@ -16,52 +16,30 @@
 
     <main>
         <section>
-            <h1>Match personen</h1>
-
-            <div id="filters">
-                <div>
-                    <a id="slide" onclick="toggleFilters()"><button class="filterbutton">Filters</button></a>
-                    <a id="slide"><button id="toggle_sorteer"><img class="toggle_icon_arrow_draai" id="toggleIcon_arrow"
-                                src="./images/iconen/arrow_laag.svg" alt="Grid View"></button></a>
-
-                </div>
-                <div>
-                    <a id="slide"><button id="toggle_grid"><img id="toggleIcon" src="./images/iconen/list.svg"
-                                alt="Grid View"></button></a>
-                </div>
-
-            </div>
+            <h1>Inbox</h1>
         </section>
-      
+
         <section id="grid1" class="list1">
 
-            <% for(let i=0; i<users.length; i++) {%>
-            <a href="/matchprofiel?id=<%=users[i]._id%>">
+
+            <a href="/matchprofiel">
                 <div>
-                    <img class="hoofdfoto" src="./images/users/<%= users[i]._id %>.jpg"
-                        alt="Achtergrondafbeelding">
-                    <div>
-                        <p>30%</p>
-                    </div>
+                    <img class="hoofdfoto" src="./images/binc.jpg" alt="Achtergrondafbeelding">
                 </div>
                 <div class="genres-flex-main">
                     <div class="titel-flex-main">
                         <div>
-                            <h3><%= users[i].name %></h3>
-                            <p><%= users[i].genres[0] %></p>
+                            <h3>Binc van Buren</h3>
+                            <p>Hey, ik wilde nog even wat wijzigingen doorgeven voor de website. Heb jij daar vandaag tijd voor?</p>
                         </div>
                         <div>
-                        <img id="<%= users[i]._id %>" onclick="likeButton('<%= users[i]._id %>')" src="./images/iconen/hart.svg" alt="Like">
+                            <p>9:41</p>
+                            <img src="./images/iconen/hart.svg" alt="Like">
                         </div>
                     </div>
-                    <div class="grid-mini">
-                        <% for(let j=1; j<3; j++) {%>
-                            <p><%= users[i].genres[j] %></p>
-                        <% } %>
-                    </div>
+                </div>
                 </div>
             </a>
-            <% } %>
 
         </section>
 
