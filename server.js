@@ -172,6 +172,10 @@ app.get('/profiel', async (req,res) => {
   res.render('profiel')
 })
 
+app.get('/inbox', async (req,res) => {
+  res.render('inbox')
+})
+
 app.get('/chat', async (req,res) => {
   res.render('chat')
 })
