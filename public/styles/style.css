@@ -401,3 +401,9 @@ input[type="name"] {
 		stroke: red;
 	}
   }
+
+
+  .chat-flex {
+	display: flex;
+	flex-direction: row-reverse;
+  }
