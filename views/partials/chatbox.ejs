@@ -8,39 +8,11 @@
         </div>
 
         <div class="chatbox" id="chat-box">
-            <div class="receive">
-                Goedemorgen! Hoe gaat het met je? Heb je nog vragen over het ontwerp van de website?
-            </div>
-            <div class="send">
-                Hey! Het gaat goed, bedankt voor het vragen. Ik had eigenlijk een vraag over de lay-out van de
-                startpagina.
-            </div>
-            <div class="send">
-                Zou je me daarbij kunnen helpen?
-            </div>
-            <div class="receive">
-                Natuurlijk🤩 ik help je graag! Wat specifiek wil je aanpassen aan de lay-out van de stapagina?
-            </div>
-            <div class="receive">
-                Startpagina*
-            </div>
-
-            <div class="receive">
-                Goedemorgen! Hoe gaat het met je? Heb je nog vragen over het ontwerp van de website?
-            </div>
-            <div class="send">
-                Hey! Het gaat goed, bedankt voor het vragen. Ik had eigenlijk een vraag over de lay-out van de
-                startpagina.
-            </div>
-            <div class="send">
-                Zou je me daarbij kunnen helpen?
-            </div>
-            <div class="receive">
-                Natuurlijk🤩 ik help je graag! Wat specifiek wil je aanpassen aan de lay-out van de stapagina?
-            </div>
-            <div class="receive">
-                Startpagina*
-            </div>
+            <% for(var i=0; i<chat.chat.length; i++) {%>
+                <div class="<%= volgorde[chat.chat[i].user] %>">
+                    <%= chat.chat[i].text %>
+                </div>
+            <% } %>
         </div>
 
         <div>
